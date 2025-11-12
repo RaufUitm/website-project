@@ -1,0 +1,736 @@
+.about-page {
+  min-height: 100vh;
+  margin-top: -64px;
+}
+
+.hero-who-section {
+  background: linear-gradient(135deg, #8fd15f 10%, #4a9fd9 50%, #8fd15f 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
+  padding: 128px 0 80px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.hero-who-section:hover {
+  animation-duration: 5s; /* Speed up gradient movement on hover */
+}
+
+/* Gradient shifting animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Alternative: Rotating gradient overlay */
+.hero-who-section .gradient-overlay {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background:
+    radial-gradient(circle at 30% 50%, rgb(104, 165, 60) 0%, transparent 50%),
+    radial-gradient(circle at 70% 50%, rgb(66, 155, 214) 0%, transparent 50%);
+  animation: rotateGradient 35s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.hero-who-section:hover .gradient-overlay {
+  animation-duration: 25s;
+  opacity: 0.85;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Wave effect overlay */
+.hero-who-section .wave-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: waveMove 18s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes waveMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.4;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+}
+
+/* Digital matrix animation background */
+.hero-who-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(90deg, rgba(120, 192, 84, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(120, 192, 84, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-who-section:hover::before {
+  animation-duration: 10s; /* Speed up on hover */
+  opacity: 0.8;
+}
+
+/* Floating digital particles */
+.hero-who-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(57, 122, 176, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 40% 80%, rgba(120, 192, 84, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 35%);
+  animation: particleFloat 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.hero-who-section:hover::after {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  animation-duration: 8s; /* Speed up on hover */
+}
+
+/* Interactive ripple effect on mouse movement */
+.hero-who-section {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.hero-who-section .interactive-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle 400px at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(120, 192, 84, 0.08) 30%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-who-section:hover .interactive-glow {
+  opacity: 1;
+}
+
+/* Pulse effect on hover */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(120, 192, 84, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(120, 192, 84, 0);
+  }
+}
+
+/* Title hover effects */
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  margin-top: 100px;
+  transition:
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
+  cursor: default;
+}
+
+.hero-title:hover {
+  transform: scale(1.02);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(120, 192, 84, 0.3),
+    0 0 60px rgba(57, 122, 176, 0.2);
+}
+
+/* Shared Values Title hover */
+.shared-values-title {
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+  cursor: default;
+}
+
+.shared-values-title:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 10px 25px rgba(255, 255, 255, 0.3));
+}
+
+/* Value cards enhanced hover */
+.value-card {
+  min-width: 360px;
+  flex-shrink: 0;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+  border-top: 6px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.value-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(120, 192, 84, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.value-card:hover::before {
+  opacity: 1;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Icon hover animation inside cards */
+.value-card .w-28 {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.value-card:hover .w-28 {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Digital scanline effect */
+.hero-who-section .hero-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  animation: scanline 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% {
+    left: -100%;
+  }
+  20%,
+  100% {
+    left: 100%;
+  }
+}
+
+/* Make sure content is above animations */
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  margin-top: 100px;
+}
+
+.who-container {
+  position: relative;
+  z-index: 1;
+}
+
+.who-header {
+  margin-bottom: 32px;
+}
+
+.who-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  text-shadow: 2px white;
+  font-weight: 700;
+  paint-order: stroke fill;
+}
+
+.who-description {
+  background: rgba(255, 255, 255, 0.2 transparent 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  color: white;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 48px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.who-description .or-text {
+  font-style: italic;
+}
+
+.who-description strong {
+  font-weight: 700;
+}
+
+.vision-mission-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.vm-card {
+  flex: 1 1 calc(50% - 16px);
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 40px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vm-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vm-card:hover::before {
+  opacity: 1;
+}
+
+.vm-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.vision-card {
+  background: linear-gradient(135deg, rgba(74, 127, 184, 0.3) 0%, rgba(74, 127, 184, 0.15) 10%);
+}
+
+.mission-card {
+  background: linear-gradient(135deg, rgba(107, 191, 89, 0.3) 0%, rgba(107, 191, 89, 0.15) 10%);
+}
+
+.vm-content {
+  position: relative;
+  z-index: 1;
+}
+
+.vm-title {
+  font-size: 32px;
+  color: white;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.outline-text-vm {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  text-wrap-style: 1px white;
+  font-weight: 700;
+  paint-order: stroke fill;
+}
+
+.vm-text {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Board of Directors Section */
+.board-section {
+  padding: 80px 0;
+  background: white;
+  position: relative;
+}
+
+.board-image-container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.board-full-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Teams Section */
+.teams-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.teams-image-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.teams-full-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Shared Values – infinite horizontal scroll */
+.values-track {
+  animation: valuesScroll 55s linear infinite;
+  width: max-content;
+  padding: 0 2rem;
+}
+.values-track:hover {
+  animation-play-state: paused;
+}
+@keyframes valuesScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Shared Values Header */
+.shared-values-header {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 100px; /* Add bottom margin to create space */
+  position: relative;
+  z-index: 1;
+}
+
+/* Shared Values Title animation */
+.shared-values-title {
+  font-size: 56px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: svIntro 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.shared-values-title .outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  font-weight: 700;
+  paint-order: stroke fill;
+  position: relative;
+  display: inline-block;
+
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation:
+    strokeReveal 1.2s ease forwards,
+    shineSweep 2.8s ease-in-out 0.4s 1;
+}
+
+/* Keyframes */
+@keyframes svIntro {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes strokeReveal {
+  0% {
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    -webkit-text-stroke-color: rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes strokeGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 6px rgba(255, 255, 255, 0.35),
+      0 0 14px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.55),
+      0 0 22px rgba(255, 255, 255, 0.25);
+  }
+}
+
+@keyframes shineSweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Value cards */
+.value-card {
+  min-width: 360px;
+  flex-shrink: 0;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border-top: 6px solid rgba(0, 0, 0, 0.06);
+  margin-top: 0;
+}
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+/* Vision & Mission Full-Width Section */
+.vision-mission-section {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.vm-split {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.vm-image-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mission-split .vm-image-full {
+  left: auto;
+  right: 0; /* Image on right side for mission */
+}
+
+.vm-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.vm-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 60%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.mission-split .vm-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 60%,
+    transparent 100%
+  );
+}
+
+.vm-content-box {
+  position: relative;
+  z-index: 3;
+  max-width: 550px;
+  padding: 60px;
+  background: rgba(0, 122, 37, 0.459); /* Dark green semi-transparent background */
+  backdrop-filter: blur(1px);
+}
+
+.vm-content-right {
+  margin-left: auto;
+  margin-right: 250px; /* Space from right edge */
+  text-align: right;
+}
+
+.vm-content-left {
+  margin-left: 250px; /* Space from left edge */
+  margin-right: auto;
+  text-align: left;
+}
+
+.vm-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8fd15f;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.vm-heading {
+  font-size: 44px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.vm-highlight-green {
+  color: #8fd15f;
+}
+
+.vm-description {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+}
+
+/* Hover effects */
+.vm-split:hover .vm-bg-image {
+  transform: scale(1.05);
+  transition: transform 8s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .board-image-container,
+  .teams-image-container {
+    padding: 0 16px;
+  }
+}

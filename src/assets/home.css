@@ -521,9 +521,9 @@
 
 .about-header {
   background: rgba(255, 255, 255, 0.8);
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 0.75rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .about-title {
@@ -534,9 +534,9 @@
 }
 
 .about-description {
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   color: #374151;
-  line-height: 1.75;
+  line-height: 1.8;
   max-width: none;
   margin: 0;
 }
@@ -598,25 +598,34 @@
 }
 
 .feature-title {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #10b981;
   margin-bottom: 0.75rem;
 }
 
 .feature-description {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #4b5563;
   line-height: 1.6;
 }
 
 /* ==================== 4. SERVICES SECTION ==================== */
 
+.services-section-wrapper {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
 .services-showcase {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .service-card {
@@ -629,6 +638,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
 }
 
 .service-card::before {
@@ -636,11 +647,14 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-image: var(--service-bg-image);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   filter: brightness(0.7);
   z-index: 1;
 }
@@ -650,6 +664,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   z-index: 2;

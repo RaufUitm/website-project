@@ -234,10 +234,10 @@ onMounted(() => {
     </section>
 
     <!-- Latest News Section -->
-    <section class="section-py custom-section-bg">
+    <section class="py-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="heading-lg text-green-600 mb-8">Latest News 📰</h2>
-        <h3 class="heading-lg mb-4">
+        <h2 class="text-4xl font-bold text-green-600 mb-8">Latest News 📰</h2>
+        <h3 class="text-3xl font-bold mb-12">
           <span class="text-gray-800">Showcasing our latest </span>
           <span class="text-green-600">milestones </span>
           <span class="text-gray-800">and transformative initiatives</span>
@@ -348,11 +348,11 @@ onMounted(() => {
     </section>
 
     <!-- About Section -->
-    <section class="section-py custom-section-bg">
+    <section class="py-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
         <img src="@/assets/img/logo.png" alt="TAJDID Logo" class="img-logo" />
         <div class="about-header text-center">
-          <h2 class="about-title">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
             Terengganu Advanced Joint Digital Intelligent Development (TAJDID)
           </h2>
           <p class="about-description">
@@ -380,12 +380,14 @@ onMounted(() => {
     </section>
 
     <!-- Services Showcase Section -->
-    <section class="section-py custom-section-bg">
-      <h2 class="heading-lg mb-12 text-center">
-        <span class="text-gray-800">Our</span>
-        <span class="text-green-600"> Services</span>
-        <span class="text-gray-800"> & Solutions</span>
-      </h2>
+    <section class="services-section-wrapper">
+      <div class="pt-20 pb-12 custom-section-bg">
+        <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+          <span class="text-gray-800">Our</span>
+          <span class="text-green-600"> Services</span>
+          <span class="text-gray-800"> & Solutions</span>
+        </h2>
+      </div>
 
       <div class="services-showcase">
         <div

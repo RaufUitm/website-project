@@ -54,8 +54,8 @@ const services = ref([
 <template>
   <div class="services-page">
     <div class="max-w-7xl mx-auto px-4">
-      <h1 class="page-title">Our Services</h1>
-      <p class="page-subtitle">
+      <h1 class="text-5xl font-bold text-white text-center mb-8">Our Services</h1>
+      <p class="text-xl text-white text-center mb-16 max-w-2xl mx-auto">
         We offer a comprehensive range of services to help your business thrive online
       </p>
 
@@ -71,8 +71,8 @@ const services = ref([
             <img :src="service.image" :alt="service.title" class="service-full-image" />
           </div>
           <div class="service-text-content">
-            <h2 class="service-section-title">{{ service.title }}</h2>
-            <p class="service-section-description">{{ service.description }}</p>
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">{{ service.title }}</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">{{ service.description }}</p>
           </div>
         </section>
       </div>

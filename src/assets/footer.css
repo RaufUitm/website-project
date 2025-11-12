@@ -162,23 +162,7 @@
     font-size: 0.8rem;
   }
 }
-.footer-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 640px) {
-  .footer-container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .footer-container {
-    padding: 0 2rem;
-  }
-}
+/* Container and responsive padding now handled by Tailwind utilities */
 
 .footer-links {
   list-style: none;

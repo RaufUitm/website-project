@@ -91,34 +91,14 @@
   gap: 0.75rem;
 }
 
-.btn-confirm,
-.btn-cancel {
-  flex: 1;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
+/* Use DaisyUI btn classes instead */
 .btn-confirm {
   background: linear-gradient(135deg, #78c054 0%, #397ab0 100%);
-  color: white;
 }
 
 .btn-confirm:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(120, 192, 84, 0.4);
-}
-
-.btn-cancel {
-  background: #e5e7eb;
-  color: #6b7280;
-}
-
-.btn-cancel:hover {
-  background: #d1d5db;
 }
 
 /* Detail Modal Styles */
@@ -465,53 +445,17 @@
   color: #1f2937;
 }
 
-/* News Form */
+/* News Form - using DaisyUI form classes */
 .news-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: #374151;
-  font-size: 0.875rem;
-}
-
-.form-input {
-  padding: 0.75rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-textarea.form-input {
-  resize: vertical;
-  min-height: 80px;
-}
-
-select.form-input {
-  cursor: pointer;
 }
 
 /* Drop Zone Styles */

@@ -5,23 +5,7 @@
   min-height: 100vh;
 }
 
-.page-title {
-  font-size: 3rem;
-  color: #ffffff;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.page-subtitle {
-  font-size: 1.25rem;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 4rem;
-  max-width: 42rem;
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Use DaisyUI typography utilities instead of custom classes */
 
 /* Single continuous container */
 .services-container {
@@ -69,18 +53,7 @@
   text-align: center;
 }
 
-.service-section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 1rem;
-}
-
-.service-section-description {
-  font-size: 1.125rem;
-  color: #4b5563;
-  line-height: 1.75;
-}
+/* Typography classes removed - use DaisyUI utilities */
 
 /* Responsive */
 @media (min-width: 768px) {

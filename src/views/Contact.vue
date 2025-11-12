@@ -78,40 +78,40 @@ const submitForm = async () => {
             <h2 class="form-title">Send a Message</h2>
 
             <form @submit.prevent="submitForm" class="contact-form">
-              <div class="form-group">
+              <div class="form-control">
                 <input
                   v-model="form.name"
                   type="text"
                   required
-                  class="form-input"
+                  class="input input-bordered w-full"
                   placeholder="Your Name"
                   :disabled="isLoading"
                 />
               </div>
 
-              <div class="form-group">
+              <div class="form-control">
                 <input
                   v-model="form.email"
                   type="email"
                   required
-                  class="form-input"
+                  class="input input-bordered w-full"
                   placeholder="Email ID"
                   :disabled="isLoading"
                 />
               </div>
 
-              <div class="form-group">
+              <div class="form-control">
                 <textarea
                   v-model="form.message"
                   required
                   rows="6"
-                  class="form-input form-textarea"
+                  class="textarea textarea-bordered w-full"
                   placeholder="How can we help you?"
                   :disabled="isLoading"
                 ></textarea>
               </div>
 
-              <button type="submit" class="submit-btn" :disabled="isLoading">
+              <button type="submit" class="btn btn-primary" :disabled="isLoading">
                 {{ isLoading ? 'Sending...' : 'Submit' }}
               </button>
 
@@ -172,6 +172,26 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
+/* Override DaisyUI input styles for white background */
+:deep(.input),
+:deep(.textarea) {
+  background-color: #ffffff;
+  color: #1f2937;
+  border: 2px solid #e5e7eb;
+}
+
+:deep(.input:focus),
+:deep(.textarea:focus) {
+  background-color: #ffffff;
+  border-color: #397ab0;
+  outline: none;
+}
+
+:deep(.input::placeholder),
+:deep(.textarea::placeholder) {
+  color: #9ca3af;
+}
+
 /* Add error message styling */
 .error-message {
   background: #fee2e2;
@@ -182,13 +202,15 @@ const submitForm = async () => {
   font-weight: 500;
 }
 
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.btn-primary {
+  background: #397ab0;
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  font-weight: 600;
 }
 
-.form-input:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.btn-primary:hover {
+  background: #2d6090;
+  transform: translateY(-2px);
 }
 </style>

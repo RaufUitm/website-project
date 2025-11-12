@@ -1,5 +1,4 @@
 .contact-page {
-  background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
   min-height: 100vh;
   margin-top: -64px;
   position: relative;
@@ -17,8 +16,8 @@
 }
 
 .contact-header {
-  background: transparent;
-  padding: 6rem 0 2rem 0;
+  background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
+  padding: 4rem 0 2rem 0;
   text-align: center;
 }
 
@@ -35,6 +34,8 @@
 }
 
 .contact-content {
+  background-color: #0e4623;
+
   padding: 3rem 0;
 }
 
@@ -322,10 +323,6 @@
   .form-title {
     font-size: 1.125rem;
     margin-bottom: 1rem;
-  }
-
-  .company-description {
-    font-size: 0.875rem;
   }
 
   .company-address {

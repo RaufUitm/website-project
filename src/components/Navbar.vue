@@ -164,27 +164,22 @@ const scrollToService = (serviceId) => {
             <!-- Menu Items -->
             <div class="mobile-menu-content">
               <router-link to="/home" class="mobile-nav-item">
-                <span class="nav-item-icon">🏠</span>
                 <span class="nav-item-text">Home</span>
               </router-link>
 
               <router-link to="/about" class="mobile-nav-item">
-                <span class="nav-item-icon">ℹ️</span>
                 <span class="nav-item-text">About Us</span>
               </router-link>
 
               <router-link to="/services" class="mobile-nav-item">
-                <span class="nav-item-icon">⚙️</span>
                 <span class="nav-item-text">Services</span>
               </router-link>
 
               <router-link to="/news" class="mobile-nav-item">
-                <span class="nav-item-icon">📰</span>
                 <span class="nav-item-text">News</span>
               </router-link>
 
               <router-link to="/contact" class="mobile-nav-item">
-                <span class="nav-item-icon">📧</span>
                 <span class="nav-item-text">Contact</span>
               </router-link>
             </div>

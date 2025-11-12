@@ -64,8 +64,8 @@ const submitForm = async () => {
   <div class="contact-page">
     <!-- Header Section -->
     <section class="contact-header">
-      <div class="max-w-7xl mx-auto px-4">
-        <p class="header-subtitle">Feel free to reach out to us</p>
+      <div class="max-w-8xl mx-auto px-4">
+        <p class="header-subtitle">Contact Us</p>
       </div>
     </section>
 
@@ -75,7 +75,7 @@ const submitForm = async () => {
         <div class="contact-grid">
           <!-- Left Side - Company Info -->
           <div class="info-section">
-            <h2 class="section-title">Contact Information</h2>
+            <h2 class="section-title">Office Information</h2>
 
             <div class="company-info">
               <p class="company-address">

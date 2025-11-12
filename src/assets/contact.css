@@ -1,31 +1,19 @@
 .contact-page {
-  background: linear-gradient(135deg, #5a9a3a 10%, #2d7ab8 50%, #5a9a3a 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 25s ease infinite;
+  background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
   min-height: 100vh;
   margin-top: -64px;
+  position: relative;
 }
 
-.contact-page:hover {
-  animation-duration: 5s;
-}
+.contact-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 50% 100%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  75% {
-    background-position: 50% 0%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  pointer-events: none;
 }
 
 .contact-header {
@@ -36,10 +24,14 @@
 
 .header-subtitle {
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   margin: 2rem;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 15px rgba(120, 192, 84, 0.4),
+    0 0 20px rgba(120, 192, 84, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .contact-content {
@@ -61,10 +53,15 @@
 .section-title {
   color: #ffffff;
   font-size: 2.25rem;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 2rem;
   letter-spacing: 0.5px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.7),
+    0 0 15px rgba(120, 192, 84, 0.5),
+    0 0 22px rgba(120, 192, 84, 0.3),
+    2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .company-info {
@@ -75,7 +72,12 @@
   font-size: 1.1875rem;
   line-height: 1.8;
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 600;
+  opacity: 1;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .contact-info-group {
@@ -97,17 +99,26 @@
 .info-heading {
   color: #ffffff;
   font-size: 1.375rem;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 0.875rem;
   letter-spacing: 0.5px;
-  text-shadow: 1px 1px 3px rgb(7, 7, 7);
+  opacity: 1;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 15px rgba(74, 159, 217, 0.4),
+    0 0 20px rgba(74, 159, 217, 0.2);
 }
 
 .info-text {
   font-size: 1.1875rem;
   color: #ffffff;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  opacity: 1;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .operation-hours {
@@ -125,7 +136,12 @@
   line-height: 1.8;
   color: #ffffff;
   margin-bottom: 0.625rem;
-  font-weight: 500;
+  font-weight: 600;
+  opacity: 1;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .social-media-section {
@@ -207,7 +223,11 @@
   font-weight: 800;
   margin-bottom: 2rem;
   letter-spacing: 0.5px;
-  text-shadow: 2px 2px 4px rgb(255, 255, 255);
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.7),
+    0 0 15px rgba(120, 192, 84, 0.5),
+    0 0 22px rgba(120, 192, 84, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .contact-form {

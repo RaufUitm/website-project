@@ -237,7 +237,7 @@
 }
 
 .success-message {
-  background: rgb(61, 255, 2);
+  background: rgb(52, 218, 1);
   color: #ffffff;
   padding: 1.25rem;
   border-radius: 8px;
@@ -321,13 +321,19 @@
   .section-title,
   .form-title {
     font-size: 1.125rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
-  .company-description,
-  .company-address,
-  .info-text {
+  .company-description {
     font-size: 0.875rem;
+  }
+
+  .company-address {
+    font-size: 1rem;
+  }
+
+  .info-text {
+    font-size: 1rem;
   }
 
   .info-row {
@@ -335,7 +341,7 @@
   }
 
   .hours-list li {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .social-media-section {

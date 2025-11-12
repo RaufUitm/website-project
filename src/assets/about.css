@@ -453,21 +453,87 @@
 /* Board of Directors Section */
 .board-section {
   padding: 80px 0;
-  background: white;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
+  overflow: hidden;
 }
 
-.board-image-container {
-  max-width: 1500px;
-  margin: 0 auto;
+.board-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-.board-full-image {
+.board-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
+
+.board-highlight {
+  color: #78c054;
+}
+
+.board-carousel {
+  cursor: grab;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding: 40px 0;
+  scroll-snap-type: none;
+  will-change: scroll-position;
+}
+
+.board-carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.board-carousel:active {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.board-track {
+  display: flex;
+  gap: 40px;
+  padding: 0 10%;
+  width: max-content;
+}
+
+.director-card {
+  flex-shrink: 0;
+  width: 440px;
+  height: 400px;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  user-select: none;
+  -webkit-user-drag: none;
+  background: white;
+  scroll-snap-align: none;
+}
+
+.director-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 50px rgba(120, 192, 84, 0.3);
+}
+
+.director-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
   display: block;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Teams Section */
@@ -729,8 +795,65 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .board-image-container,
+  .board-title {
+    font-size: 2.5rem;
+  }
+
+  .board-track {
+    padding: 0 5%;
+    gap: 30px;
+  }
+
+  .director-card {
+    width: 380px;
+    height: 380px;
+  }
+
   .teams-image-container {
     padding: 0 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .board-section {
+    padding: 60px 0;
+  }
+
+  .board-title {
+    font-size: 2rem;
+  }
+
+  .board-header {
+    margin-bottom: 40px;
+  }
+
+  .board-track {
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .director-card {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .board-section {
+    padding: 40px 0;
+  }
+
+  .board-title {
+    font-size: 1.5rem;
+  }
+
+  .board-track {
+    padding: 0 10px;
+    gap: 15px;
+  }
+
+  .director-card {
+    width: 280px;
+    height: 280px;
   }
 }

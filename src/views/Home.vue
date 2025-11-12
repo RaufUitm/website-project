@@ -208,7 +208,7 @@ onMounted(() => {
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <div class="max-w-8xl mx-auto px-8">
+        <div class="max-w-8xl mx-auto px-6">
           <!-- Top Subtitle -->
           <p class="hero-top-subtitle text-left">
             TERENGGANU ADVANCED JOINT DIGITAL INTELLIGENT DEVELOPMENT

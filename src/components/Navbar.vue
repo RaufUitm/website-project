@@ -133,143 +133,65 @@ const scrollToService = (serviceId) => {
           <router-link to="/contact" class="nav-link">Contact</router-link>
         </div>
 
-        <!-- Enhanced Mobile Menu Button -->
+        <!-- Mobile Hamburger Menu Button -->
         <button
           @click="mobileMenuOpen = !mobileMenuOpen"
-          class="mobile-menu-btn"
-          :class="{ 'menu-open': mobileMenuOpen }"
+          class="hamburger"
+          :class="{ active: mobileMenuOpen }"
           aria-label="Toggle menu"
         >
-          <div class="hamburger-box">
-            <div class="hamburger-inner"></div>
-          </div>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
 
-      <!-- Enhanced Mobile Menu Overlay -->
+      <!-- Mobile Menu Overlay -->
       <transition name="menu-fade">
         <div v-if="mobileMenuOpen" class="mobile-menu-overlay" @click="mobileMenuOpen = false">
           <div class="mobile-menu-panel" @click.stop>
             <!-- Menu Header -->
             <div class="mobile-menu-header">
               <img src="@/assets/img/logo-white.png" alt="TAJDID Logo" class="menu-logo" />
+              <button @click="mobileMenuOpen = false" class="close-menu-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
             </div>
 
             <!-- Menu Items -->
             <div class="mobile-menu-content">
-              <router-link
-                to="/home"
-                class="mobile-nav-item"
-                :class="{ active: $route.path === '/home' }"
-              >
-                <div class="nav-item-icon">🏠</div>
+              <router-link to="/home" class="mobile-nav-item">
+                <span class="nav-item-icon">🏠</span>
                 <span class="nav-item-text">Home</span>
-                <svg class="nav-item-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
               </router-link>
 
-              <router-link
-                to="/about"
-                class="mobile-nav-item"
-                :class="{ active: $route.path === '/about' }"
-              >
-                <div class="nav-item-icon">ℹ️</div>
+              <router-link to="/about" class="mobile-nav-item">
+                <span class="nav-item-icon">ℹ️</span>
                 <span class="nav-item-text">About Us</span>
-                <svg class="nav-item-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
               </router-link>
 
-              <!-- Services Accordion -->
-              <div class="mobile-nav-accordion">
-                <button
-                  @click="servicesDropdownOpen = !servicesDropdownOpen"
-                  class="mobile-nav-item accordion-trigger"
-                  :class="{ active: $route.path === '/services', expanded: servicesDropdownOpen }"
-                >
-                  <div class="nav-item-icon">⚙️</div>
-                  <span class="nav-item-text">Services</span>
-                  <svg
-                    class="nav-item-chevron"
-                    :class="{ rotated: servicesDropdownOpen }"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
+              <router-link to="/services" class="mobile-nav-item">
+                <span class="nav-item-icon">⚙️</span>
+                <span class="nav-item-text">Services</span>
+              </router-link>
 
-                <!-- Services Submenu -->
-                <transition name="accordion">
-                  <div v-show="servicesDropdownOpen" class="mobile-submenu">
-                    <button
-                      v-for="service in services"
-                      :key="service.id"
-                      @click="navigateToService(service.id)"
-                      class="mobile-submenu-item"
-                    >
-                      <span class="submenu-icon">{{ service.icon }}</span>
-                      <span class="submenu-text">{{ service.name }}</span>
-                    </button>
-                  </div>
-                </transition>
-              </div>
-
-              <router-link
-                to="/news"
-                class="mobile-nav-item"
-                :class="{ active: $route.path === '/news' }"
-              >
-                <div class="nav-item-icon">📰</div>
+              <router-link to="/news" class="mobile-nav-item">
+                <span class="nav-item-icon">📰</span>
                 <span class="nav-item-text">News</span>
-                <svg class="nav-item-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
               </router-link>
 
-              <router-link
-                to="/contact"
-                class="mobile-nav-item"
-                :class="{ active: $route.path === '/contact' }"
-              >
-                <div class="nav-item-icon">📧</div>
+              <router-link to="/contact" class="mobile-nav-item">
+                <span class="nav-item-icon">📧</span>
                 <span class="nav-item-text">Contact</span>
-                <svg class="nav-item-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
               </router-link>
             </div>
 
             <!-- Menu Footer -->
             <div class="mobile-menu-footer">
-              <p class="footer-text">© 2025 TAJDID</p>
+              <p>© 2025 TAJDID Corporation</p>
             </div>
           </div>
         </div>
@@ -292,8 +214,12 @@ nav {
 }
 
 .nav-transparent .nav-link,
-.nav-transparent .mobile-menu-btn {
+.nav-transparent .hamburger span {
   color: white;
+}
+
+.nav-transparent .hamburger span {
+  background: white;
 }
 
 .nav-transparent .nav-link:hover {
@@ -314,8 +240,12 @@ nav {
 }
 
 .nav-scrolled .nav-link,
-.nav-scrolled .mobile-menu-btn {
+.nav-scrolled .hamburger span {
   color: #4b5563;
+}
+
+.nav-scrolled .hamburger span {
+  background: #4b5563;
 }
 
 .nav-scrolled .nav-link:hover {

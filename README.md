@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # website-project
 =======
 # my-website
@@ -46,3 +47,6 @@ npm run build
 npm run lint
 ```
 >>>>>>> 1765de5 (change)
+=======
+# website-project
+>>>>>>> 332aaff59ed3c854fbc2620c23a977ced3e53a77

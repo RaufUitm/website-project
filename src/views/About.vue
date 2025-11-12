@@ -346,7 +346,7 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- Board of Directors Section -->
-    <section class="board-section">
+    <section class="py-20 custom-section-bg">
       <div class="board-header">
         <h2 class="board-title">BOARD OF <span class="board-highlight">DIRECTORS</span></h2>
       </div>

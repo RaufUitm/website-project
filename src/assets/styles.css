@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font files already declared */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYREGULAR.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYMEDIUM.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYBOLD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYLIGHTITALIC.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* set SF Pro Display as the default site font (and keep system fallbacks) */
+@layer base {
+  html,
+  body {
+    font-family: 'SF Pro Display', sans-serif;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+  background-color: #ffffff;
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navigation Bar */
+nav {
+  background: white;
+  box-shadow: 0 4px 6px -1px #0000001a;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Desktop Menu */
+.desktop-menu {
+  display: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  color: #4b5563;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link:hover {
+  color: #10b981;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #10b981;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.router-link-active {
+  color: #10b981;
+}
+
+.nav-link.router-link-active::after {
+  width: 100%;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  width: 16rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px -12px rgb(26, 25, 25);
+  border: 1px solid #1f2937;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-item-text {
+  color: #1f2937;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+/* Mobile Menu Button & Hamburger - Hidden on Desktop */
+.hamburger {
+  display: none;
+}
+
+.mobile-menu-overlay {
+  display: none;
+}
+
+/* Icon Utilities */
+.icon-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-rotate {
+  transition: transform 0.3s ease;
+}
+
+.icon-rotate.rotated {
+  transform: rotate(180deg);
+}
+
+/* Common Section Styles */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Responsive Design - Desktop Breakpoints Only */
+@media (min-width: 768px) {
+  .desktop-menu {
+    display: flex;
+  }
+
+  .hamburger,
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+}
+
+/* Selection */
+::selection {
+  background-color: #2563eb;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #2563eb;
+  color: white;
+}

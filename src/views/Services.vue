@@ -7,14 +7,14 @@ import { ref } from 'vue'
 const services = ref([
   {
     id: 'software-development',
-    image: '/002.png',
+    image: new URL('@/assets/img/002.png', import.meta.url).href,
     title: 'Software Development',
     description:
       'A health welfare platform service created by the Terengganu State Government to help low income (B40) gain access to basic healthcare services in the state',
   },
   {
     id: 'interactive-analytics-dashboard',
-    image: '/Product 03.png',
+    image: new URL('@/assets/img/Product 03.png', import.meta.url).href,
     title: 'Interactive Analytics Dashboard',
     description:
       'A comprehensive data visualization and analytics platform that transforms complex datasets into intuitive, interactive dashboards. Our solution empowers organizations to make data-driven decisions through real-time monitoring, customizable reports, and advanced analytics capabilities. Features include dynamic charts, KPI tracking, predictive analytics, and seamless integration with multiple data sources. The dashboard provides role-based access control, automated alerts, and mobile-responsive design for on-the-go insights.',
@@ -24,7 +24,7 @@ const services = ref([
     title: 'AI Surveillance System',
     description:
       'Intelligent monitoring solution that uses AI to detect, analyze, and respond to real-time security events efficiently.',
-    image: '/003.png',
+    image: new URL('@/assets/img/003.png', import.meta.url).href,
   },
   {
     id: 'smart-technology-provider',
@@ -32,18 +32,18 @@ const services = ref([
     description:
       'Delivers innovative smart solutions and digital systems to enhance efficiency, connectivity, and automation.',
 
-    image: '/004.png',
+    image: new URL('@/assets/img/004.png', import.meta.url).href,
   },
   {
     id: 'Training-Consultancy',
-    image: '/Product 04.png',
+    image: new URL('@/assets/img/Product 04.png', import.meta.url).href,
     title: 'Training & Consultancy',
     description:
       'Training & consultancy not only focuses on technological results but also on developing digital people in a smart, strategic and beneficial way.',
   },
   {
     id: 'nfc-business-card',
-    image: '/Product 02.png',
+    image: new URL('@/assets/img/Product 02.png', import.meta.url).href,
     title: 'NFC Business Card',
     description:
       'Digital business cards with NFC (Near Field Communication) technology that allows information to be sent with a touch to another phone',

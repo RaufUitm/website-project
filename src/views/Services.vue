@@ -53,14 +53,20 @@ const services = ref([
 
 <template>
   <div class="services-page">
-    <div class="max-w-7xl mx-auto px-4">
-      <h1 class="text-5xl font-bold text-white text-center mb-8">Our Services</h1>
-      <p class="text-xl text-white text-center mb-16 max-w-2xl mx-auto">
-        We offer a comprehensive range of services to help your business thrive online
-      </p>
+    <!-- Header -->
+    <section class="services-header">
+      <div class="max-w-7xl mx-auto px-4">
+        <h1 class="page-title">Our Services</h1>
+        <p class="page-subtitle">
+          Empowering digital transformation through innovative solutions and expert guidance
+        </p>
+      </div>
+    </section>
 
-      <!-- Single continuous page layout -->
-      <div class="services-container">
+    <!-- Content -->
+    <section class="services-content">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="services-container">
         <section
           v-for="service in services"
           :key="service.id"
@@ -76,7 +82,8 @@ const services = ref([
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 

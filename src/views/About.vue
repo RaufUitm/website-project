@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 defineOptions({ name: 'AboutPage' })
 
@@ -83,7 +83,46 @@ const directors = ref([
   },
 ])
 
-// No carousel functionality needed for pyramid layout
+// Scroll animation observer
+const setupScrollAnimations = () => {
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px',
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+      }
+    })
+  }, observerOptions)
+
+  // Observe vision/mission cards
+  document.querySelectorAll('.vm-card').forEach((card) => {
+    observer.observe(card)
+  })
+
+  // Observe director cards
+  document.querySelectorAll('.director-card').forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.1}s`
+    observer.observe(card)
+  })
+
+  return observer
+}
+
+let observer = null
+
+onMounted(() => {
+  observer = setupScrollAnimations()
+})
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+  }
+})
 </script>
 
 <template>

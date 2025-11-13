@@ -1,8 +1,33 @@
 .services-page {
-  background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
-  padding: 128px 0;
-  margin-top: -64px;
+  background: #f8f9fa;
   min-height: 100vh;
+  position: relative;
+  margin-top: -64px;
+}
+
+/* Header */
+.services-header {
+  background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
+  padding: 4rem 0 3rem;
+  color: white;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Content */
+.services-content {
+  padding: 3rem 0;
 }
 
 /* Use DaisyUI typography utilities instead of custom classes */
@@ -17,7 +42,7 @@
 /* Each service section flows continuously */
 .service-section {
   background: white;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   scroll-margin-top: 6rem;
   border-bottom: 1px solid #e5e7eb;
 }

@@ -388,6 +388,29 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vm-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.vision-card {
+  background: linear-gradient(135deg, #4a7fb84d 0%, #4a7fb826 10%);
+  transform: translateX(-100px);
+}
+
+.mission-card {
+  background: linear-gradient(135deg, #6bbf594d 0%, #6bbf5926 10%);
+  transform: translateX(100px);
+}
+
+.vision-card.visible,
+.mission-card.visible {
+  transform: translateX(0);
 }
 
 .vm-card::before {
@@ -409,14 +432,6 @@
 .vm-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 40px #00000033;
-}
-
-.vision-card {
-  background: linear-gradient(135deg, #4a7fb84d 0%, #4a7fb826 10%);
-}
-
-.mission-card {
-  background: linear-gradient(135deg, #6bbf594d 0%, #6bbf5926 10%);
 }
 
 .vm-content {
@@ -514,11 +529,19 @@
   box-shadow: 0 10px 40px #00000026;
   transition:
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   user-select: none;
   -webkit-user-drag: none;
   background: white;
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+.director-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .director-card:hover {
@@ -683,7 +706,7 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-image: url('@/assets/img/vm.png');
+  background-image: url('@/assets/img/23x16_idham02-scaled.jpg');
   background-size: cover;
   background-position: center;
 }

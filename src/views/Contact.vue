@@ -62,10 +62,13 @@ const submitForm = async () => {
 
 <template>
   <div class="contact-page">
-    <!-- Header Section -->
+    <!-- Header -->
     <section class="contact-header">
-      <div class="max-w-8xl mx-auto px-4">
-        <p class="header-subtitle">Contact Us</p>
+      <div class="max-w-7xl mx-auto px-4">
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-subtitle">
+          We're here to help. Reach out to us for inquiries, support, or collaboration opportunities
+        </p>
       </div>
     </section>
 

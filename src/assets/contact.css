@@ -17,8 +17,21 @@
 
 .contact-header {
   background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
-  padding: 4rem 0 2rem 0;
+  padding: 4rem 0 3rem;
+  color: white;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
   text-align: center;
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  opacity: 0.9;
 }
 
 .header-subtitle {
@@ -34,8 +47,7 @@
 }
 
 .contact-content {
-  background-color: #ffffff;
-
+  background-color: #f8f9fa;
   padding: 3rem 0;
 }
 

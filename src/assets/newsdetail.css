@@ -72,7 +72,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  background: linear-gradient(to top, #000000b3, transparent);
   padding: 2rem;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -279,13 +279,13 @@
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px #0000001a;
   transition: all 0.3s ease;
 }
 
 .gallery-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px #00000026;
 }
 
 .gallery-item img {
@@ -306,7 +306,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: #00000080;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,7 +346,7 @@
 
 .footer-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 8px 16px #10b9814d;
 }
 
 /* Image Viewer Overlay */
@@ -356,7 +356,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: #000000f2;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -369,7 +369,7 @@
   right: 1rem;
   width: 48px;
   height: 48px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff1a;
   border: none;
   border-radius: 50%;
   color: white;
@@ -382,7 +382,7 @@
 }
 
 .viewer-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffffff33;
   transform: rotate(90deg);
 }
 
@@ -391,7 +391,7 @@
   height: 24px;
 }
 
-.image-counter {
+.viewer-counter {
   position: absolute;
   top: 1rem;
   left: 50%;
@@ -399,7 +399,7 @@
   color: white;
   font-size: 1rem;
   font-weight: 600;
-  background: rgba(0, 0, 0, 0.5);
+  background: #00000080;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   z-index: 10001;
@@ -411,7 +411,7 @@
   transform: translateY(-50%);
   width: 64px;
   height: 64px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff1a;
   border: none;
   border-radius: 50%;
   color: white;
@@ -424,7 +424,7 @@
 }
 
 .viewer-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffffff33;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -465,7 +465,7 @@
   display: flex;
   gap: 0.5rem;
   padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: #00000080;
   border-radius: 12px;
   overflow-x: auto;
   max-width: 90vw;
@@ -477,11 +477,11 @@
 }
 
 .thumbnail-strip::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff1a;
 }
 
 .thumbnail-strip::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: #ffffff4d;
   border-radius: 2px;
 }
 

@@ -37,7 +37,7 @@
   margin: 0 auto 2rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px #0000001a;
 }
 
 .service-full-image {

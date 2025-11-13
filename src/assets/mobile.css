@@ -127,13 +127,13 @@
   }
 
   .mobile-nav-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: #ffffff0d;
     border-left-color: #10b981;
     color: white;
   }
 
   .mobile-nav-item.router-link-active {
-    background: rgba(16, 185, 129, 0.1);
+    background: #10b9811a;
     border-left-color: #10b981;
     color: #10b981;
   }
@@ -152,7 +152,7 @@
 
   .mobile-menu-footer {
     padding: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid #ffffff1a;
     text-align: center;
   }
 
@@ -376,11 +376,7 @@
   }
 
   .vm-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.75) 100%
-    ) !important;
+    background: linear-gradient(to bottom, #0000004d 0%, #000000bf 100%) !important;
   }
 
   .vm-content-box {
@@ -388,7 +384,7 @@
     max-width: 85%;
     margin: 0 auto !important;
     text-align: center !important;
-    background: rgba(0, 122, 37, 0.85);
+    background: #007a25d9;
     backdrop-filter: blur(5px);
     border-radius: 15px;
     position: relative;
@@ -513,7 +509,7 @@
     padding: 28px 20px;
     margin: 0 auto !important;
     max-width: 85%;
-    background: rgba(0, 122, 37, 0.9);
+    background: #007a25e6;
     backdrop-filter: blur(5px);
     border-radius: 12px;
     width: fit-content;
@@ -576,19 +572,21 @@
 
 @media (max-width: 767px) {
   .hero-section {
-    min-height: 400px;
-    padding: 2rem 0;
+    min-height: 95vh;
+    height: auto;
+    padding: 1rem 0 2rem 0;
   }
 
   .hero-title {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
+
   .hero-content {
     position: relative;
     z-index: 1;
     width: 100%;
-    padding-top: 200px;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -596,21 +594,40 @@
   }
 
   .hero-subtitle {
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
     padding: 0 1rem;
+    line-height: 1.4;
   }
 
   .hero-buttons {
     padding: 0 1rem;
+    margin-bottom: 1rem;
   }
 
   .hero-buttons a {
     width: 35%;
     align-self: center;
     text-align: center;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  /* Hero Feature Cards - Compact Mobile Layout */
+  .hero-feature-card {
+    padding: 0.75rem !important;
+    min-height: auto !important;
+  }
+
+  .hero-feature-card h3 {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .hero-feature-card p {
+    font-size: 0.625rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0 !important;
   }
 
   @media (max-width: 767px) {
@@ -727,21 +744,11 @@
   }
 
   .service-green::after {
-    background: linear-gradient(
-      to top,
-      rgba(1, 180, 61, 0.95) 0%,
-      rgba(16, 185, 129, 0.9) 40%,
-      rgba(16, 185, 129, 0.1) 100%
-    ) !important;
+    background: linear-gradient(to top, #01b43df2 0%, #10b981e6 40%, #10b9811a 100%) !important;
   }
 
   .service-blue::after {
-    background: linear-gradient(
-      to top,
-      rgba(29, 78, 216, 0.95) 0%,
-      rgba(37, 99, 235, 0.9) 40%,
-      rgba(37, 99, 235, 0.1) 100%
-    ) !important;
+    background: linear-gradient(to top, #1d4ed8f2 0%, #2563ebe6 40%, #2563eb1a 100%) !important;
   }
 
   .service-content {
@@ -1058,7 +1065,7 @@
 
 @media (max-width: 767px) {
   .news-detail-page {
-    padding-top: 64px;
+    margin-top: -64px;
   }
 
   .content-container {
@@ -1190,6 +1197,7 @@
 @media (max-width: 480px) {
   .hero-image-wrapper {
     height: 250px;
+    margin-top: -63px;
   }
 
   .article-title {
@@ -1548,11 +1556,7 @@
   }
 
   .vm-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    ) !important;
+    background: linear-gradient(to bottom, #0000004d 0%, #000000b3 100%) !important;
   }
 
   .vm-content-box {
@@ -1561,7 +1565,7 @@
     max-width: 100%;
     margin: 0 20px 60px 20px;
     text-align: center;
-    background: rgba(0, 50, 40, 0.9);
+    background: #003228e6;
   }
 
   .vm-label {
@@ -1603,19 +1607,11 @@
   }
 
   .service-card::after {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(143, 209, 95, 0.8) 100%
-    ) !important;
+    background: linear-gradient(to bottom, #0000004d 0%, #8fd15fcc 100%) !important;
   }
 
   .service-blue::after {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(74, 159, 217, 0.8) 100%
-    ) !important;
+    background: linear-gradient(to bottom, #0000004d 0%, #4a9fd9cc 100%) !important;
   }
 
   .service-content {

@@ -11,16 +11,18 @@ const API_BASE_URL = 'http://192.168.0.13/tajdid-api/api/news.php'
 
 const features = ref([
   {
-    title: 'Fast',
-    description: 'On-demand urgent deliveries made easy',
+    title: 'Digitalization',
+    description:
+      'Supporting organizations in their journey toward a smarter, more sustainable digital world',
   },
   {
-    title: 'Secure',
-    description: 'Best service for local and overseas assignment',
+    title: 'Revolution',
+    description:
+      'Empowering the digital revolution through innovation and intelligent technology to boost productivity',
   },
   {
-    title: 'Global',
-    description: 'Complete range of services at any destinations',
+    title: 'Sustainability',
+    description: 'Developing sustainable and resilient digital solutions for the future',
   },
 ])
 
@@ -380,7 +382,7 @@ onMounted(() => {
       <div class="pt-20 pb-12 custom-section-bg">
         <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
           <span class="text-gray-800">Our</span>
-          <span class="text-green-600"> Services</span>
+          <span class="text-green-600"> Expertise</span>
           <span class="text-gray-800"> & Solutions</span>
         </h2>
       </div>

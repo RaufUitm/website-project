@@ -145,11 +145,6 @@ const directors = ref([
       <!-- Vision -->
       <div class="vm-split vision-split">
         <div class="vm-image-full">
-          <img
-            src="@/assets/img/aerial-view-shanghai-overpass-night.jpg"
-            alt="Vision illustration"
-            class="vm-bg-image"
-          />
           <div class="vm-overlay"></div>
         </div>
         <div class="vm-content-box vm-content-right">
@@ -164,11 +159,6 @@ const directors = ref([
       <!-- Mission -->
       <div class="vm-split mission-split">
         <div class="vm-image-full">
-          <img
-            src="@/assets/img/light-trails-buildings.jpg"
-            alt="Mission illustration"
-            class="vm-bg-image"
-          />
           <div class="vm-overlay"></div>
         </div>
         <div class="vm-content-box vm-content-left">
@@ -194,7 +184,7 @@ const directors = ref([
           </div>
         </div>
 
-        <!-- Row 2: 3 Directors -->
+        <!-- Row 2: 2 Directors -->
         <div class="pyramid-row row-2">
           <div class="director-card">
             <img :src="directors[1].image" alt="Director" class="director-image" />
@@ -202,13 +192,13 @@ const directors = ref([
           <div class="director-card">
             <img :src="directors[2].image" alt="Director" class="director-image" />
           </div>
+        </div>
+
+        <!-- Row 3: 5 Directors -->
+        <div class="pyramid-row row-3">
           <div class="director-card">
             <img :src="directors[3].image" alt="Director" class="director-image" />
           </div>
-        </div>
-
-        <!-- Row 3: 4 Directors -->
-        <div class="pyramid-row row-3">
           <div class="director-card">
             <img :src="directors[4].image" alt="Director" class="director-image" />
           </div>

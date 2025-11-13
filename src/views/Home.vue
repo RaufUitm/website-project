@@ -238,11 +238,11 @@ onMounted(() => {
     <!-- Latest News Section -->
     <section class="py-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-green-600 mb-8">Latest News 📰</h2>
+        <h2 class="text-4xl font-bold text-green-600 mb-8">Latest News</h2>
         <h3 class="text-3xl font-bold mb-12">
           <span class="text-gray-800">Showcasing our latest </span>
           <span class="text-green-600">milestones </span>
-          <span class="text-gray-800">and transformative initiatives</span>
+          <span class="text-gray-800">and impactful activities</span>
         </h3>
 
         <div v-if="loading" class="text-center py-12">
@@ -362,6 +362,10 @@ onMounted(() => {
           </p>
         </div>
 
+        <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+          <span class="text-gray-800">Our</span>
+          <span class="text-green-600"> Fundamental Values</span>
+        </h2>
         <div class="features-grid">
           <div v-for="(feature, index) in aboutFeatures" :key="index" class="feature-card">
             <div class="feature-image">

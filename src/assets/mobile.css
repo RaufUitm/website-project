@@ -534,10 +534,10 @@
   /* Board & Teams Sections */
   .board-section {
     background-attachment: fixed;
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
   .teams-section {
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
 
   /* Board of Directors - Single Column */
@@ -545,7 +545,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 1.5rem;
     padding: 0 1rem;
   }
 
@@ -553,9 +553,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 1.5rem;
     width: 100%;
     margin-bottom: 0;
+  }
+
+  /* Override desktop row-2 gap */
+  .pyramid-row.row-2 {
+    gap: 1.5rem !important;
   }
 
   .pyramid-row.row-3 {
@@ -565,6 +570,7 @@
   .director-card {
     width: auto;
     height: auto;
+    max-width: 90%;
   }
 }
 

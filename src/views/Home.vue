@@ -299,10 +299,6 @@ onMounted(() => {
                     @mouseleave="startAutoplay"
                   ></button>
                 </div>
-
-                <div v-if="getFeaturedImages().length > 1" class="image-counter">
-                  {{ currentImageIndex + 1 }} / {{ getFeaturedImages().length }}
-                </div>
               </div>
 
               <div class="news-card-content-overlay">

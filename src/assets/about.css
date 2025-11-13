@@ -456,6 +456,7 @@
   background-image: url('@/assets/img/drawbrige.jpg');
   background-size: contain;
   background-position: center;
+  background-attachment: fixed;
   position: relative;
   overflow: hidden;
 }

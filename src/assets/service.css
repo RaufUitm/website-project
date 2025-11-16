@@ -1,5 +1,5 @@
 .services-page {
-  background: #f8f9fa;
+  background: transparent;
   min-height: 100vh;
   position: relative;
   margin-top: -64px;
@@ -10,6 +10,8 @@
   background: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%);
   padding: 4rem 0 3rem;
   color: white;
+  margin-top: 0;
+  position: relative;
 }
 
 .page-title {
@@ -28,6 +30,7 @@
 /* Content */
 .services-content {
   padding: 3rem 0;
+  background: #f8f9fa;
 }
 
 /* Use DaisyUI typography utilities instead of custom classes */

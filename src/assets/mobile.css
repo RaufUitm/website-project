@@ -694,16 +694,17 @@
   .services-header,
   .contact-header,
   .news-header {
-    padding: 3rem 0 2rem !important;
+    padding: 5rem 0 2rem !important;
   }
 
   .page-title {
-    font-size: 1.75rem !important;
+    font-size: 2rem !important;
     padding: 0 1rem;
+    margin-bottom: 0.75rem !important;
   }
 
   .page-subtitle {
-    font-size: 0.875rem !important;
+    font-size: 1rem !important;
     padding: 0 1rem;
   }
 
@@ -1229,7 +1230,12 @@
 
 @media (max-width: 767px) {
   .services-page {
-    padding: 80px 0;
+    padding: 0;
+    margin-top: 0 !important;
+  }
+
+  .services-header {
+    margin-top: -140px !important;
   }
 
   .page-title {

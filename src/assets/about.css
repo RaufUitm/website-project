@@ -4,67 +4,26 @@
 }
 
 .hero-who-section {
-  background: linear-gradient(135deg, #8fd15f 10%, #4a9fd9 50%, #8fd15f 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 25s ease infinite;
+  background:white;
+  background-size: cover;
+  background-position: center;
+
   padding: 128px 0 80px;
   height: 100vh;
   position: relative;
   overflow: hidden;
-  cursor: default;
 }
 
-.hero-who-section:hover {
-  animation-duration: 5s; /* Speed up gradient movement on hover */
-}
-
-/* Gradient shifting animation */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 50% 100%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  75% {
-    background-position: 50% 0%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Alternative: Rotating gradient overlay */
-.hero-who-section .gradient-overlay {
+/* Wireframe Canvas */
+.wireframe-canvas {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  background:
-    radial-gradient(circle at 30% 50%, rgb(104, 165, 60) 0%, transparent 50%),
-    radial-gradient(circle at 70% 50%, rgb(66, 155, 214) 0%, transparent 50%);
-  animation: rotateGradient 35s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.8;
-}
-
-.hero-who-section:hover .gradient-overlay {
-  animation-duration: 25s;
-  opacity: 0.85;
-}
-
-@keyframes rotateGradient {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  background: transparent;
 }
 
 /* Wave effect overlay */
@@ -186,7 +145,7 @@
 .hero-title {
   font-size: 60px;
   font-weight: 700;
-  color: white;
+  color: #397ab0;
   text-align: center;
   letter-spacing: 1px;
   position: relative;
@@ -313,7 +272,7 @@
 .hero-title {
   font-size: 60px;
   font-weight: 700;
-  color: white;
+  color: #397ab0;
   text-align: center;
   letter-spacing: 1px;
   position: relative;
@@ -333,15 +292,15 @@
 .who-title {
   font-size: 48px;
   font-weight: 700;
-  color: white;
+  color: #397ab0;
   text-align: center;
   margin-bottom: 32px;
 }
 
 .outline-text {
   color: transparent;
-  -webkit-text-stroke: 1px white;
-  text-shadow: 2px white;
+  -webkit-text-stroke: 1px #397ab0;
+  text-shadow: 2px #397ab0;
   font-weight: 700;
   paint-order: stroke fill;
 }
@@ -446,13 +405,6 @@
   font-weight: 700;
 }
 
-.outline-text-vm {
-  color: transparent;
-  -webkit-text-stroke: 1px white;
-  text-wrap-style: 1px white;
-  font-weight: 700;
-  paint-order: stroke fill;
-}
 
 .vm-text {
   color: #fffffff2;
@@ -612,7 +564,7 @@
 .shared-values-title {
   font-size: 56px;
   font-weight: 700;
-  color: white;
+  color: #397ab0;
   letter-spacing: 1px;
   opacity: 0;
   transform: translateY(30px);
@@ -621,7 +573,7 @@
 
 .shared-values-title .outline-text {
   color: transparent;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px #397ab0;
   font-weight: 700;
   paint-order: stroke fill;
   position: relative;
@@ -655,10 +607,10 @@
 
 @keyframes strokeReveal {
   0% {
-    -webkit-text-stroke-color: #ffffff00;
+    -webkit-text-stroke-color: #397ab000;
   }
   100% {
-    -webkit-text-stroke-color: #ffffffff;
+    -webkit-text-stroke-color: #397ab0ff;
   }
 }
 
@@ -692,7 +644,7 @@
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  border-top: 6px solid #0000000f;
+  border: 3px solid #397ab0;
   margin-top: 0;
 }
 .value-card:hover {

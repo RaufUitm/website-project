@@ -3,6 +3,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 defineOptions({ name: 'AboutPage' })
 
+// Wireframe Animation Variables
+const canvasRef = ref(null)
+let animationFrameId = null
+let particles = []
+const particleCount = 80
+const maxDistance = 200
+
 const values = ref([
   {
     title: 'Taqwa',
@@ -112,15 +119,110 @@ const setupScrollAnimations = () => {
   return observer
 }
 
+// Wireframe Animation Functions
+class Particle {
+  constructor(canvas) {
+    this.canvas = canvas
+    this.x = Math.random() * canvas.width
+    this.y = Math.random() * canvas.height
+    this.vx = (Math.random() - 0.5) * 0.5
+    this.vy = (Math.random() - 0.5) * 0.5
+    this.radius = Math.random() * 3 + 2
+    // Random colors: blue (#397ab0) or green (#8fd15f)
+    this.color = Math.random() > 0.5 ? '#397ab0' : '#8fd15f'
+  }
+
+  update() {
+    this.x += this.vx
+    this.y += this.vy
+
+    // Bounce off edges
+    if (this.x < 0 || this.x > this.canvas.width) this.vx *= -1
+    if (this.y < 0 || this.y > this.canvas.height) this.vy *= -1
+
+    // Keep within bounds
+    this.x = Math.max(0, Math.min(this.canvas.width, this.x))
+    this.y = Math.max(0, Math.min(this.canvas.height, this.y))
+  }
+
+  draw(ctx) {
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+    ctx.fillStyle = this.color
+    ctx.fill()
+  }
+}
+
+const initWireframe = () => {
+  const canvas = canvasRef.value
+  if (!canvas) return
+
+  const ctx = canvas.getContext('2d')
+
+  // Set canvas size
+  const resizeCanvas = () => {
+    canvas.width = canvas.offsetWidth
+    canvas.height = canvas.offsetHeight
+
+    // Reinitialize particles on resize if needed
+    if (particles.length === 0) {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle(canvas))
+      }
+    }
+  }
+
+  resizeCanvas()
+  window.addEventListener('resize', resizeCanvas)
+
+  // Animation loop
+  const animate = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    // Update and draw particles
+    particles.forEach((particle) => {
+      particle.update()
+      particle.draw(ctx)
+    })
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x
+        const dy = particles[i].y - particles[j].y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < maxDistance) {
+          const opacity = (1 - distance / maxDistance) * 0.5
+          ctx.beginPath()
+          ctx.strokeStyle = `rgba(57, 122, 176, ${opacity})`
+          ctx.lineWidth = 1.2
+          ctx.moveTo(particles[i].x, particles[i].y)
+          ctx.lineTo(particles[j].x, particles[j].y)
+          ctx.stroke()
+        }
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(animate)
+  }
+
+  animate()
+}
+
 let observer = null
 
 onMounted(() => {
   observer = setupScrollAnimations()
+  initWireframe()
 })
 
 onUnmounted(() => {
   if (observer) {
     observer.disconnect()
+  }
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId)
   }
 })
 </script>
@@ -129,6 +231,9 @@ onUnmounted(() => {
   <div class="about-page">
     <!-- Hero heading -->
     <section class="hero-who-section" @mousemove="updateMousePosition">
+      <!-- Animated Wireframe Canvas -->
+      <canvas ref="canvasRef" class="wireframe-canvas"></canvas>
+
       <div class="gradient-overlay"></div>
       <div class="wave-overlay"></div>
       <div class="interactive-glow"></div>

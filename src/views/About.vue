@@ -238,6 +238,14 @@ onUnmounted(() => {
 
 <template>
   <div class="about-page">
+    <!-- Header -->
+    <section class="about-header">
+      <div class="max-w-7xl mx-auto px-4">
+        <h1 class="page-title">About Us</h1>
+        <p class="page-subtitle">Discover who we are and what drives us forward</p>
+      </div>
+    </section>
+
     <!-- Hero heading -->
     <section class="hero-who-section" @mousemove="updateMousePosition">
       <!-- Animated Wireframe Canvas -->

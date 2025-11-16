@@ -689,20 +689,22 @@
     }
   }
 
-  /* About section mobile */
-  .about-header {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+  /* Standardized page headers for mobile */
+  .about-page .about-header,
+  .services-header,
+  .contact-header,
+  .news-header {
+    padding: 3rem 0 2rem !important;
   }
 
-  .about-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+  .page-title {
+    font-size: 1.75rem !important;
+    padding: 0 1rem;
   }
 
-  .about-description {
-    font-size: 0.875rem;
-    line-height: 1.6;
+  .page-subtitle {
+    font-size: 0.875rem !important;
+    padding: 0 1rem;
   }
 
   .features-grid {
@@ -849,20 +851,6 @@
 /* ==================== NEWS.CSS ==================== */
 
 @media (max-width: 767px) {
-  .news-header {
-    padding: 3rem 0 2rem;
-  }
-
-  .page-title {
-    font-size: 1.75rem;
-    padding: 0 1rem;
-  }
-
-  .page-subtitle {
-    font-size: 0.875rem;
-    padding: 0 1rem;
-  }
-
   .news-content {
     padding: 2rem 0;
   }

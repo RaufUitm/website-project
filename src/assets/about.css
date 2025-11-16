@@ -1,6 +1,8 @@
 .about-page {
   min-height: 100vh;
   margin-top: -64px;
+  border-top: 64px solid;
+  border-image: linear-gradient(135deg, #78c054 10%, #397ab0 50%, #78c054 100%) 1;
 }
 
 .hero-who-section {

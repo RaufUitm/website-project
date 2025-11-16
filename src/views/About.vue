@@ -7,8 +7,8 @@ defineOptions({ name: 'AboutPage' })
 const canvasRef = ref(null)
 let animationFrameId = null
 let particles = []
-const particleCount = 80
-const maxDistance = 200
+const particleCount = 90
+const maxDistance = 250
 
 const values = ref([
   {
@@ -164,9 +164,14 @@ const initWireframe = () => {
     canvas.width = canvas.offsetWidth
     canvas.height = canvas.offsetHeight
 
-    // Reinitialize particles on resize if needed
-    if (particles.length === 0) {
-      for (let i = 0; i < particleCount; i++) {
+    // Adjust particle count based on screen size
+    const isMobile = window.innerWidth <= 768
+    const targetCount = isMobile ? 40 : particleCount
+
+    // Clear and reinitialize particles with appropriate count
+    if (particles.length === 0 || particles.length !== targetCount) {
+      particles = []
+      for (let i = 0; i < targetCount; i++) {
         particles.push(new Particle(canvas))
       }
     }
@@ -186,17 +191,21 @@ const initWireframe = () => {
     })
 
     // Draw connections
+    const isMobile = window.innerWidth <= 768
+    const connectionDistance = isMobile ? 150 : maxDistance
+    const lineWidth = isMobile ? 1 : 1.2
+
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x
         const dy = particles[i].y - particles[j].y
         const distance = Math.sqrt(dx * dx + dy * dy)
 
-        if (distance < maxDistance) {
-          const opacity = (1 - distance / maxDistance) * 0.5
+        if (distance < connectionDistance) {
+          const opacity = (1 - distance / connectionDistance) * 0.5
           ctx.beginPath()
           ctx.strokeStyle = `rgba(57, 122, 176, ${opacity})`
-          ctx.lineWidth = 1.2
+          ctx.lineWidth = lineWidth
           ctx.moveTo(particles[i].x, particles[i].y)
           ctx.lineTo(particles[j].x, particles[j].y)
           ctx.stroke()

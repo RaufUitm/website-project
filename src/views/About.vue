@@ -271,7 +271,7 @@ onUnmounted(() => {
             v-for="(value, i) in duplicatedValues"
             :key="`val-${i}`"
             class="value-card bg-white rounded-2xl shadow-lg flex flex-col items-center text-center px-12 py-14"
-            :style="{ borderTop: `3px solid ${value.color}` }"
+            :style="{ border: `3px solid ${value.color}` }"
           >
             <div
               class="w-40 h-40 rounded-full flex items-center justify-center mb-8 shadow-lg overflow-hidden"

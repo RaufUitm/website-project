@@ -491,7 +491,7 @@ onMounted(() => {
     <section class="news-header">
       <div class="max-w-7xl mx-auto px-4">
         <h1 class="page-title">Latest News & Updates</h1>
-        <p class="page-subtitle">Stay informed with the latest news from TAJDID Corporation</p>
+        <p class="page-subtitle">Showcasing our latest milestones and impactful activities</p>
       </div>
     </section>
 

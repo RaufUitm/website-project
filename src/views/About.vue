@@ -127,9 +127,9 @@ class Particle {
     this.y = Math.random() * canvas.height
     this.vx = (Math.random() - 0.5) * 0.5
     this.vy = (Math.random() - 0.5) * 0.5
-    this.radius = Math.random() * 3 + 2
-    // Random colors: blue (#397ab0) or green (#8fd15f)
-    this.color = Math.random() > 0.5 ? '#397ab0' : '#8fd15f'
+    this.radius = Math.random() * 5 + 2
+    // Random colors: blue (#397ab0) or green (#78c054)
+    this.color = Math.random() > 0.5 ? '#397ab0' : '#78c054'
   }
 
   update() {

@@ -13,38 +13,38 @@ const maxDistance = 250
 const values = ref([
   {
     title: 'Taqwa',
-    icon: '@/assets/icons/taqwa.svg',
+    image: new URL('@/assets/img/taqwa.png', import.meta.url).href,
     description:
       'Conscious integrity and responsibility; doing what is right with sincerity and ethics.',
     color: '#1d4ed8',
   },
   {
     title: 'Credibility',
-    icon: '@/assets/icons/credibility.svg',
+    image: new URL('@/assets/img/credibility.png', import.meta.url).href,
     description: 'Reliable and trustworthy in our promises, delivery, and transparency.',
     color: '#15803d',
   },
   {
     title: 'Teamwork',
-    icon: '@/assets/icons/teamwork.svg',
+    image: new URL('@/assets/img/teamwork.png', import.meta.url).href,
     description: 'We collaborate, share ownership, and move in one direction to achieve results.',
     color: '#1d4ed8',
   },
   {
     title: 'Professional',
-    icon: '@/assets/icons/professional.svg',
+    image: new URL('@/assets/img/professional.png', import.meta.url).href,
     description: 'Competent, disciplined and accountable; we uphold standards in every action.',
     color: '#15803d',
   },
   {
     title: 'Customer Centric',
-    icon: '@/assets/icons/customer-centric.svg',
+    image: new URL('@/assets/img/customer-centric.png', import.meta.url).href,
     description: 'We prioritise user needs, respond quickly, and improve from feedback.',
     color: '#1d4ed8',
   },
   {
     title: 'Exemplary Leadership',
-    icon: '@/assets/icons/leadership.svg',
+    image: new URL('@/assets/img/leadership.png', import.meta.url).href,
     description: 'We lead by example, empower others, and act with vision and integrity.',
     color: '#15803d',
   },
@@ -270,30 +270,26 @@ onUnmounted(() => {
           <div
             v-for="(value, i) in duplicatedValues"
             :key="`val-${i}`"
-            class="value-card bg-white rounded-2xl shadow-lg flex flex-col items-center text-center px-10 py-12"
+            class="value-card bg-white rounded-2xl shadow-lg flex flex-col items-center text-center px-12 py-14"
+            :style="{ borderTop: `3px solid ${value.color}` }"
           >
             <div
-              class="w-28 h-28 rounded-full flex items-center justify-center mb-6 shadow-md"
-              :style="{ backgroundColor: '#eef2f7', border: `4px solid ${value.color}` }"
+              class="w-40 h-40 rounded-full flex items-center justify-center mb-8 shadow-lg overflow-hidden"
             >
               <img
-                v-if="value.icon"
-                :src="value.icon"
+                :src="value.image"
                 :alt="`${value.title} icon`"
-                class="w-16 h-16 object-contain"
+                class="w-full h-full object-cover"
                 loading="lazy"
               />
-              <span v-else class="text-3xl font-bold" :style="{ color: value.color }">
-                {{ value.title.charAt(0) }}
-              </span>
             </div>
             <h3
-              class="text-xl font-semibold uppercase tracking-wide"
+              class="text-2xl font-bold uppercase tracking-wide mb-2"
               :style="{ color: value.color }"
             >
               {{ value.title }}
             </h3>
-            <p class="mt-4 text-sm text-gray-600 leading-relaxed max-w-xs">
+            <p class="mt-4 text-base text-gray-600 leading-relaxed max-w-sm">
               {{ value.description }}
             </p>
           </div>

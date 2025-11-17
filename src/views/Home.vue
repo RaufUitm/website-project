@@ -55,7 +55,7 @@ const services = ref([
   {
     title: 'Software Development',
     description:
-      'A health welfare initiative introduced by the Terengganu State Government for the treatment at private parameters without waiting list and fast treatment',
+      'Transform your business with tailored software solutions designed to meet your unique requirements. From web and mobile applications to enterprise systems, we deliver high-quality software that drives efficiency and innovation.',
     colorClass: 'service-blue',
     image: new URL('@/assets/img/002.png', import.meta.url).href,
   },

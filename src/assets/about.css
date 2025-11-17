@@ -201,64 +201,78 @@
   filter: drop-shadow(0 10px 25px #ffffff4d);
 }
 
-/* Value cards enhanced hover */
-.value-card {
-  min-width: 360px;
+/* Value cards with image background */
+.value-card-image {
+  min-width: 400px;
+  height: 450px;
   flex-shrink: 0;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
-  border-top: 6px solid #0000000f;
-  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
   overflow: hidden;
 }
 
-.value-card::before {
-  content: '';
+.value-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.value-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.value-overlay {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, #ffffff1a 0%, transparent 70%);
-  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(57, 122, 176, 0.85), rgba(120, 192, 84, 0.85));
+  z-index: 1;
   transition: opacity 0.3s ease;
-  pointer-events: none;
 }
 
-.value-card:hover {
+.value-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem;
+  z-index: 2;
+  color: white;
+}
+
+.value-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.value-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.value-card-image:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow:
-    0 20px 40px -10px #00000040,
-    0 0 0 1px #78c05433;
-  background: linear-gradient(135deg, #fffffff2 0%, #ffffffff 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
-.value-card:hover::before {
-  opacity: 1;
-  animation: shimmer 2s ease-in-out infinite;
+.value-card-image:hover .value-background-image {
+  transform: scale(1.1);
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-/* Icon hover animation inside cards */
-.value-card .w-28 {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.value-card:hover .w-28 {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 20px #00000026;
+.value-card-image:hover .value-overlay {
+  opacity: 0.9;
 }
 
 /* Digital scanline effect */

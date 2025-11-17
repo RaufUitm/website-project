@@ -209,7 +209,6 @@ const services = ref([
   },
   {
     id: 'nfc-business-card',
-    image: new URL('@/assets/img/Product 02.png', import.meta.url).href,
     video: new URL('@/assets/img/NFC full (horizon).mp4', import.meta.url).href,
     title: 'NFC Business Card',
     subtitle: 'Modern Networking Solutions',
@@ -329,11 +328,6 @@ const services = ref([
                   playsinline
                 ></video>
               </div>
-            </div>
-
-            <!-- Static Image Section -->
-            <div class="static-image-section">
-              <img :src="service.image" :alt="service.title" class="full-width-image" />
             </div>
           </template>
 

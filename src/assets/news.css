@@ -578,6 +578,32 @@
   color: white;
 }
 
+/* Small utility button used next to date input */
+.btn-today {
+  padding: 0.45rem 0.6rem;
+  background: #10b981;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.btn-today:hover { background: #059669 }
+
+/* Calendar button next to date input */
+.btn-calendar {
+  padding: 0.45rem 0.6rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-calendar:hover { background: #f3f4f6 }
+
 /* Drop Zone Styles */
 .drop-zone {
   border: 2px dashed #d1d5db;

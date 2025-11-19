@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -249,6 +249,33 @@ const closeAdminPanel = () => {
   adminPassword.value = ''
 }
 
+// When the admin panel opens, scroll it into view below the sticky header
+watch(showAdminPanel, async (val) => {
+  await nextTick()
+  const el = document.querySelector('.admin-panel')
+  if (!el) return
+
+  const header = document.querySelector('nav')
+  const headerHeight = header ? header.offsetHeight : 64
+
+  // Ensure panel uses normal document flow (no fixed positioning)
+  el.style.position = ''
+  el.style.top = ''
+  el.style.left = ''
+  el.style.transform = ''
+  el.style.zIndex = ''
+  el.style.margin = ''
+  el.style.width = ''
+
+  if (val) {
+    // Scroll the page so the admin panel sits just under the header,
+    // effectively showing it as the last part of the page content.
+    const rect = el.getBoundingClientRect()
+    const absoluteTop = window.scrollY + rect.top
+    window.scrollTo({ top: Math.max(0, absoluteTop - headerHeight - 12), behavior: 'smooth' })
+  }
+})
+
 // Form operations
 const openNewNewsForm = () => {
   isEditing.value = false
@@ -264,24 +291,40 @@ const openNewNewsForm = () => {
   }
 }
 
-const editNews = (item, event) => {
-  event.stopPropagation()
+  const editNews = async (item, event) => {
+    if (event && typeof event.stopPropagation === 'function') event.stopPropagation()
 
-  isEditing.value = true
-  newsForm.value = {
-    ...item,
-    is_featured: item.is_featured === 1 || item.is_featured === true,
+    isEditing.value = true
+    newsForm.value = {
+      ...item,
+      is_featured: item.is_featured === 1 || item.is_featured === true,
+    }
+
+    const existingImages = parseImages(item.image)
+    uploadedImages.value = existingImages.map((url, index) => ({
+      url: url,
+      filename: url.split('/').pop(),
+      original_name: `Image ${index + 1}`,
+    }))
+
+    // Open the admin panel and let the watcher scroll it into view below the header
+    showAdminPanel.value = true
+
+    // Wait for DOM to update and focus the title input for convenience
+    await nextTick()
+    // Explicitly scroll to the admin panel (in case watcher timing differs)
+    const panel = document.querySelector('.admin-panel')
+    const header = document.querySelector('nav')
+    const headerHeight = header ? header.offsetHeight : 64
+    if (panel) {
+      const rect = panel.getBoundingClientRect()
+      const absoluteTop = window.scrollY + rect.top
+      window.scrollTo({ top: Math.max(0, absoluteTop - headerHeight - 12), behavior: 'smooth' })
+    }
+
+    const titleInput = document.querySelector('.admin-panel .form-input')
+    if (titleInput) titleInput.focus()
   }
-
-  const existingImages = parseImages(item.image)
-  uploadedImages.value = existingImages.map((url, index) => ({
-    url: url,
-    filename: url.split('/').pop(),
-    original_name: `Image ${index + 1}`,
-  }))
-
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
 
 const saveNewsItem = async () => {
   if (!newsForm.value.title || !newsForm.value.content) {
@@ -294,6 +337,26 @@ const saveNewsItem = async () => {
 
 const cancelEdit = () => {
   openNewNewsForm()
+}
+
+const setTodayDate = () => {
+  newsForm.value.date = new Date().toISOString().split('T')[0]
+}
+
+// date input ref and picker helper
+const dateInput = ref(null)
+const openDatePicker = () => {
+  const el = dateInput.value
+  if (!el) return
+  // showPicker is supported in some browsers (Chrome/Chromium)
+  if (typeof el.showPicker === 'function') {
+    el.showPicker()
+  } else {
+    // fallback: focus to trigger native picker where possible
+    el.focus()
+    // attempt click; ignore if not allowed
+    try { el.click() } catch { /* ignore */ }
+  }
 }
 
 const getCategoryColor = (category) => {
@@ -351,9 +414,94 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Admin Panel -->
-    <div v-if="isAdmin && showAdminPanel" class="admin-panel">
-        <div class="admin-header">
+    <!-- Admin Panel moved below news content -->
+
+    <!-- Header -->
+    <section class="news-header">
+      <div class="max-w-7xl mx-auto px-4">
+        <h1 class="page-title">Latest News & Updates</h1>
+        <p class="page-subtitle">Showcasing our latest milestones and impactful activities</p>
+      </div>
+    </section>
+
+    <!-- News Content -->
+    <section class="news-content">
+      <div class="max-w-7xl mx-auto px-4">
+        <div v-if="loading" class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading news...</p>
+        </div>
+
+        <div v-else-if="news.length === 0" class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+            />
+          </svg>
+          <h3>No News Available</h3>
+          <p>Check back later for updates</p>
+        </div>
+
+        <div v-else class="news-grid">
+          <article
+            v-for="item in news"
+            :key="item.id"
+            :id="`news-${item.id}`"
+            class="news-card"
+            @click="openNewsDetail(item.id)"
+          >
+            <div v-if="item.is_featured" class="featured-badge">⭐ Featured</div>
+
+            <div
+              class="category-badge"
+              :style="{ backgroundColor: getCategoryColor(item.category) }"
+            >
+              {{ item.category }}
+            </div>
+
+            <div class="news-image">
+              <img v-if="getPrimaryImage(item)" :src="getPrimaryImage(item)" :alt="item.title" />
+              <div v-else class="image-placeholder">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
+                  />
+                </svg>
+              </div>
+
+              <div v-if="parseImages(item.image).length > 1" class="multi-image-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"
+                  />
+                </svg>
+                {{ parseImages(item.image).length }}
+              </div>
+            </div>
+
+            <div class="news-body">
+              <div class="news-meta">
+                <span class="news-date">{{ formatDate(item.date) }}</span>
+                <span v-if="item.views" class="news-views">{{ item.views }} views</span>
+              </div>
+
+              <h3 class="news-title">{{ item.title }}</h3>
+              <p class="news-description">{{ getContentExcerpt(item.content) }}</p>
+
+                <div v-if="isAdmin" class="admin-actions">
+                <button @click.stop="editNews(item)" class="btn-edit">Edit</button>
+                <button @click.stop="(e) => deleteNews(item.id, e)" class="btn-delete">Delete</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Panel (placed after news content so it appears at the end of the page) -->
+    <div v-if="isAdmin && showAdminPanel" class="admin-panel-wrapper">
+      <div class="admin-panel">
+      <div class="admin-header">
         <h2>{{ isEditing ? 'Edit News' : 'Add New News' }}</h2>
         <button @click="closeAdminPanel" class="close-btn">×</button>
       </div>
@@ -478,7 +626,11 @@ onMounted(() => {
 
           <div class="form-group">
             <label>Date</label>
-            <input v-model="newsForm.date" type="date" class="form-input" />
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <input ref="dateInput" v-model="newsForm.date" type="date" class="form-input" placeholder="YYYY-MM-DD" />
+                <button type="button" @click="openDatePicker" class="btn-calendar" title="Open calendar">📅</button>
+                <button type="button" @click="setTodayDate" class="btn-today" title="Set to today">Today</button>
+              </div>
           </div>
         </div>
 
@@ -498,89 +650,9 @@ onMounted(() => {
           </button>
         </div>
       </form>
+      </div>
     </div>
 
-    <!-- Header -->
-    <section class="news-header">
-      <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">Latest News & Updates</h1>
-        <p class="page-subtitle">Showcasing our latest milestones and impactful activities</p>
-      </div>
-    </section>
-
-    <!-- News Content -->
-    <section class="news-content">
-      <div class="max-w-7xl mx-auto px-4">
-        <div v-if="loading" class="loading-state">
-          <div class="spinner"></div>
-          <p>Loading news...</p>
-        </div>
-
-        <div v-else-if="news.length === 0" class="empty-state">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path
-              d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-            />
-          </svg>
-          <h3>No News Available</h3>
-          <p>Check back later for updates</p>
-        </div>
-
-        <div v-else class="news-grid">
-          <article
-            v-for="item in news"
-            :key="item.id"
-            :id="`news-${item.id}`"
-            class="news-card"
-            @click="openNewsDetail(item.id)"
-          >
-            <div v-if="item.is_featured" class="featured-badge">⭐ Featured</div>
-
-            <div
-              class="category-badge"
-              :style="{ backgroundColor: getCategoryColor(item.category) }"
-            >
-              {{ item.category }}
-            </div>
-
-            <div class="news-image">
-              <img v-if="getPrimaryImage(item)" :src="getPrimaryImage(item)" :alt="item.title" />
-              <div v-else class="image-placeholder">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
-                  />
-                </svg>
-              </div>
-
-              <div v-if="parseImages(item.image).length > 1" class="multi-image-badge">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"
-                  />
-                </svg>
-                {{ parseImages(item.image).length }}
-              </div>
-            </div>
-
-            <div class="news-body">
-              <div class="news-meta">
-                <span class="news-date">{{ formatDate(item.date) }}</span>
-                <span v-if="item.views" class="news-views">{{ item.views }} views</span>
-              </div>
-
-              <h3 class="news-title">{{ item.title }}</h3>
-              <p class="news-description">{{ getContentExcerpt(item.content) }}</p>
-
-              <div v-if="isAdmin" class="admin-actions">
-                <button @click="(e) => editNews(item, e)" class="btn-edit">Edit</button>
-                <button @click="(e) => deleteNews(item.id, e)" class="btn-delete">Delete</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -600,5 +672,18 @@ onMounted(() => {
 .news-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Center the admin panel wrapper so the panel is horizontally centered on the page */
+.admin-panel-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Ensure the admin panel keeps a responsive max width */
+.admin-panel {
+  width: min(880px, calc(100% - 32px));
+  margin: 2rem auto;
 }
 </style>

@@ -5,6 +5,20 @@
   margin-top: -64px;
 }
 
+/* Force the site's chosen display font for all rendered news content
+   This overrides any pasted/inline font-family from user-submitted content */
+.news-page,
+.news-detail-page,
+.news-card-overlay,
+.news-card-content-overlay,
+.news-card-content-overlay-small,
+.news-overlay-title,
+.news-overlay-description,
+.detail-modal,
+.detail-modal * {
+  font-family: 'SF Pro Display', sans-serif !important;
+}
+
 /* Admin Toggle Button */
 .admin-toggle-btn {
   position: fixed;
@@ -89,6 +103,44 @@
 .modal-actions {
   display: flex;
   gap: 0.75rem;
+}
+
+/* Modal-specific overrides to ensure controls render correctly */
+.modal-content .password-input {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+.modal-content .modal-actions {
+  display: flex !important;
+  gap: 0.75rem !important;
+  align-items: center !important;
+}
+
+.modal-content .btn-confirm,
+.modal-content .btn-cancel {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.6rem 1rem !important;
+  min-width: 88px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.modal-content .btn-confirm {
+  background: linear-gradient(135deg, #78c054 0%, #397ab0 100%) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.modal-content .btn-cancel {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+  border: none !important;
 }
 
 /* Use DaisyUI btn classes instead */
@@ -456,6 +508,74 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+/* Admin form base styles (desktop defaults) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #111827;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 6px 16px #3b82f620;
+}
+
+.form-hint {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Buttons */
+.btn-cancel {
+  padding: 0.75rem 1rem;
+  background: #f3f4f6;
+  color: #374151;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
 }
 
 /* Drop Zone Styles */

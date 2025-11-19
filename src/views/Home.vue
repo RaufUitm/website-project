@@ -362,7 +362,7 @@ onMounted(() => {
           </p>
         </div>
 
-        <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+        <h2 class="mt-12 text-4xl md:text-5xl font-bold mb-16 text-center">
           <span class="text-gray-800">Our</span>
           <span class="text-green-600"> Fundamental Values</span>
         </h2>

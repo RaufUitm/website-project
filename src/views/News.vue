@@ -232,8 +232,21 @@ const toggleAdminPanel = () => {
   if (!isAdmin.value) {
     showPasswordPrompt.value = true
   } else {
-    showAdminPanel.value = !showAdminPanel.value
+    // If admin is currently viewing the panel, toggling it off should also log out
+    if (showAdminPanel.value) {
+      showAdminPanel.value = false
+      isAdmin.value = false
+    } else {
+      showAdminPanel.value = true
+    }
   }
+}
+
+const closeAdminPanel = () => {
+  showAdminPanel.value = false
+  isAdmin.value = false
+  showPasswordPrompt.value = false
+  adminPassword.value = ''
 }
 
 // Form operations
@@ -340,9 +353,9 @@ onMounted(() => {
 
     <!-- Admin Panel -->
     <div v-if="isAdmin && showAdminPanel" class="admin-panel">
-      <div class="admin-header">
+        <div class="admin-header">
         <h2>{{ isEditing ? 'Edit News' : 'Add New News' }}</h2>
-        <button @click="showAdminPanel = false" class="close-btn">×</button>
+        <button @click="closeAdminPanel" class="close-btn">×</button>
       </div>
 
       <form @submit.prevent="saveNewsItem" class="news-form">

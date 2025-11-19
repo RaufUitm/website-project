@@ -28,12 +28,53 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYTHINITALIC.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYULTRALIGHTITALIC.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYSEMIBOLDITALIC.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYHEAVYITALIC.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./fonts/SFPRODISPLAYBLACKITALIC.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
 /* set SF Pro Display as the default site font (and keep system fallbacks) */
 @layer base {
   html,
   body {
     font-family: 'SF Pro Display', sans-serif;
   }
+}
+
+/* Enforce SF Pro Display across the UI. Use carefully — this overrides inline font-family values. */
+body,
+body * {
+  font-family: 'SF Pro Display', sans-serif !important;
 }
 
 * {

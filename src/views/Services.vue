@@ -2,110 +2,7 @@
 defineOptions({
   name: 'ServicesPage',
 })
-import { ref, onMounted, onUnmounted } from 'vue'
-
-// Wireframe Animation Variables
-const canvasRefs = ref([])
-let animationFrameIds = []
-let particleArrays = []
-
-// Wireframe Animation Functions
-class Particle {
-  constructor(canvas) {
-    this.canvas = canvas
-    this.x = Math.random() * canvas.width
-    this.y = Math.random() * canvas.height
-    this.vx = (Math.random() - 0.5) * 0.5
-    this.vy = (Math.random() - 0.5) * 0.5
-    this.radius = Math.random() * 5 + 1
-    this.color = Math.random() > 0.5 ? '#397ab0' : '#78c054'
-  }
-
-  update() {
-    this.x += this.vx
-    this.y += this.vy
-    if (this.x < 0 || this.x > this.canvas.width) this.vx *= -1
-    if (this.y < 0 || this.y > this.canvas.height) this.vy *= -1
-    this.x = Math.max(0, Math.min(this.canvas.width, this.x))
-    this.y = Math.max(0, Math.min(this.canvas.height, this.y))
-  }
-
-  draw(ctx) {
-    ctx.beginPath()
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-    ctx.fillStyle = this.color
-    ctx.fill()
-  }
-}
-
-const initWireframe = (canvas, index) => {
-  if (!canvas) return
-
-  const ctx = canvas.getContext('2d')
-  const particles = []
-  const particleCount = 90
-  const maxDistance = 180
-
-  const resizeCanvas = () => {
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
-
-    if (particles.length === 0) {
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle(canvas))
-      }
-    }
-  }
-
-  resizeCanvas()
-  window.addEventListener('resize', resizeCanvas)
-
-  const animate = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    particles.forEach((particle) => {
-      particle.update()
-      particle.draw(ctx)
-    })
-
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x
-        const dy = particles[i].y - particles[j].y
-        const distance = Math.sqrt(dx * dx + dy * dy)
-
-        if (distance < maxDistance) {
-          const opacity = (1 - distance / maxDistance) * 0.3
-          ctx.beginPath()
-          ctx.strokeStyle = `rgba(57, 122, 176, ${opacity})`
-          ctx.lineWidth = 1
-          ctx.moveTo(particles[i].x, particles[i].y)
-          ctx.lineTo(particles[j].x, particles[j].y)
-          ctx.stroke()
-        }
-      }
-    }
-
-    animationFrameIds[index] = requestAnimationFrame(animate)
-  }
-
-  particleArrays[index] = particles
-  animate()
-}
-
-onMounted(() => {
-  canvasRefs.value.forEach((canvas, index) => {
-    if (canvas) {
-      initWireframe(canvas, index)
-    }
-  })
-})
-
-onUnmounted(() => {
-  animationFrameIds.forEach(id => {
-    if (id) cancelAnimationFrame(id)
-  })
-})
+import { ref } from 'vue'
 
 const services = ref([
   {
@@ -115,17 +12,19 @@ const services = ref([
     subtitle: 'Custom Solutions for Your Digital Needs',
     description:
       'Transform your business with tailored software solutions designed to meet your unique requirements.',
+    howItWorks: 'We follow agile methodology from requirement gathering to deployment, ensuring your vision becomes reality. Our development process includes consultation, design, development, testing, and continuous support.',
+    benefits: 'Increased operational efficiency, reduced costs, scalability for future growth, and competitive advantage through digital innovation.',
     details: [
-      'Custom web and mobile application development',
-      'Enterprise software solutions and system integration',
-      'Cloud-based applications and SaaS platforms',
-      'API development and third-party integrations',
-      'Legacy system modernization and migration',
+      'Full-cycle custom web and mobile application development with modern frameworks',
+      'Enterprise software solutions with seamless system integration and automation',
+      'Scalable cloud-based applications and SaaS platforms with high availability',
+      'Robust API development and secure third-party integrations',
+      'Legacy system modernization with minimal disruption to operations',
     ],
     highlight:
-      'We developed a health welfare platform for the Terengganu State Government, enabling low-income (B40) families to access essential healthcare services across the state.',
+      'We developed a health welfare platform for the Terengganu State Government, enabling low-income (B40) families to access essential healthcare services across the state. The platform streamlined benefit distribution and improved accessibility for thousands of families.',
     technologies: ['React', 'Vue.js', 'Node.js', 'Python', 'Java', 'Cloud Services'],
-    layout: 'code-terminal', // Custom layout type
+    layout: 'code-terminal',
   },
   {
     id: 'interactive-analytics-dashboard',
@@ -134,18 +33,20 @@ const services = ref([
     subtitle: 'Data-Driven Decision Making',
     description:
       'Transform complex data into actionable insights with our comprehensive visualization platform.',
+    howItWorks: 'Our system aggregates data from multiple sources, processes it in real-time, and delivers interactive dashboards accessible anywhere. The platform automatically monitors your key metrics, triggers alerts for important changes, and provides predictive insights.',
+    benefits: '80% reduction in manual reporting time, 60% faster decision-making, improved ROI visibility, and early identification of business opportunities and risks.',
     details: [
-      'Real-time data monitoring and visualization',
-      'Customizable KPI tracking and reporting',
-      'Predictive analytics and forecasting',
-      'Multi-source data integration',
-      'Role-based access control and security',
-      'Mobile-responsive design for on-the-go access',
+      'Real-time data monitoring with live updates and customizable visualizations',
+      'Customizable KPI tracking aligned with your business objectives',
+      'Predictive analytics using machine learning for accurate forecasting',
+      'Multi-source data integration from databases, APIs, and cloud platforms',
+      'Role-based access control ensuring data security and compliance',
+      'Mobile-responsive design for on-the-go access from any device',
     ],
     highlight:
-      'Our dashboards empower organizations to make informed decisions through intuitive visualizations, automated alerts, and advanced analytics capabilities.',
+      'Our dashboards empower organizations to make informed decisions through intuitive visualizations, automated alerts, and advanced analytics capabilities. Clients report 80% less time on reporting and 60% faster decision cycles, with one organization identifying RM500K in annual savings.',
     technologies: ['Power BI', 'Tableau', 'D3.js', 'Python Analytics', 'SQL', 'Big Data'],
-    layout: 'data-grid', // Custom layout type
+    layout: 'data-grid',
   },
   {
     id: 'AI-surveillance-system',
@@ -153,19 +54,21 @@ const services = ref([
     subtitle: 'Intelligent Security Monitoring',
     description:
       'Advanced AI-powered surveillance that detects threats, analyzes patterns, and responds in real-time.',
+    howItWorks: 'Using deep learning algorithms, our system continuously analyzes video feeds to identify suspicious activities, recognize faces and license plates, and detect anomalies. The AI learns normal patterns and immediately flags deviations, sending instant alerts to security personnel.',
+    benefits: '90% reduction in false alarms, 24/7 automated monitoring, faster incident response, comprehensive forensic capabilities, and significant reduction in security staffing costs while improving coverage.',
     details: [
-      'Facial recognition and person tracking',
-      'Anomaly detection and threat identification',
-      'License plate recognition (LPR)',
-      'Crowd analysis and behavior monitoring',
-      'Real-time alerts and notifications',
-      'Video analytics and forensic search',
+      'Advanced facial recognition with 99% accuracy and person tracking across cameras',
+      'Intelligent anomaly detection identifying unusual behaviors and threat patterns',
+      'High-precision license plate recognition (LPR) for vehicle tracking',
+      'Crowd analysis monitoring density, flow patterns, and behavior',
+      'Real-time alerts with video clips sent instantly to security teams',
+      'Powerful video analytics with forensic search by person, vehicle, or event',
     ],
     highlight:
-      'Our AI surveillance system enhances security operations with intelligent monitoring, reducing false alarms while ensuring critical events are never missed.',
+      'Our AI surveillance system enhances security operations with intelligent monitoring, reducing false alarms by 90% while ensuring critical events are never missed. Clients report 70% faster incident response and 50% reduction in security operational costs.',
     technologies: ['Computer Vision', 'Deep Learning', 'TensorFlow', 'OpenCV', 'Edge Computing'],
     image: new URL('@/assets/img/003.png', import.meta.url).href,
-    layout: 'scanner-grid', // Custom layout type
+    layout: 'code-terminal',
   },
   {
     id: 'smart-technology-provider',
@@ -173,19 +76,21 @@ const services = ref([
     subtitle: 'Innovation for Digital Transformation',
     description:
       'Comprehensive smart solutions that enhance efficiency, connectivity, and automation across your organization.',
+    howItWorks: 'We create interconnected IoT ecosystems that collect real-time data from sensors and devices, process it at the edge or cloud, and trigger automated responses. Our solutions monitor environments, control systems remotely, predict maintenance needs, and optimize resource usage.',
+    benefits: '30-50% reduction in operational costs, predictive maintenance preventing 85% of equipment failures, 40% energy savings, improved safety, and real-time visibility across all operations.',
     details: [
-      'IoT solutions and sensor networks',
-      'Smart building and facility management',
-      'Automation and process optimization',
-      'Digital twin technology',
-      'Smart city infrastructure solutions',
-      'Connected device management platforms',
+      'End-to-end IoT solutions with sensor networks and cloud connectivity',
+      'Smart building systems managing HVAC, lighting, access, and energy',
+      'Process automation optimizing workflows and reducing manual tasks',
+      'Digital twin technology creating virtual replicas for simulation and testing',
+      'Smart city infrastructure for traffic, waste, parking, and public services',
+      'Centralized device management platforms monitoring thousands of endpoints',
     ],
     highlight:
-      'We deliver cutting-edge smart technology solutions that connect devices, optimize operations, and drive digital innovation.',
+      'We deliver cutting-edge smart technology solutions that connect devices, optimize operations, and drive digital innovation. Our systems have helped clients reduce operational costs by 30-50%, prevent 85% of equipment failures through predictive maintenance, and achieve 40% energy savings.',
     technologies: ['IoT', 'MQTT', 'LoRaWAN', 'Edge AI', 'Cloud Integration', '5G'],
-    image: new URL('@/assets/img/004.png', import.meta.url).href,
-    layout: 'network-nodes', // Custom layout type
+    image: new URL('@/assets/img/0041.png', import.meta.url).href,
+    layout: 'data-grid',
   },
   {
     id: 'Training-Consultancy',
@@ -194,18 +99,20 @@ const services = ref([
     subtitle: 'Empowering Digital Excellence',
     description:
       'Strategic guidance and comprehensive training programs to accelerate your digital transformation journey.',
+    howItWorks: 'We begin with thorough assessment of your current capabilities, identify gaps, and design customized programs that combine strategic consulting with hands-on training. Our approach ensures knowledge transfer, builds internal capabilities, and creates sustainable change.',
+    benefits: '85% technology adoption rates, 50% faster time-to-value on new initiatives, reduced dependency on external consultants, improved employee productivity and satisfaction, and measurable ROI on digital investments.',
     details: [
-      'Digital transformation strategy consulting',
-      'Technical skills development programs',
-      'Leadership training in digital innovation',
-      'Change management and adoption strategies',
-      'Technology assessment and roadmap planning',
-      'Custom workshops and certification programs',
+      'Digital transformation strategy with comprehensive roadmap and implementation planning',
+      'Technical skills development programs covering modern technologies and best practices',
+      'Leadership training in digital innovation, agile methodologies, and change management',
+      'Change management strategies ensuring smooth adoption and cultural transformation',
+      'Technology assessment evaluating current state and future-ready recommendations',
+      'Custom workshops and industry-recognized certification programs tailored to your needs',
     ],
     highlight:
-      'Our consultancy services focus on developing both technology solutions and digital capabilities in people, ensuring sustainable and strategic growth.',
+      'Our consultancy services focus on developing both technology solutions and digital capabilities in people, ensuring sustainable and strategic growth. Clients achieve 85% adoption rates, 50% faster project delivery, and significant cost savings by building internal expertise.',
     technologies: ['Agile Methodologies', 'DevOps', 'Cloud Architecture', 'AI/ML', 'Cybersecurity'],
-    layout: 'presentation', // Custom layout type
+    layout: 'code-terminal',
   },
   {
     id: 'nfc-business-card',
@@ -215,15 +122,15 @@ const services = ref([
     description:
       'Digital business cards powered by NFC technology for seamless, contactless information sharing.',
     details: [
-      'Tap-to-share contact information',
-      'Customizable digital profiles',
-      'Social media integration',
-      'Analytics and engagement tracking',
-      'Eco-friendly alternative to paper cards',
-      'Real-time profile updates',
+      'Instant tap-to-share contact information with universal smartphone compatibility',
+      'Fully customizable digital profiles with rich media, links, and branding',
+      'Seamless social media integration connecting to LinkedIn, Instagram, and more',
+      'Comprehensive analytics tracking views, saves, and engagement patterns',
+      'Eco-friendly alternative eliminating paper waste and printing costs',
+      'Real-time profile updates propagating instantly to all existing cards',
     ],
     highlight:
-      'Transform networking with our NFC business cards that instantly share your contact details, portfolio, and social profiles with just a tap.',
+      'Transform networking with our NFC business cards that instantly share your contact details, portfolio, and social profiles with just a tap. Users report 10x higher follow-up rates, zero printing costs, and the ability to update information instantly across all distributed cards.',
     technologies: ['NFC', 'QR Codes', 'Mobile Apps', 'Cloud Storage', 'Web Technologies'],
   },
 ])
@@ -253,20 +160,14 @@ const services = ref([
         >
           <!-- Special Layout for Video Services -->
           <template v-if="service.video">
-            <!-- Video Title Section -->
-            <div class="video-title-section">
-              <div class="content-wrapper">
-                <span class="service-badge">{{ `0${index + 1}` }}</span>
-                <h2 class="article-title">{{ service.title }}</h2>
-                <p class="article-subtitle">{{ service.subtitle }}</p>
-              </div>
-            </div>
-
             <!-- Video + Content Side by Side -->
             <div class="video-split-section">
               <!-- Content on Left -->
               <div class="video-side-content">
                 <div class="content-wrapper">
+                    <span class="service-badge">{{ `0${index + 1}` }}</span>
+                    <h2 class="article-title">{{ service.title }}</h2>
+                    <p class="article-subtitle">{{ service.subtitle }}</p>
                   <p class="article-description">{{ service.description }}</p>
 
                   <div class="highlight-box">
@@ -302,18 +203,6 @@ const services = ref([
                     </ul>
                   </div>
 
-                  <div class="technologies-section">
-                    <h4 class="tech-label">Technologies:</h4>
-                    <div class="tech-tags">
-                      <span
-                        v-for="(tech, idx) in service.technologies"
-                        :key="idx"
-                        class="tech-tag"
-                      >
-                        {{ tech }}
-                      </span>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -333,25 +222,13 @@ const services = ref([
 
           <!-- Regular Layout for Image Services -->
           <template v-else>
-            <!-- Title Section -->
-            <div class="video-title-section">
-              <div class="content-wrapper">
-                <span class="service-badge">{{ `0${index + 1}` }}</span>
-                <h2 class="article-title">{{ service.title }}</h2>
-                <p class="article-subtitle">{{ service.subtitle }}</p>
-              </div>
-            </div>
-
             <!-- Custom Layout Container -->
             <div
               class="service-custom-layout"
               :class="`layout-${service.layout || 'default'}`"
             >
-              <!-- Wireframe Canvas for Empty Area -->
-              <canvas
-                :ref="el => { if (el) canvasRefs[index] = el }"
-                class="wireframe-canvas"
-              ></canvas>
+              <!-- Decorative placeholder (wireframe removed) -->
+              <div class="wireframe-canvas"></div>
 
               <!-- Image Container (position varies by layout) -->
               <div class="layout-image-container" :class="`image-${service.layout || 'default'}`">
@@ -364,6 +241,9 @@ const services = ref([
                 class="layout-content-card"
                 :class="`content-${service.layout || 'default'}`"
               >
+                <span class="service-badge">{{ `0${index + 1}` }}</span>
+                <h2 class="article-title">{{ service.title }}</h2>
+                <p class="article-subtitle">{{ service.subtitle }}</p>
 
                 <!-- Description -->
                 <p class="article-description">{{ service.description }}</p>
@@ -403,19 +283,6 @@ const services = ref([
                   </ul>
                 </div>
 
-                <!-- Technologies -->
-                <div class="technologies-section">
-                  <h4 class="tech-label">Technologies:</h4>
-                  <div class="tech-tags">
-                    <span
-                      v-for="(tech, idx) in service.technologies"
-                      :key="idx"
-                      class="tech-tag"
-                    >
-                      {{ tech }}
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
           </template>

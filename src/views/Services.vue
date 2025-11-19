@@ -22,9 +22,26 @@ const services = ref([
 
     layout: 'code-terminal',
   },
+
+  {
+    id: 'AI-surveillance-system',
+    title: 'AI Surveillance System',
+    subtitle: 'Intelligent Security Monitoring',
+    description:
+      'Advanced AI-powered surveillance that detects threats, analyzes patterns, and responds in real-time.',
+
+    details: [
+      'Face Recognition – The system’s capability to accurately and efficiently identify individuals.',
+      'Vehicle Recognition – Detects and classifies vehicle types such as trucks, including load capacity (tonnage), truck type, tire configuration, and other specific attributes.',
+      'License Plate Recognition – Automatically captures, analyzes, and records vehicle registration numbers.',
+      'Flood Detection – Monitors and detects water levels in real time for safety and emergency response purposes',
+    ],
+    image: new URL('@/assets/img/003.png', import.meta.url).href,
+    layout: 'data-grid',
+  },
   {
     id: 'interactive-analytics-dashboard',
-    image: new URL('@/assets/img/Product 03.png', import.meta.url).href,
+    image: new URL('@/assets/img/Product 031.png', import.meta.url).href,
     title: 'Interactive Analytics Dashboard',
     subtitle: 'Data-Driven Decision Making',
     description:
@@ -40,22 +57,6 @@ const services = ref([
       'Project Progress Monitoring Tracking the progress of projects such as Smart City and development initiatives to ensure timely completion and goal alignment.',
     ],
 
-    layout: 'data-grid',
-  },
-  {
-    id: 'AI-surveillance-system',
-    title: 'AI Surveillance System',
-    subtitle: 'Intelligent Security Monitoring',
-    description:
-      'Advanced AI-powered surveillance that detects threats, analyzes patterns, and responds in real-time.',
-
-    details: [
-      'Face Recognition – The system’s capability to accurately and efficiently identify individuals.',
-      'Vehicle Recognition – Detects and classifies vehicle types such as trucks, including load capacity (tonnage), truck type, tire configuration, and other specific attributes.',
-      'License Plate Recognition – Automatically captures, analyzes, and records vehicle registration numbers.',
-      'Flood Detection – Monitors and detects water levels in real time for safety and emergency response purposes',
-    ],
-    image: new URL('@/assets/img/003.png', import.meta.url).href,
     layout: 'code-terminal',
   },
   {

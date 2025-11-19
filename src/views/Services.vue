@@ -12,18 +12,14 @@ const services = ref([
     subtitle: 'Custom Solutions for Your Digital Needs',
     description:
       'Transform your business with tailored software solutions designed to meet your unique requirements.',
-    howItWorks: 'We follow agile methodology from requirement gathering to deployment, ensuring your vision becomes reality. Our development process includes consultation, design, development, testing, and continuous support.',
-    benefits: 'Increased operational efficiency, reduced costs, scalability for future growth, and competitive advantage through digital innovation.',
+
     details: [
-      'Full-cycle custom web and mobile application development with modern frameworks',
-      'Enterprise software solutions with seamless system integration and automation',
-      'Scalable cloud-based applications and SaaS platforms with high availability',
-      'Robust API development and secure third-party integrations',
-      'Legacy system modernization with minimal disruption to operations',
+      'Custom System Development Building software according to organizational needs.',
+      'Integration & Automation Connecting applications and automating processes.',
+      'Maintenance & Security  Providing support, updates, and system protection.',
+      'Data Analysis & Reporting  Managing and analyzing data for accurate decision-making',
     ],
-    highlight:
-      'We developed a health welfare platform for the Terengganu State Government, enabling low-income (B40) families to access essential healthcare services across the state. The platform streamlined benefit distribution and improved accessibility for thousands of families.',
-    technologies: ['React', 'Vue.js', 'Node.js', 'Python', 'Java', 'Cloud Services'],
+
     layout: 'code-terminal',
   },
   {
@@ -33,19 +29,17 @@ const services = ref([
     subtitle: 'Data-Driven Decision Making',
     description:
       'Transform complex data into actionable insights with our comprehensive visualization platform.',
-    howItWorks: 'Our system aggregates data from multiple sources, processes it in real-time, and delivers interactive dashboards accessible anywhere. The platform automatically monitors your key metrics, triggers alerts for important changes, and provides predictive insights.',
-    benefits: '80% reduction in manual reporting time, 60% faster decision-making, improved ROI visibility, and early identification of business opportunities and risks.',
+
     details: [
-      'Real-time data monitoring with live updates and customizable visualizations',
-      'Customizable KPI tracking aligned with your business objectives',
-      'Predictive analytics using machine learning for accurate forecasting',
-      'Multi-source data integration from databases, APIs, and cloud platforms',
-      'Role-based access control ensuring data security and compliance',
-      'Mobile-responsive design for on-the-go access from any device',
+      'Data Visualization Provides charts, graphs, and indicators for quick understanding of data',
+      'Interactive Analysis Allows users to filter, highlight, and explore data dynamically.',
+      'Performance Monitoring Tracks KPIs, metrics, and trends in real-time for effective management',
+      'Reporting & Sharing Generates automated reports and shares insights with teams or stakeholders.',
+      'Alerts & Notifications Sends notifications about significant changes or critical issues in the data.',
+      'Department Task Monitoring  Overseeing and ensuring smooth task execution across various departments.',
+      'Project Progress Monitoring Tracking the progress of projects such as Smart City and development initiatives to ensure timely completion and goal alignment.',
     ],
-    highlight:
-      'Our dashboards empower organizations to make informed decisions through intuitive visualizations, automated alerts, and advanced analytics capabilities. Clients report 80% less time on reporting and 60% faster decision cycles, with one organization identifying RM500K in annual savings.',
-    technologies: ['Power BI', 'Tableau', 'D3.js', 'Python Analytics', 'SQL', 'Big Data'],
+
     layout: 'data-grid',
   },
   {
@@ -54,19 +48,13 @@ const services = ref([
     subtitle: 'Intelligent Security Monitoring',
     description:
       'Advanced AI-powered surveillance that detects threats, analyzes patterns, and responds in real-time.',
-    howItWorks: 'Using deep learning algorithms, our system continuously analyzes video feeds to identify suspicious activities, recognize faces and license plates, and detect anomalies. The AI learns normal patterns and immediately flags deviations, sending instant alerts to security personnel.',
-    benefits: '90% reduction in false alarms, 24/7 automated monitoring, faster incident response, comprehensive forensic capabilities, and significant reduction in security staffing costs while improving coverage.',
+
     details: [
-      'Advanced facial recognition with 99% accuracy and person tracking across cameras',
-      'Intelligent anomaly detection identifying unusual behaviors and threat patterns',
-      'High-precision license plate recognition (LPR) for vehicle tracking',
-      'Crowd analysis monitoring density, flow patterns, and behavior',
-      'Real-time alerts with video clips sent instantly to security teams',
-      'Powerful video analytics with forensic search by person, vehicle, or event',
+      'Face Recognition – The system’s capability to accurately and efficiently identify individuals.',
+      'Vehicle Recognition – Detects and classifies vehicle types such as trucks, including load capacity (tonnage), truck type, tire configuration, and other specific attributes.',
+      'License Plate Recognition – Automatically captures, analyzes, and records vehicle registration numbers.',
+      'Flood Detection – Monitors and detects water levels in real time for safety and emergency response purposes',
     ],
-    highlight:
-      'Our AI surveillance system enhances security operations with intelligent monitoring, reducing false alarms by 90% while ensuring critical events are never missed. Clients report 70% faster incident response and 50% reduction in security operational costs.',
-    technologies: ['Computer Vision', 'Deep Learning', 'TensorFlow', 'OpenCV', 'Edge Computing'],
     image: new URL('@/assets/img/003.png', import.meta.url).href,
     layout: 'code-terminal',
   },
@@ -76,19 +64,15 @@ const services = ref([
     subtitle: 'Innovation for Digital Transformation',
     description:
       'Comprehensive smart solutions that enhance efficiency, connectivity, and automation across your organization.',
-    howItWorks: 'We create interconnected IoT ecosystems that collect real-time data from sensors and devices, process it at the edge or cloud, and trigger automated responses. Our solutions monitor environments, control systems remotely, predict maintenance needs, and optimize resource usage.',
-    benefits: '30-50% reduction in operational costs, predictive maintenance preventing 85% of equipment failures, 40% energy savings, improved safety, and real-time visibility across all operations.',
+
     details: [
-      'End-to-end IoT solutions with sensor networks and cloud connectivity',
-      'Smart building systems managing HVAC, lighting, access, and energy',
-      'Process automation optimizing workflows and reducing manual tasks',
-      'Digital twin technology creating virtual replicas for simulation and testing',
-      'Smart city infrastructure for traffic, waste, parking, and public services',
-      'Centralized device management platforms monitoring thousands of endpoints',
+      'LED DISPLAY - Indoor Large Display, borderless with Pitch size from P1.2mm - P4mm',
+      'SMART CLASSROOM - Latest 21st century education technology including Smartboard, Virtual Classroom, wireless presentation system and others',
+      'VIDEOWALL - Utilizing intuitive software and videowall controller combines several numbers of display LCD screens or LED Display from various inputs onto a larger screen.',
+      'DIGITAL SIGNAGE - The cutting-edge communication system that allows you to design, create, schedule targeted messages on any display throughout remote offices.',
+      'TOUCHSCREEN SOLUTIONS - Readymade or customizable kiosk that uses IR, Touch foil or PCAP touch technology. Interactive content development is also offered.',
+      'VIDEO CONFERENCING - PTZ video conferencing camera, mic speaker which can range from free social software such as zoom, webex, skype etc.',
     ],
-    highlight:
-      'We deliver cutting-edge smart technology solutions that connect devices, optimize operations, and drive digital innovation. Our systems have helped clients reduce operational costs by 30-50%, prevent 85% of equipment failures through predictive maintenance, and achieve 40% energy savings.',
-    technologies: ['IoT', 'MQTT', 'LoRaWAN', 'Edge AI', 'Cloud Integration', '5G'],
     image: new URL('@/assets/img/0041.png', import.meta.url).href,
     layout: 'data-grid',
   },
@@ -99,19 +83,14 @@ const services = ref([
     subtitle: 'Empowering Digital Excellence',
     description:
       'Strategic guidance and comprehensive training programs to accelerate your digital transformation journey.',
-    howItWorks: 'We begin with thorough assessment of your current capabilities, identify gaps, and design customized programs that combine strategic consulting with hands-on training. Our approach ensures knowledge transfer, builds internal capabilities, and creates sustainable change.',
-    benefits: '85% technology adoption rates, 50% faster time-to-value on new initiatives, reduced dependency on external consultants, improved employee productivity and satisfaction, and measurable ROI on digital investments.',
+
     details: [
-      'Digital transformation strategy with comprehensive roadmap and implementation planning',
-      'Technical skills development programs covering modern technologies and best practices',
-      'Leadership training in digital innovation, agile methodologies, and change management',
-      'Change management strategies ensuring smooth adoption and cultural transformation',
-      'Technology assessment evaluating current state and future-ready recommendations',
-      'Custom workshops and industry-recognized certification programs tailored to your needs',
+      'Islamic-Based Digital Leadership – Covering the principles of khalifah, digital ethics, and the integration of worship values in modern leadership.',
+      'Artificial Intelligence (AI) Course – Includes AI fundamentals, generative AI image creation, and practical applications of AI within organisations, administration, community engagement, official correspondence, and other operations.',
+      'Digital Design Course – Utilising tools such as Canva and Photoshop to produce professional-quality visual designs.',
+      'Digital Entrepreneurship Course – Focusing on creating marketing videos, promotional posters, and product images to enhance digital business presence.',
     ],
-    highlight:
-      'Our consultancy services focus on developing both technology solutions and digital capabilities in people, ensuring sustainable and strategic growth. Clients achieve 85% adoption rates, 50% faster project delivery, and significant cost savings by building internal expertise.',
-    technologies: ['Agile Methodologies', 'DevOps', 'Cloud Architecture', 'AI/ML', 'Cybersecurity'],
+
     layout: 'code-terminal',
   },
   {
@@ -122,16 +101,14 @@ const services = ref([
     description:
       'Digital business cards powered by NFC technology for seamless, contactless information sharing.',
     details: [
-      'Instant tap-to-share contact information with universal smartphone compatibility',
-      'Fully customizable digital profiles with rich media, links, and branding',
-      'Seamless social media integration connecting to LinkedIn, Instagram, and more',
-      'Comprehensive analytics tracking views, saves, and engagement patterns',
-      'Eco-friendly alternative eliminating paper waste and printing costs',
-      'Real-time profile updates propagating instantly to all existing cards',
+      'Easy to use – Simply touch or hold the device/card to work without complicated connections.',
+      'Fast and efficient – Data transfer occurs in less than a second.',
+      'Secure – The very short communication range (around 4 cm) reduces the risk of hacking.',
+      'Versatile – Can be used for a variety of purposes such as cashless payments, door access, digital tickets, and information sharing.',
+      'No external power required (for the card) – NFC cards work passively, receiving energy from the electromagnetic field of the reader.',
+      'Easy integration – Can be easily connected to digital systems such as apps, websites, or databases.',
     ],
-    highlight:
-      'Transform networking with our NFC business cards that instantly share your contact details, portfolio, and social profiles with just a tap. Users report 10x higher follow-up rates, zero printing costs, and the ability to update information instantly across all distributed cards.',
-    technologies: ['NFC', 'QR Codes', 'Mobile Apps', 'Cloud Storage', 'Web Technologies'],
+
   },
 ])
 </script>
@@ -141,7 +118,7 @@ const services = ref([
     <!-- Header -->
     <section class="services-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">Our Services</h1>
+        <h1 class="page-title">Our Expertise & Solutions</h1>
         <p class="page-subtitle">
           Empowering digital transformation through innovative solutions and expert guidance
         </p>
@@ -170,25 +147,10 @@ const services = ref([
                     <p class="article-subtitle">{{ service.subtitle }}</p>
                   <p class="article-description">{{ service.description }}</p>
 
-                  <div class="highlight-box">
-                    <svg
-                      class="highlight-icon"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                    <p>{{ service.highlight }}</p>
-                  </div>
+
 
                   <div class="features-section">
-                    <h3 class="features-title">Key Features</h3>
+                    <h3 class="features-title">Details</h3>
                     <ul class="features-list">
                       <li v-for="(detail, idx) in service.details" :key="idx" class="feature-item">
                         <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -248,27 +210,11 @@ const services = ref([
                 <!-- Description -->
                 <p class="article-description">{{ service.description }}</p>
 
-                <!-- Highlight Box -->
-                <div class="highlight-box">
-                  <svg
-                    class="highlight-icon"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  <p>{{ service.highlight }}</p>
-                </div>
+
 
                 <!-- Key Features -->
                 <div class="features-section">
-                  <h3 class="features-title">Key Features</h3>
+                  <h3 class="features-title">Details</h3>
                   <ul class="features-list">
                     <li v-for="(detail, idx) in service.details" :key="idx" class="feature-item">
                       <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">

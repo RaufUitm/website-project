@@ -59,19 +59,20 @@ const services = ref([
     colorClass: 'service-blue',
     image: new URL('@/assets/img/002.png', import.meta.url).href,
   },
+
+  {
+    title: 'AI Surveillance System',
+    description:
+      'Intelligent monitoring solution that uses AI to detect, analyze, and respond to real-time security events efficiently.',
+    colorClass: 'service-blue',
+    image: new URL('@/assets/img/0031.png', import.meta.url).href,
+  },
   {
     title: 'Interactive Analytics Dashboard',
     description:
       'A comprehensive data visualization platform that transforms complex datasets into intuitive dashboards with real-time monitoring and advanced analytics capabilities',
     colorClass: 'service-blue',
     image: new URL('@/assets/img/Product 03.png', import.meta.url).href,
-  },
-  {
-    title: 'AI Surveillance System',
-    description:
-      'Intelligent monitoring solution that uses AI to detect, analyze, and respond to real-time security events efficiently.',
-    colorClass: 'service-blue',
-    image: new URL('@/assets/img/003.png', import.meta.url).href,
   },
   {
     title: 'Smart Technology Provider',

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, watch, nextTick, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -39,6 +39,150 @@ const newsForm = ref({
 
 const isEditing = ref(false)
 const categories = ['general', 'technology', 'announcement', 'event', 'achievement']
+
+// Filter state for listing
+const selectedCategory = ref('all')
+const dateFrom = ref('')
+const dateTo = ref('')
+
+
+const clearFilters = () => {
+  selectedCategory.value = 'all'
+  dateFrom.value = ''
+  dateTo.value = ''
+}
+
+// Calendar popup state for picking filter date
+const calendarVisible = ref(false)
+const calendarMonth = ref(new Date()) // shows current month
+
+const toggleCalendar = () => {
+  calendarVisible.value = !calendarVisible.value
+}
+
+
+
+const prevMonth = () => {
+  const d = new Date(calendarMonth.value)
+  d.setMonth(d.getMonth() - 1)
+  calendarMonth.value = d
+}
+
+const nextMonth = () => {
+  const d = new Date(calendarMonth.value)
+  d.setMonth(d.getMonth() + 1)
+  calendarMonth.value = d
+}
+
+const monthLabel = computed(() => {
+  const d = calendarMonth.value
+  return d.toLocaleString('default', { month: 'long', year: 'numeric' })
+})
+
+const pad = (n) => (n < 10 ? '0' + n : '' + n)
+
+const toISODate = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+
+const isoToTime = (iso) => {
+  if (!iso) return NaN
+  const t = new Date(iso)
+  return isNaN(t.getTime()) ? NaN : t.getTime()
+}
+
+const isInRange = (iso) => {
+  if (!dateFrom.value) return false
+  const fromT = isoToTime(dateFrom.value)
+  const toT = dateTo.value ? isoToTime(dateTo.value) : fromT
+  const cur = isoToTime(iso)
+  if (isNaN(fromT) || isNaN(cur) || isNaN(toT)) return false
+  const min = Math.min(fromT, toT)
+  const max = Math.max(fromT, toT)
+  return cur >= min && cur <= max
+}
+
+const isStart = (iso) => dateFrom.value && iso === dateFrom.value
+const isEnd = (iso) => dateTo.value && iso === dateTo.value
+
+const calendarDays = computed(() => {
+  const monthStart = new Date(calendarMonth.value.getFullYear(), calendarMonth.value.getMonth(), 1)
+  const startDay = monthStart.getDay() // 0-6 Sun-Sat
+  const daysInMonth = new Date(calendarMonth.value.getFullYear(), calendarMonth.value.getMonth() + 1, 0).getDate()
+
+  const cells = []
+  // previous month's tail
+  for (let i = 0; i < startDay; i++) {
+    const d = new Date(monthStart)
+    d.setDate(d.getDate() - (startDay - i))
+    cells.push({ key: `p-${i}`, day: d.getDate(), inMonth: false, iso: toISODate(d) })
+  }
+
+  // current month days
+  for (let day = 1; day <= daysInMonth; day++) {
+    const d = new Date(calendarMonth.value.getFullYear(), calendarMonth.value.getMonth(), day)
+    cells.push({ key: `c-${day}`, day, inMonth: true, iso: toISODate(d) })
+  }
+
+  // fill remaining to complete weeks (42 cells max)
+  while (cells.length % 7 !== 0) {
+    const d = new Date(calendarMonth.value.getFullYear(), calendarMonth.value.getMonth(), daysInMonth + (cells.length % 7))
+    cells.push({ key: `n-${cells.length}`, day: d.getDate(), inMonth: false, iso: toISODate(d) })
+  }
+
+  return cells
+})
+
+const selectCalendarDate = (iso) => {
+
+  if (!dateFrom.value) {
+    dateFrom.value = iso
+    dateTo.value = ''
+    return
+  }
+
+  if (dateFrom.value && !dateTo.value) {
+    // set end; if iso is before start, swap
+    if (isoToTime(iso) < isoToTime(dateFrom.value)) {
+      dateTo.value = dateFrom.value
+      dateFrom.value = iso
+    } else {
+      dateTo.value = iso
+    }
+    // close calendar after range selected
+    calendarVisible.value = false
+    return
+  }
+
+  // both set -> start over
+  dateFrom.value = iso
+  dateTo.value = ''
+}
+
+const filteredNews = computed(() => {
+  return news.value.filter((item) => {
+    // Category filter
+    if (selectedCategory.value !== 'all' && item.category !== selectedCategory.value) return false
+
+    // Date filtering (item.date may be string like YYYY-MM-DD)
+    if ((dateFrom.value && dateFrom.value !== '') || (dateTo.value && dateTo.value !== '')) {
+      const itemDate = item.date ? new Date(item.date) : null
+      if (!itemDate) return false
+
+      if (dateFrom.value && dateFrom.value !== '') {
+        const from = new Date(dateFrom.value)
+        from.setHours(0, 0, 0, 0)
+        if (itemDate < from) return false
+      }
+
+      if (dateTo.value && dateTo.value !== '') {
+        const to = new Date(dateTo.value)
+        to.setHours(23, 59, 59, 999)
+        if (itemDate > to) return false
+      }
+    }
+
+    return true
+  })
+})
 
 // Parse images from JSON string
 const parseImages = (imageData) => {
@@ -442,9 +586,56 @@ onMounted(() => {
           <p>Check back later for updates</p>
         </div>
 
-        <div v-else class="news-grid">
+        <div v-else>
+          <!-- Filters -->
+          <div class="news-filters" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <label style="font-weight:600">Category:</label>
+              <select v-model="selectedCategory" class="form-input" style="min-width:140px;padding:0.35rem;border-radius:6px;">
+                <option value="all">All</option>
+                <option v-for="cat in categories" :key="cat" :value="cat">{{ cat.charAt(0).toUpperCase() + cat.slice(1) }}</option>
+              </select>
+            </div>
+
+            <div style="display:flex;gap:0.5rem;align-items:center;position:relative;">
+              <label style="font-weight:600">Date:</label>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <button type="button" @click="toggleCalendar" class="btn-calendar">{{ dateFrom && dateTo ? (dateFrom + (dateFrom === dateTo ? '' : ' → ' + dateTo)) : 'Any date' }}</button>
+              </div>
+
+              <div v-show="calendarVisible" class="inline-calendar" @click.stop>
+                <div class="cal-header">
+                  <button type="button" @click="prevMonth">‹</button>
+                  <div class="cal-title">{{ monthLabel }}</div>
+                  <button type="button" @click="nextMonth">›</button>
+                </div>
+                <div class="cal-grid">
+                  <div class="cal-weekday" v-for="d in ['Su','Mo','Tu','We','Th','Fr','Sa']" :key="d">{{ d }}</div>
+                  <button
+                    v-for="cell in calendarDays"
+                    :key="cell.key"
+                    class="cal-cell"
+                    :class="[
+                      { muted: !cell.inMonth },
+                      { start: isStart(cell.iso), end: isEnd(cell.iso), 'in-range': isInRange(cell.iso) }
+                    ]"
+                    @click="selectCalendarDate(cell.iso)"
+                  >
+                    {{ cell.day }}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center;">
+              <button type="button" @click="clearFilters" class="btn-cancel">Clear</button>
+              <div style="font-size:0.9rem;color:#374151">Showing {{ filteredNews.length }} of {{ news.length }}</div>
+            </div>
+          </div>
+
+          <div class="news-grid">
           <article
-            v-for="item in news"
+            v-for="item in filteredNews"
             :key="item.id"
             :id="`news-${item.id}`"
             class="news-card"
@@ -495,6 +686,7 @@ onMounted(() => {
             </div>
           </article>
         </div>
+      </div>
       </div>
     </section>
 
@@ -686,4 +878,51 @@ onMounted(() => {
   width: min(880px, calc(100% - 32px));
   margin: 2rem auto;
 }
+</style>
+
+<style scoped>
+.inline-calendar {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(15,23,42,0.12);
+  padding: 8px;
+  z-index: 60;
+  width: 280px;
+}
+.cal-header {
+  display:flex;align-items:center;justify-content:space-between;padding:4px 8px;margin-bottom:6px;
+}
+.cal-header button { background:transparent;border:none;font-size:18px;cursor:pointer }
+.cal-title { font-weight:700 }
+.cal-grid { display:grid;grid-template-columns:repeat(7,1fr);gap:4px }
+.cal-weekday { font-size:11px;color:#6b7280;text-align:center }
+.cal-cell { background:transparent;border:none;padding:8px;border-radius:6px;cursor:pointer;text-align:center }
+.cal-cell.muted { color:#9ca3af }
+.cal-cell.start { background:#1f2937;color:#fff;font-weight:700 }
+.cal-cell.end { background:#1f2937;color:#fff;font-weight:700 }
+.cal-cell.in-range { background:#e6eef8 }
+
+/* Gradient button styles to match primary action buttons */
+.btn-calendar, .btn-cancel, .btn-save {
+  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(79,70,229,0.18);
+}
+.btn-calendar:hover, .btn-cancel:hover, .btn-save:hover {
+  filter: brightness(0.95);
+}
+.btn-cancel {
+  /* smaller secondary look but still gradient to match request */
+  padding: 0.35rem 0.7rem;
+}
+.btn-calendar:focus, .btn-cancel:focus, .btn-save:focus { outline: 2px solid rgba(99,102,241,0.22); outline-offset: 2px }
 </style>

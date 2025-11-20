@@ -347,11 +347,11 @@ onMounted(() => {
     </section>
 
     <!-- About Section -->
-    <section class="py-20 custom-section-bg">
+    <section class="pt-12 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
         <img src="@/assets/img/logo.png" alt="TAJDID Logo" class="img-logo" />
         <div class="about-header text-center">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          <h2 class="text-4xl md:text-4xl font-bold text-gray-800 mb-6">
             Terengganu Advanced Joint Digital Intelligent Development (TAJDID)
           </h2>
           <p class="about-description">
@@ -363,7 +363,7 @@ onMounted(() => {
           </p>
         </div>
 
-        <h2 class="mt-12 text-4xl md:text-5xl font-bold mb-16 text-center">
+        <h2 class="pt-24 pb-4 text-4xl md:text-5xl font-bold mb-16 text-center">
           <span class="text-gray-800">Our</span>
           <span class="text-green-600"> Fundamental Values</span>
         </h2>
@@ -384,7 +384,7 @@ onMounted(() => {
 
     <!-- Services Showcase Section -->
     <section class="services-section-wrapper">
-      <div class="pt-20 pb-12 custom-section-bg">
+      <div class="pt-24 pb-4 custom-section-bg">
         <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
           <span class="text-gray-800">Our</span>
           <span class="text-green-600"> Expertise</span>

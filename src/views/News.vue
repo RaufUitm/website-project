@@ -600,7 +600,7 @@ onMounted(() => {
             <div style="display:flex;gap:0.5rem;align-items:center;position:relative;">
               <label style="font-weight:600">Date:</label>
               <div style="display:flex;gap:0.5rem;align-items:center;">
-                <button type="button" @click="toggleCalendar" class="btn-calendar">{{ dateFrom && dateTo ? (dateFrom + (dateFrom === dateTo ? '' : ' → ' + dateTo)) : 'Any date' }}</button>
+                <button type="button" @click="toggleCalendar" class="btn-calendar" style="padding:0.35rem 0.6rem;border-radius:6px;border:1px solid #d1d5db;background:#fff;">{{ dateFrom && dateTo ? (dateFrom + (dateFrom === dateTo ? '' : ' → ' + dateTo)) : 'Any date' }}</button>
               </div>
 
               <div v-show="calendarVisible" class="inline-calendar" @click.stop>
@@ -905,24 +905,4 @@ onMounted(() => {
 .cal-cell.start { background:#1f2937;color:#fff;font-weight:700 }
 .cal-cell.end { background:#1f2937;color:#fff;font-weight:700 }
 .cal-cell.in-range { background:#e6eef8 }
-
-/* Gradient button styles to match primary action buttons */
-.btn-calendar, .btn-cancel, .btn-save {
-  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
-  color: #fff;
-  border: none;
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(79,70,229,0.18);
-}
-.btn-calendar:hover, .btn-cancel:hover, .btn-save:hover {
-  filter: brightness(0.95);
-}
-.btn-cancel {
-  /* smaller secondary look but still gradient to match request */
-  padding: 0.35rem 0.7rem;
-}
-.btn-calendar:focus, .btn-cancel:focus, .btn-save:focus { outline: 2px solid rgba(99,102,241,0.22); outline-offset: 2px }
 </style>

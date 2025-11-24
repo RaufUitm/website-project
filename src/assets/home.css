@@ -1,10 +1,9 @@
 /* ==================== 1. HERO SECTION ==================== */
 
-
 .hero-section {
   position: relative;
   min-height: 100vh;
-  height: 100dvh;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -32,12 +31,19 @@
   background: #0000003b;
   z-index: 1;
 }
-
+@media (max-width: 1115px) {
+  .hero-content {
+  padding-top: 0vh !important;
+}
+.hero-section {
+  min-height: 100vh !important;
+  height: 100vh !important;
+}}
 .hero-content {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: 50vh;
+  padding-top: 40vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -606,7 +612,7 @@
 .service-card {
   position: relative;
   width: 100%;
-  min-height: 500px;
+  min-height: 50dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -698,8 +704,8 @@
 .service-content {
   position: relative;
   z-index: 3;
-  max-width: 600px;
-  padding: 80px;
+  max-width: 100vh;
+  padding: clamp(2.2vw, 2rem, 4rem);
   color: white;
   margin-left: 18%;
   text-align: left;

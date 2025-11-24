@@ -37,7 +37,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: 400px;
+  padding-top: 50vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,7 +45,8 @@
 }
 
 .hero-top-subtitle {
-  font-size: 0.875rem;
+  /* responsive small subtitle */
+  font-size: clamp(12px, 1.2vw, 16px);
   font-weight: 600;
   letter-spacing: 2px;
   color: white;
@@ -56,7 +57,8 @@
 }
 
 .hero-main-title {
-  font-size: 4.5rem;
+  /* responsive hero main title */
+  font-size: clamp(32px, 5vw, 72px);
   font-weight: 700;
   line-height: 1.1;
   color: white;
@@ -79,8 +81,9 @@
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  /* responsive hero subtitle */
+  font-size: clamp(16px, 2.2vw, 24px);
+  line-height: clamp(24px, 2.6vw, 32px);
   color: white;
   margin-bottom: 2rem;
   max-width: 672px;
@@ -394,7 +397,8 @@
 }
 
 .news-overlay-title {
-  font-size: 1.75rem;
+  /* responsive news overlay title */
+  font-size: clamp(18px, 2.4vw, 32px);
   font-weight: 700;
   margin-bottom: 0.75rem;
   line-height: 1.2;
@@ -496,7 +500,8 @@
 }
 
 .about-title {
-  font-size: 1.875rem;
+  /* responsive about section title */
+  font-size: clamp(20px, 2.8vw, 36px);
   font-weight: 700;
   color: #10b981;
   margin-bottom: var(--section-title-gap);
@@ -567,7 +572,8 @@
 }
 
 .feature-title {
-  font-size: 1.25rem;
+  /* responsive feature card title */
+  font-size: clamp(16px, 2vw, 22px);
   font-weight: 700;
   color: #10b981;
   margin-bottom: var(--section-title-gap);
@@ -715,7 +721,8 @@
 }
 
 .service-title {
-  font-size: 42px;
+  /* responsive service title */
+  font-size: clamp(22px, 3.5vw, 48px);
   font-weight: 700;
   margin-bottom: 24px;
   line-height: 1.2;
@@ -868,26 +875,5 @@ section.section-py {
 
   .features-grid {
     grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-main-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-features {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .hero-top-subtitle {
-    font-size: 0.75rem;
-  }
-
-  .hero-content {
-    padding-top: 8vh;
-    align-items: flex-start;
-    padding-left: 1rem;
   }
 }

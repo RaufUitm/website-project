@@ -4,6 +4,11 @@
 
 /* font files already declared */
 @font-face {
+/* -----------------------------
+   Tailwind Component Utilities
+   - Use these in templates: `section-title-gap`, `nav-min-h`, `logo-size`
+   - Keeps consistency between custom CSS and Tailwind utilities.
+   ----------------------------- */
   font-family: 'SF Pro Display';
   src: url('./fonts/SFPRODISPLAYREGULAR.woff2') format('woff2');
   font-weight: 400;

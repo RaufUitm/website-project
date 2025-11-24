@@ -119,7 +119,7 @@ const services = ref([
     <!-- Header -->
     <section class="services-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">Our Expertise & Solutions</h1>
+        <h1 class="page-title">Our Service</h1>
         <p class="page-subtitle">
           Empowering digital transformation through innovative solutions and expert guidance
         </p>

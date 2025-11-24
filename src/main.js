@@ -10,5 +10,4 @@ import './assets/service.css'
 import './assets/news.css'
 import './assets/newsdetail.css'
 import './assets/mobile.css'
-import './assets/scaling.css'
 createApp(App).use(router).mount('#app')

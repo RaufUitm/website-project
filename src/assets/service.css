@@ -1,6 +1,7 @@
 .services-page {
   background: transparent;
-  min-height: 100vh;
+  /* scale page height fluidly across devices */
+  min-height: clamp(60vh, 80vh, 100vh);
   position: relative;
   margin-top: -64px;
 }
@@ -42,7 +43,7 @@
 .service-article {
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 100vh;
+  min-height: clamp(60vh, 85vh, 100vh);
   position: relative;
   scroll-margin-top: 64px;
 }
@@ -51,7 +52,7 @@
 .service-custom-layout {
   grid-column: 1 / -1;
   position: relative;
-  min-height: 85vh;
+  min-height: clamp(55vh, 75vh, 90vh);
   display: flex;
   align-items: center;
   padding: 3rem 0;
@@ -167,7 +168,7 @@
 .video-split-section {
   grid-column: 1 / -1;
   display: flex;
-  min-height: 89vh;
+  min-height: clamp(50vh, 75vh, 89vh);
 
   position: relative;
 }
@@ -346,7 +347,8 @@
 
 /* Title & Subtitle */
 .article-title {
-  font-size: 3rem;
+  /* fluid article title */
+  font-size: clamp(28px, 4vw, 48px);
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 0.75rem;
@@ -355,7 +357,7 @@
 }
 
 .article-subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(16px, 2.2vw, 20px);
   color: #78c054;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -770,5 +772,68 @@
     order: 2 !important;
     background: #ffffff !important;
     z-index: 5 !important;
+  }
+}
+
+/* Tablet-specific adjustments: target devices up to 1115px */
+@media (max-width: 1115px) {
+  .service-article {
+    grid-template-columns: 1fr;
+    min-height: clamp(50vh, 70vh, 95vh) !important;
+  }
+
+  .service-custom-layout {
+    padding: clamp(1rem, 4vw, 2.5rem) !important;
+    min-height: clamp(45vh, 65vh, 85vh) !important;
+    display: block !important;
+  }
+
+  .layout-image-container {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .layout-content-card {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin: 1rem auto !important;
+    padding: clamp(1rem, 3vw, 2rem) !important;
+    box-shadow: none !important;
+  }
+
+  .video-side-content,
+  .video-side-player {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    padding: 1.5rem !important;
+    box-shadow: none !important;
+  }
+
+  .floating-info-cards {
+    display: flex !important;
+    position: relative !important;
+    flex-direction: row !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+  }
+
+  .layout-image-container {
+    height: clamp(220px, 35vh, 420px) !important;
+  }
+
+  .article-title {
+    font-size: clamp(20px, 3.5vw, 32px) !important;
+  }
+
+  .article-subtitle {
+    font-size: clamp(14px, 2.2vw, 18px) !important;
   }
 }

@@ -361,7 +361,7 @@ const setPrimaryImage = (index) => {
 
 // Admin authentication
 const checkPassword = () => {
-  if (adminPassword.value === '123') {
+  if (adminPassword.value === 'tajdid2025') {
     isAdmin.value = true
     showPasswordPrompt.value = false
     showAdminPanel.value = true

@@ -132,9 +132,9 @@
   right: 55%;
   margin: 0;
   background: rgba(255, 255, 255, 0.98);
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.336);
   z-index: 5;
-  margin-top: 0;
+  margin-top: 2vh;
   padding-top: 2rem;
   border-radius: 12px;
 }
@@ -200,8 +200,6 @@
   color: #1a1a1a;
   box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .layout-data-grid .layout-image-container {
   right: 0;

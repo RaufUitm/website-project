@@ -23,7 +23,7 @@
 
 /* Content */
 .services-content {
-  padding: 0 0 8rem;
+  padding: 0 0 4rem;
   background: #ffffff;
 }
 
@@ -82,8 +82,7 @@
 
 /* Make content scale with its container: use clamp() for fluid type, ensure box-sizing and word wrap */
 .layout-content-card,
-.video-side-content,
-.info-card {
+.video-side-content {
   box-sizing: border-box;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -101,43 +100,10 @@
 }
 
 .layout-content-card p,
-.video-side-content p,
-.info-card-text {
+.video-side-content p {
   font-size: clamp(14px, 1.2vw, 18px);
   line-height: 1.45;
 }
-
-/* Floating Info Cards on Image - Vertical Stack Layout */
-.floating-info-cards {
-  position: absolute;
-  bottom: 2rem;
-  top: 2rem;
-  z-index: 15;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  pointer-events: none;
-  justify-content: flex-end;
-}
-.info-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  flex: 1;
-  min-width: 0;
-}
-
-.info-card:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-
 
 /* Video Service Special Layout */
 .video-title-section {
@@ -156,7 +122,7 @@
 .video-split-section {
   grid-column: 1 / -1;
   display: flex;
-  height: 75vh;
+  height: 40vh;
   position: relative;
 }
 
@@ -168,9 +134,9 @@
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.15);
   z-index: 5;
- margin-top: 2vh;
- padding-top: 5vh;
- border-radius: 12px;
+  margin-top: 0;
+  padding-top: 2rem;
+  border-radius: 12px;
 }
 
 .video-side-content .content-wrapper {
@@ -323,10 +289,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Title (moved to shared `styles.css`) */
-
-
-/* Description (moved to shared `styles.css`) */
 
 .highlight-icon {
   width: 24px;

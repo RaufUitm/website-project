@@ -106,7 +106,6 @@ const services = ref([
       'No external power required (for the card) – NFC cards work passively, receiving energy from the electromagnetic field of the reader.',
       'Easy integration – Can be easily connected to digital systems such as apps, websites, or databases.',
     ],
-    layout: 'data-grid',
   },
 ])
 </script>

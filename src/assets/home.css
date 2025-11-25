@@ -33,7 +33,7 @@
 }
 @media (max-width: 1115px) {
   .hero-content {
-  padding-top: 0vh !important;
+  padding-top: 10vh !important;
 }
 .hero-section {
   min-height: 100vh !important;
@@ -704,7 +704,7 @@
 .service-content {
   position: relative;
   z-index: 3;
-  max-width: 100vh;
+  max-width: 75vh;
   padding: clamp(2.2vw, 2rem, 4rem);
   color: white;
   margin-left: 18%;
@@ -742,8 +742,8 @@
 }
 
 .service-text {
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: clamp(16px, 1vw, 20px);
+  line-height: 1.2;
   color: #fffffff2;
   text-shadow: 1px 1px 2px #0000004d;
   transition: all 0.3s ease;

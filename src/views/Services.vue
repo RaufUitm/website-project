@@ -9,7 +9,7 @@ const services = ref([
     id: 'software-development',
     image: new URL('@/assets/img/001.png', import.meta.url).href,
     title: 'Software Development',
-    subtitle: 'Custom Solutions for Your Digital Needs',
+
     description:
       'Transform your business with tailored software solutions designed to meet your unique requirements.',
 
@@ -26,7 +26,7 @@ const services = ref([
   {
     id: 'AI-surveillance-system',
     title: 'AI Surveillance System',
-    subtitle: 'Intelligent Security Monitoring',
+
     description:
       'Advanced AI-powered surveillance that detects threats, analyzes patterns, and responds in real-time.',
 
@@ -43,18 +43,16 @@ const services = ref([
     id: 'interactive-analytics-dashboard',
     image: new URL('@/assets/img/Product 031.png', import.meta.url).href,
     title: 'Interactive Analytics Dashboard',
-    subtitle: 'Data-Driven Decision Making',
+
     description:
       'Transform complex data into actionable insights with our comprehensive visualization platform.',
 
     details: [
       'Data Visualization Provides charts, graphs, and indicators for quick understanding of data',
       'Interactive Analysis Allows users to filter, highlight, and explore data dynamically.',
-      'Performance Monitoring Tracks KPIs, metrics, and trends in real-time for effective management',
+      'Performance Insights Identify trends and patterns for smarter decision making.',
       'Reporting & Sharing Generates automated reports and shares insights with teams or stakeholders.',
-      'Alerts & Notifications Sends notifications about significant changes or critical issues in the data.',
-      'Department Task Monitoring  Overseeing and ensuring smooth task execution across various departments.',
-      'Project Progress Monitoring Tracking the progress of projects such as Smart City and development initiatives to ensure timely completion and goal alignment.',
+      'User-Friendly Interface-Simple and intuitive design that anyone can use — no technical skills needed.',
     ],
 
     layout: 'code-terminal',
@@ -62,7 +60,7 @@ const services = ref([
   {
     id: 'smart-technology-provider',
     title: 'Smart Technology Provider',
-    subtitle: 'Innovation for Digital Transformation',
+
     description:
       'Comprehensive smart solutions that enhance efficiency, connectivity, and automation across your organization.',
 
@@ -72,7 +70,6 @@ const services = ref([
       'VIDEOWALL - Utilizing intuitive software and videowall controller combines several numbers of display LCD screens or LED Display from various inputs onto a larger screen.',
       'DIGITAL SIGNAGE - The cutting-edge communication system that allows you to design, create, schedule targeted messages on any display throughout remote offices.',
       'TOUCHSCREEN SOLUTIONS - Readymade or customizable kiosk that uses IR, Touch foil or PCAP touch technology. Interactive content development is also offered.',
-      'VIDEO CONFERENCING - PTZ video conferencing camera, mic speaker which can range from free social software such as zoom, webex, skype etc.',
     ],
     image: new URL('@/assets/img/0041.png', import.meta.url).href,
     layout: 'data-grid',
@@ -81,7 +78,7 @@ const services = ref([
     id: 'Training-Consultancy',
     image: new URL('@/assets/img/Product 04.png', import.meta.url).href,
     title: 'Training & Consultancy',
-    subtitle: 'Empowering Digital Excellence',
+
     description:
       'Strategic guidance and comprehensive training programs to accelerate your digital transformation journey.',
 
@@ -98,7 +95,7 @@ const services = ref([
     id: 'nfc-business-card',
     video: new URL('@/assets/img/NFC full (horizon).mp4', import.meta.url).href,
     title: 'NFC Business Card',
-    subtitle: 'Modern Networking Solutions',
+
     description:
       'Digital business cards powered by NFC technology for seamless, contactless information sharing.',
     details: [
@@ -109,7 +106,7 @@ const services = ref([
       'No external power required (for the card) – NFC cards work passively, receiving energy from the electromagnetic field of the reader.',
       'Easy integration – Can be easily connected to digital systems such as apps, websites, or databases.',
     ],
-
+    layout: 'data-grid',
   },
 ])
 </script>
@@ -145,7 +142,7 @@ const services = ref([
                 <div class="content-wrapper">
                     <span class="service-badge">{{ `0${index + 1}` }}</span>
                     <h2 class="article-title">{{ service.title }}</h2>
-                    <p class="article-subtitle">{{ service.subtitle }}</p>
+
                   <p class="article-description">{{ service.description }}</p>
 
 
@@ -190,9 +187,6 @@ const services = ref([
               class="service-custom-layout"
               :class="`layout-${service.layout || 'default'}`"
             >
-              <!-- Decorative placeholder (wireframe removed) -->
-              <div class="wireframe-canvas"></div>
-
               <!-- Image Container (position varies by layout) -->
               <div class="layout-image-container" :class="`image-${service.layout || 'default'}`">
                 <img :src="service.image" :alt="service.title" class="layout-image" />
@@ -206,7 +200,7 @@ const services = ref([
               >
                 <span class="service-badge">{{ `0${index + 1}` }}</span>
                 <h2 class="article-title">{{ service.title }}</h2>
-                <p class="article-subtitle">{{ service.subtitle }}</p>
+
 
                 <!-- Description -->
                 <p class="article-description">{{ service.description }}</p>

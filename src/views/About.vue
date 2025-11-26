@@ -264,9 +264,9 @@ onUnmounted(() => {
         <h2 class="shared-values-title">Our <span class="outline-text">Shared Values</span></h2>
       </div>
 
-      <!-- Full-width moving shared values -->
-      <div class="w-screen overflow-hidden">
-        <div class="values-track flex gap-10">
+      <!-- Moving shared values (contained) -->
+      <div class="max-w-8xl mx-auto px-6 overflow-hidden">
+        <div class="values-track flex gap-10 justify-center">
           <div
             v-for="(value, i) in duplicatedValues"
             :key="`val-${i}`"

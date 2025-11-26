@@ -1,5 +1,5 @@
 .about-page {
-  min-height: clamp(60vh, 80vh, 100vh);
+  min-height: 100vh;
   margin-top: -64px;
   position: relative;
 }
@@ -487,11 +487,10 @@
 
 
 .director-card {
-  width: clamp(160px, 17vw, 240px);
+  width: clamp(160px, 18vw, 240px);
   height: clamp(160px, 24vh, 330px);
   border-radius: clamp(12px, 1vw, 40px);
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
   transition:
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
@@ -499,7 +498,7 @@
   position: relative;
   user-select: none;
   -webkit-user-drag: none;
-  background: white;
+  background: transparent;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -511,7 +510,7 @@
 
 .director-card:hover {
   transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 15px 50px #78c0544d;
+
 }
 
 .director-image {
@@ -812,7 +811,8 @@
 @media (max-width: 1115px) {
   .hero-who-section {
     padding: clamp(1.5rem, 5vh, 3rem) !important;
-    height: 110vh !important;
+    /* Avoid forcing extra-large full-screen heights on smaller devices */
+    height: auto !important;
   }
 
   .hero-title {
@@ -845,9 +845,18 @@
     -webkit-text-stroke-width: clamp(0.5px, 0.2vw, 1px);
   }
   .value-card {
+    /* Use content-driven height on tablet/smaller devices to avoid excessive vertical space */
     width: 35vw !important;
-    height: 68vh !important;
+    height: auto !important;
+    max-height: 64vh !important; /* safety cap to prevent runaway heights */
     border-width: 2px !important;
+  }
+
+  /* Also prevent the VM split from forcing tall sections on smaller screens */
+  .vm-split {
+    height: auto !important;
+    display: block;
+    padding: 1.25rem 0;
   }
 
 }

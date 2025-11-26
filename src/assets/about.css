@@ -485,9 +485,6 @@
   margin-bottom: clamp(20px, 3vw, 40px);
 }
 
-.pyramid-row.row-2 {
-  gap: clamp(40px, 20vw, 400px);
-}
 
 .director-card {
   width: clamp(160px, 17vw, 240px);

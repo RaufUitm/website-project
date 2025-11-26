@@ -71,7 +71,7 @@ const services = ref([
       'DIGITAL SIGNAGE - The cutting-edge communication system that allows you to design, create, schedule targeted messages on any display throughout remote offices.',
       'TOUCHSCREEN SOLUTIONS - Readymade or customizable kiosk that uses IR, Touch foil or PCAP touch technology. Interactive content development is also offered.',
     ],
-    image: new URL('@/assets/img/0041.png', import.meta.url).href,
+    image: new URL('@/assets/img/Arvia1.png', import.meta.url).href,
     layout: 'data-grid',
   },
   {

@@ -79,7 +79,7 @@ const services = ref([
     description:
       'Delivers innovative smart solutions and digital systems to enhance efficiency, connectivity, and automation.',
     colorClass: 'service-blue',
-    image: new URL('@/assets/img/004.png', import.meta.url).href,
+    image: new URL('@/assets/img/Arvia.png', import.meta.url).href,
   },
   {
     title: 'Training & Consultancy',
@@ -236,6 +236,43 @@ onMounted(() => {
       </div>
     </section>
 
+
+
+    <!-- About Section -->
+    <section class="pt-12 custom-section-bg">
+      <div class="max-w-7xl mx-auto px-4">
+        <img src="@/assets/img/logo.png" alt="TAJDID Logo" class="img-logo" />
+        <div class="about-header text-center">
+          <h2 class="text-4xl md:text-4xl font-bold text-gray-800 mb-6">
+            Terengganu Advanced Joint Digital Intelligent Development (TAJDID)
+          </h2>
+          <p class="about-description">
+            or known as <strong>TAJDID Corporation</strong> is a fully state-owned company under the
+            Terengganu State Government, operating under Menteri Besar, Terengganu Incorporated.
+            TAJDID functions as <strong>the entity to drive economic growth</strong> and
+            <strong>the development of a digital society</strong> based on digital technology and
+            the Fourth Industrial Revolution (4IR)
+          </p>
+        </div>
+
+        <h2 class="pt-24 pb-4 text-4xl md:text-5xl font-bold mb-16 text-center">
+          <span class="text-gray-800">Our</span>
+          <span class="text-green-600"> Fundamental Values</span>
+        </h2>
+        <div class="features-grid">
+          <div v-for="(feature, index) in aboutFeatures" :key="index" class="feature-card">
+            <div class="feature-image">
+              <img v-if="feature.image" :src="feature.image" :alt="feature.title" />
+              <div v-else class="feature-placeholder">Feature Image {{ index + 1 }}</div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">{{ feature.title }}</h3>
+              <p class="feature-description">{{ feature.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Latest News Section -->
     <section class="py-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
@@ -343,42 +380,6 @@ onMounted(() => {
         <button class="more-news-btn-new">
           <router-link to="/news">More News +</router-link>
         </button>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="pt-12 custom-section-bg">
-      <div class="max-w-7xl mx-auto px-4">
-        <img src="@/assets/img/logo.png" alt="TAJDID Logo" class="img-logo" />
-        <div class="about-header text-center">
-          <h2 class="text-4xl md:text-4xl font-bold text-gray-800 mb-6">
-            Terengganu Advanced Joint Digital Intelligent Development (TAJDID)
-          </h2>
-          <p class="about-description">
-            or known as <strong>TAJDID Corporation</strong> is a fully state-owned company under the
-            Terengganu State Government, operating under Menteri Besar, Terengganu Incorporated.
-            TAJDID functions as <strong>the entity to drive economic growth</strong> and
-            <strong>the development of a digital society</strong> based on digital technology and
-            the Fourth Industrial Revolution (4IR)
-          </p>
-        </div>
-
-        <h2 class="pt-24 pb-4 text-4xl md:text-5xl font-bold mb-16 text-center">
-          <span class="text-gray-800">Our</span>
-          <span class="text-green-600"> Fundamental Values</span>
-        </h2>
-        <div class="features-grid">
-          <div v-for="(feature, index) in aboutFeatures" :key="index" class="feature-card">
-            <div class="feature-image">
-              <img v-if="feature.image" :src="feature.image" :alt="feature.title" />
-              <div v-else class="feature-placeholder">Feature Image {{ index + 1 }}</div>
-            </div>
-            <div class="feature-content">
-              <h3 class="feature-title">{{ feature.title }}</h3>
-              <p class="feature-description">{{ feature.description }}</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 

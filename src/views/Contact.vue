@@ -19,6 +19,17 @@ const error = ref('')
 const EMAILJS_SERVICE_ID = 'service_dcqye0m'
 const EMAILJS_TEMPLATE_ID = 'template_rqogadq'
 const EMAILJS_PUBLIC_KEY = 'J4c7AkUmqNFB39G20'
+const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_w7g2n7p'
+
+// Initialize EmailJS with your public key (helps with diagnostics)
+try {
+  emailjs.init(EMAILJS_PUBLIC_KEY)
+} catch   (e) {
+  // init may be optional depending on usage, but log if it fails
+  console.warn('emailjs.init warning:', e)
+}
+
+const autoReplyStatus = ref('')
 
 const submitForm = async () => {
   isLoading.value = true
@@ -40,6 +51,34 @@ const submitForm = async () => {
 
     console.log('Email sent successfully:', result)
     submitted.value = true
+
+    // Send an automatic reply back to the sender (optional)
+    if (EMAILJS_AUTOREPLY_TEMPLATE_ID) {
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_AUTOREPLY_TEMPLATE_ID,
+          {
+            to_name: form.value.name,
+            to_email: form.value.email,
+            from_name: 'TAJDID Team',
+            message: `Hi ${form.value.name},\n\nThanks for contacting us. We received your message and will respond as soon as possible.\n\nOriginal message:\n${form.value.message}`,
+          },
+          EMAILJS_PUBLIC_KEY,
+        )
+
+        console.log('Auto-reply sent to user:', form.value.email)
+        autoReplyStatus.value = 'Auto-reply sent to ' + form.value.email
+        // clear auto-reply status after a short delay
+        setTimeout(() => (autoReplyStatus.value = ''), 6000)
+      } catch (autoErr) {
+        console.error('Failed to send auto-reply:', autoErr)
+        // Surface a brief status for the user (non-blocking)
+        autoReplyStatus.value = 'Auto-reply failed. Check console or EmailJS logs.'
+        setTimeout(() => (autoReplyStatus.value = ''), 9000)
+        // Do not treat auto-reply failure as a form failure; continue gracefully
+      }
+    }
 
     // Reset form after 3 seconds
     setTimeout(() => {
@@ -234,6 +273,10 @@ const submitForm = async () => {
                 Thank you! We'll get back to you soon.
               </div>
 
+              <div v-if="autoReplyStatus" class="info-message">
+                {{ autoReplyStatus }}
+              </div>
+
               <div v-if="error" class="error-message">
                 {{ error }}
               </div>
@@ -316,5 +359,14 @@ const submitForm = async () => {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.info-message {
+  margin-top: 0.75rem;
+  color: #0f766e;
+  background: rgba(16, 185, 129, 0.06);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
 }
 </style>

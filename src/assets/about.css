@@ -195,6 +195,13 @@
   transform: translateY(-5px);
   filter: drop-shadow(0 10px 25px #ffffff4d);
 }
+.value-card {
+    /* Use content-driven height on tablet/smaller devices to avoid excessive vertical space */
+    width: clamp(24rem, 36vw, 30rem) !important;
+    height: auto !important;
+    max-height: 64vh !important; /* safety cap to prevent runaway heights */
+    border-width: 2px !important;
+  }
 
 /* Value cards with image background */
 .value-card-image {
@@ -808,7 +815,7 @@
 }
 
 /* Tablet-specific adjustments: target devices up to 1115px */
-@media (max-width: 1115px) {
+@media (min-width: 768px) {
   .hero-who-section {
     padding: clamp(1.5rem, 5vh, 3rem) !important;
     /* Avoid forcing extra-large full-screen heights on smaller devices */
@@ -844,19 +851,8 @@
   .shared-values-title .outline-text {
     -webkit-text-stroke-width: clamp(0.5px, 0.2vw, 1px);
   }
-  .value-card {
-    /* Use content-driven height on tablet/smaller devices to avoid excessive vertical space */
-    width: 35vw !important;
-    height: auto !important;
-    max-height: 64vh !important; /* safety cap to prevent runaway heights */
-    border-width: 2px !important;
-  }
+
 
   /* Also prevent the VM split from forcing tall sections on smaller screens */
-  .vm-split {
-    height: auto !important;
-    display: block;
-    padding: 1.25rem 0;
-  }
 
 }

@@ -576,7 +576,7 @@
 }
 
 /* Tablet-specific adjustments: target devices up to 1115px */
-@media (max-width: 1115px) {
+@media (max-width: 1240px) {
   .layout-code-terminal .layout-image-container,
   .layout-data-grid .layout-image-container
   {

@@ -2,7 +2,7 @@
 defineOptions({
   name: 'FooterComponent',
 })
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const socialLinks = ref([
   {
@@ -17,7 +17,7 @@ const socialLinks = ref([
   },
   {
     name: 'TikTok',
-    url: 'https://www.tiktok.com/@tajdid.academy',
+    url: 'https://www.tiktok.com/@tajdid_official',
     icon: 'tiktok',
   },
   {
@@ -31,6 +31,48 @@ const socialLinks = ref([
     icon: 'linkedin',
   },
 ])
+
+const visitorCount = ref(null)
+const VISITOR_API = 'http://localhost/tajdid-api/api/visitors.php'
+
+const fetchCount = async () => {
+  try {
+    const res = await fetch(VISITOR_API)
+    const data = await res.json()
+    if (data && data.success) visitorCount.value = data.count
+  } catch (e) {
+    // ignore - leave visitorCount null
+    console.error('Visitor API (GET) failed', e)
+  }
+}
+
+const incrementVisit = async () => {
+  try {
+    const res = await fetch(VISITOR_API, { method: 'POST' })
+    const data = await res.json()
+    if (data && data.success) visitorCount.value = data.count
+  } catch (e) {
+    console.error('Visitor API (POST) failed', e)
+  }
+}
+
+onMounted(async () => {
+  // Try to increment once per browser (localStorage key)
+  try {
+    const key = 'tajdid_visited_v1'
+    const already = localStorage.getItem(key)
+    if (!already) {
+      await incrementVisit()
+      try { localStorage.setItem(key, Date.now().toString()) } catch {}
+    } else {
+      // still fetch the current count for display
+      await fetchCount()
+    }
+  } catch (e) {
+    // fallback: just fetch
+    await fetchCount()
+  }
+})
 </script>
 
 <template>
@@ -133,6 +175,10 @@ const socialLinks = ref([
               </svg>
               +609 - 628 5800
             </a>
+            <div class="visitor-count mt-4">
+              <small class="text-sm text-gray-500">{{ $t('footer.visitors_label') }}:</small>
+              <div class="text-lg font-semibold">{{ visitorCount === null ? '—' : visitorCount }}</div>
+            </div>
           </div>
         </div>
       </div>

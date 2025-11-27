@@ -245,11 +245,10 @@ onMounted(() => {
             Terengganu Advanced Joint Digital Intelligent Development (TAJDID)
           </h2>
           <p class="about-description">
-            or known as <strong>TAJDID Corporation</strong> is a fully state-owned company under the
-            Terengganu State Government, operating under Menteri Besar, Terengganu Incorporated.
-            TAJDID functions as <strong>the entity to drive economic growth</strong> and
-            <strong>the development of a digital society</strong> based on digital technology and
-            the Fourth Industrial Revolution (4IR)
+            or known as TAJDID Corporation Sdn. Bhd. is a wholly owned subsidiary of MBI Modal Sdn. Bhd., under the auspices of Mentri Besar, Trengganu (Incorporated).
+          As the sole entity mandated to drive the digital transformation of the state, TAJDID - an acronym for Terengganu Advanced Joint Digital Intelligent Development
+          - is entrusted with advancing economic growth and cultivating a digitally empowered society through the adoption of digital technologies and Fourth Industrial Revolution (IR4.0) principles.
+          This mission positions the state of Terengganu towards achieving the status of a technologically advanced economy and a digitally driven state.
           </p>
         </div>
 

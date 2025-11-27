@@ -42,6 +42,41 @@
     },
     "no_additional": "Tiada kandungan tambahan untuk berita ini.",
     "more_photos": "Lebih Banyak Gambar ({count})"
+    ,"filters": {
+      "category": "Kategori:",
+      "all": "Semua",
+      "date": "Tarikh:",
+      "any_date": "Mana-mana tarikh",
+      "showing": "Memaparkan {shown} daripada {total}"
+    }
+  },
+  "admin": {
+    "title": "Akses Admin",
+    "prompt": "Masukkan kata laluan admin:",
+    "placeholder": "Kata Laluan",
+    "login": "Log Masuk",
+    "cancel": "Batal",
+    "confirm_delete": "Adakah anda pasti mahu memadam berita ini?",
+    "messages": {
+      "deleted": "Berita berjaya dipadam.",
+      "delete_failed": "Gagal memadam berita."
+    },
+    "wrong_password": "Kata laluan salah",
+    "panel": {
+      "add_title": "Tambah Berita",
+      "edit_title": "Edit Berita",
+      "field_title": "Tajuk",
+      "field_content": "Kandungan Penuh",
+      "field_images": "Gambar (Banyak)",
+      "field_category": "Kategori",
+      "field_date": "Tarikh",
+      "featured": "Pilihan",
+      "save": "Simpan",
+      "cancel": "Batal",
+      "remove_image": "Padam Gambar",
+      "primary_image": "Gambar Utama",
+      "uploading": "Memuat naik..."
+    }
   },
   "contact": {
     "title": "Hubungi Kami",
@@ -62,6 +97,7 @@
     "address_title": "Alamat",
     "organization": "Terengganu Advanced Joint Digital Intelligent Development (TAJDID)",
     "address_line": "Tingkat 2, TD1303, Jalan Sultan Zainal Abidin, 20000 Kuala Terengganu, Terengganu Darul Iman",
-    "social_media": "Media Sosial"
+    "social_media": "Media Sosial",
+    "visitors_label": "Pengunjung"
   }
 }

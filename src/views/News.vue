@@ -10,7 +10,6 @@ defineOptions({
 const router = useRouter()
 
 // API Base URLs (local Laragon)
-// For Laragon local development
 const API_BASE_URL = 'http://localhost/tajdid-api/api/news.php'
 const UPLOAD_API_URL = 'http://localhost/tajdid-api/api/upload.php'
 
@@ -239,13 +238,19 @@ const loadNews = async () => {
 const saveNews = async () => {
   try {
     const imageUrls = uploadedImages.value.map((img) => img.url)
+    // Map frontend form to API shape (backend expects `published_at`)
     const newsData = {
       ...newsForm.value,
       image: JSON.stringify(imageUrls),
       description: getContentExcerpt(newsForm.value.content), // Auto-generate from content
+      published_at: newsForm.value.date || null,
     }
+    // backend may not expect `date` key; remove to avoid ambiguity
+    if (newsData.hasOwnProperty('date')) delete newsData.date
 
     if (isEditing.value) {
+      // Ensure id is integer
+      newsData.id = Number(newsData.id)
       await axios.put(API_BASE_URL, newsData)
       alert('News updated successfully!')
     } else {
@@ -440,11 +445,27 @@ const openNewNewsForm = () => {
     if (event && typeof event.stopPropagation === 'function') event.stopPropagation()
 
     isEditing.value = true
+
+    // Normalize incoming item fields to the form shape
     newsForm.value = {
-      ...item,
+      id: item.id ?? null,
+      title: item.title ?? '',
+      // prefer content, fall back to description
+      content: item.content ?? item.description ?? '',
+      // frontend form uses `date` while backend may use `published_at`
+      // normalize date to YYYY-MM-DD (strip time if present)
+      date: (function(){
+        const raw = item.published_at ?? item.date ?? '';
+        if (!raw) return new Date().toISOString().split('T')[0];
+        // common formats: 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' or ISO
+        return (typeof raw === 'string' && raw.length >= 10) ? raw.slice(0,10) : new Date(raw).toISOString().split('T')[0];
+      })(),
+      category: item.category ?? 'general',
       is_featured: item.is_featured === 1 || item.is_featured === true,
+      image: item.image ?? null,
     }
 
+    // Populate uploadedImages from stored image JSON (array of URLs or single url)
     const existingImages = parseImages(item.image)
     uploadedImages.value = existingImages.map((url, index) => ({
       url: url,
@@ -564,8 +585,8 @@ onMounted(() => {
     <!-- Header -->
     <section class="news-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">{{ $t('news.title') }}</h1>
-        <p class="page-subtitle">{{ $t('news.subtitle') }}</p>
+        <h1 class="page-title">Latest News & Updates</h1>
+        <p class="page-subtitle">Showcasing our latest milestones and impactful activities</p>
       </div>
     </section>
 
@@ -574,7 +595,7 @@ onMounted(() => {
       <div class="max-w-7xl mx-auto px-4">
         <div v-if="loading" class="loading-state">
           <div class="spinner"></div>
-          <p>{{ $t('news.loading') }}</p>
+          <p>Loading news...</p>
         </div>
 
         <div v-else-if="news.length === 0" class="empty-state">
@@ -583,13 +604,13 @@ onMounted(() => {
               d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
             />
           </svg>
-          <h3>{{ $t('news.empty_title') }}</h3>
-          <p>{{ $t('news.empty_text') }}</p>
+          <h3>No News Available</h3>
+          <p>Check back later for updates</p>
         </div>
 
         <div v-else>
           <!-- Filters -->
-            <div class="news-filters" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
+          <div class="news-filters" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
             <div style="display:flex;gap:0.5rem;align-items:center;">
               <label style="font-weight:600">Category:</label>
               <select v-model="selectedCategory" class="form-input" style="min-width:140px;padding:0.35rem;border-radius:6px;">
@@ -628,8 +649,8 @@ onMounted(() => {
               </div>
             </div>
 
-              <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center;">
-              <button type="button" @click="clearFilters" class="btn-cancel">{{ $t('news.buttons.clear') }}</button>
+            <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center;">
+              <button type="button" @click="clearFilters" class="btn-cancel">Clear</button>
               <div style="font-size:0.9rem;color:#374151">Showing {{ filteredNews.length }} of {{ news.length }}</div>
             </div>
           </div>

@@ -121,7 +121,7 @@ const submitForm = async () => {
 
             <div class="company-info">
               <p class="company-address">
-                Terengganu Advanced Joint Digital Intelligent Development (TAJDID)<br />
+                TAJDID Corporation Sdn. Bhd.<br />
                 2nd Floor, TD1303, Jalan Sultan Zainal Abidin<br />
                 20000 Kuala Terengganu<br />
                 Terengganu Darul Iman
@@ -186,7 +186,7 @@ const submitForm = async () => {
                 </svg>
               </a>
               <a
-                href="https://www.tiktok.com/@tajdid.academy"
+                href="https://www.tiktok.com/@tajdid_official"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="social-link"

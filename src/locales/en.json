@@ -42,6 +42,41 @@
     },
     "no_additional": "No additional content available for this news item.",
     "more_photos": "More Photos ({count})"
+    ,"filters": {
+      "category": "Category:",
+      "all": "All",
+      "date": "Date:",
+      "any_date": "Any date",
+      "showing": "Showing {shown} of {total}"
+    }
+  },
+  "admin": {
+    "title": "Admin Access",
+    "prompt": "Enter admin password:",
+    "placeholder": "Password",
+    "login": "Login",
+    "cancel": "Cancel",
+    "confirm_delete": "Are you sure you want to delete this news item?",
+    "messages": {
+      "deleted": "News deleted successfully.",
+      "delete_failed": "Failed to delete news."
+    },
+    "wrong_password": "Incorrect password",
+    "panel": {
+      "add_title": "Add News",
+      "edit_title": "Edit News",
+      "field_title": "Title",
+      "field_content": "Full Content",
+      "field_images": "Images (Multiple)",
+      "field_category": "Category",
+      "field_date": "Date",
+      "featured": "Featured",
+      "save": "Save",
+      "cancel": "Cancel",
+      "remove_image": "Remove Image",
+      "primary_image": "Primary Image",
+      "uploading": "Uploading..."
+    }
   },
   "contact": {
     "title": "Contact Us",
@@ -62,6 +97,7 @@
     "address_title": "Address",
     "organization": "Terengganu Advanced Joint Digital Intelligent Development (TAJDID)",
     "address_line": "2nd Floor, TD1303, Jalan Sultan Zainal Abidin, 20000 Kuala Terengganu, Terengganu Darul Iman",
-    "social_media": "Social Media"
+    "social_media": "Social Media",
+    "visitors_label": "Visitors"
   }
 }

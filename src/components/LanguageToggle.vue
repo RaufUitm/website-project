@@ -21,9 +21,8 @@ const toggle = () => {
 
 <style scoped>
 .lang-toggle {
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0);
   background: transparent;
-  padding: 0.375rem 0.75rem;
   border-radius: 9999px;
   font-weight: 700;
   cursor: pointer;

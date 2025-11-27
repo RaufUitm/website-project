@@ -104,9 +104,9 @@ const submitForm = async () => {
     <!-- Header -->
     <section class="contact-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">Contact Us</h1>
+        <h1 class="page-title">{{ $t('contact.title') }}</h1>
         <p class="page-subtitle">
-          We're here to help. Reach out to us for inquiries, support, or collaboration opportunities
+          {{ $t('contact.subtitle') }}
         </p>
       </div>
     </section>
@@ -117,7 +117,7 @@ const submitForm = async () => {
         <div class="contact-grid">
           <!-- Left Side - Company Info -->
           <div class="info-section">
-            <h2 class="section-title">Office Information</h2>
+            <h2 class="section-title">{{ $t('contact.office_information') }}</h2>
 
             <div class="company-info">
               <p class="company-address">
@@ -143,7 +143,7 @@ const submitForm = async () => {
               <div class="operation-hours">
                 <h4 class="info-heading">Business Hours</h4>
                 <ul class="hours-list">
-                  <li>Sunday - Thusday: 9:00 AM - 5:30 PM</li>
+                  <li>Sunday - Thursday: 8:30 AM - 5:30 PM</li>
                   <li>Friday - Saturday: Closed</li>
                 </ul>
               </div>
@@ -229,48 +229,48 @@ const submitForm = async () => {
 
           <!-- Right Side - Contact Form -->
           <div class="form-section">
-            <h2 class="form-title">Send a Message</h2>
+            <h2 class="form-title">{{ $t('contact.form_title') }}</h2>
 
             <form @submit.prevent="submitForm" class="contact-form">
               <div class="form-control">
                 <input
                   v-model="form.name"
-                  type="text"
-                  required
-                  class="input input-bordered w-full"
-                  placeholder="Your Name"
-                  :disabled="isLoading"
+                    type="text"
+                    required
+                    class="input input-bordered w-full"
+                    :placeholder="$t('contact.placeholder_name')"
+                    :disabled="isLoading"
                 />
               </div>
 
               <div class="form-control">
                 <input
                   v-model="form.email"
-                  type="email"
-                  required
-                  class="input input-bordered w-full"
-                  placeholder="Email ID"
-                  :disabled="isLoading"
+                    type="email"
+                    required
+                    class="input input-bordered w-full"
+                    :placeholder="$t('contact.placeholder_email')"
+                    :disabled="isLoading"
                 />
               </div>
 
               <div class="form-control">
                 <textarea
                   v-model="form.message"
-                  required
-                  rows="6"
-                  class="textarea textarea-bordered w-full"
-                  placeholder="How can we help you?"
-                  :disabled="isLoading"
+                    required
+                    rows="6"
+                    class="textarea textarea-bordered w-full"
+                    :placeholder="$t('contact.placeholder_message')"
+                    :disabled="isLoading"
                 ></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" :disabled="isLoading">
-                {{ isLoading ? 'Sending...' : 'Submit' }}
+                {{ isLoading ? $t('contact.sending') || 'Sending...' : $t('contact.submit') }}
               </button>
 
               <div v-if="submitted" class="success-message">
-                Thank you! We'll get back to you soon.
+                {{ $t('contact.success_message') }}
               </div>
 
               <div v-if="autoReplyStatus" class="info-message">
@@ -278,7 +278,7 @@ const submitForm = async () => {
               </div>
 
               <div v-if="error" class="error-message">
-                {{ error }}
+                {{ $t('contact.error_send') }}
               </div>
             </form>
           </div>
@@ -296,7 +296,7 @@ const submitForm = async () => {
             scrolling="no"
             marginheight="0"
             marginwidth="0"
-            src="https://maps.google.com/maps?width=589&height=385&hl=en&q=TD1303&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+            src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Tajdid&t=&z=14&ie=UTF8&iwloc=B&output=embed"
           ></iframe>
         </div>
       </div>

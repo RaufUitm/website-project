@@ -68,11 +68,12 @@ const directors = ref([
     image: new URL('@/assets/img/2.png', import.meta.url).href,
   },
   {
-    image: new URL('@/assets/img/1.png', import.meta.url).href,
-  },
-  {
     image: new URL('@/assets/img/8.png', import.meta.url).href,
   },
+  {
+    image: new URL('@/assets/img/1.png', import.meta.url).href,
+  },
+
   {
     image: new URL('@/assets/img/5.png', import.meta.url).href,
   },
@@ -241,8 +242,8 @@ onUnmounted(() => {
     <!-- Header -->
     <section class="about-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">About Us</h1>
-        <p class="page-subtitle">Discover who we are and what drives us forward</p>
+        <h1 class="page-title">{{ $t('about.title') }}</h1>
+        <p class="page-subtitle">{{ $t('about.subtitle') }}</p>
       </div>
     </section>
 
@@ -256,12 +257,12 @@ onUnmounted(() => {
       <div class="interactive-glow"></div>
 
       <div class="max-w-8xl mx-auto px-6">
-        <h1 class="hero-title">"Together We Make A Difference"</h1>
+        <h1 class="hero-title">{{ $t('about.hero_quote') }}</h1>
       </div>
 
       <!-- Shared Values Title -->
       <div class="shared-values-header">
-        <h2 class="shared-values-title">Our <span class="outline-text">Shared Values</span></h2>
+        <h2 class="shared-values-title">{{ $t('about.shared_values') }}</h2>
       </div>
 
       <!-- Moving shared values (contained) -->

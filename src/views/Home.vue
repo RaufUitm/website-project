@@ -6,8 +6,8 @@ defineOptions({
   name: 'HomePage',
 })
 
-// API Base URL
-const API_BASE_URL = 'http://192.168.0.13/tajdid-api/api/news.php'
+const API_BASE_URL = 'http://localhost/tajdid-api/api/news.php'
+const UPLOAD_API_URL = 'http://localhost/tajdid-api/api/upload.php'
 
 const features = ref([
   {
@@ -213,12 +213,10 @@ onMounted(() => {
       <div class="hero-content">
         <div class="max-w-8xl mx-auto px-6">
           <!-- Top Subtitle -->
-          <p class="hero-top-subtitle text-left">
-            TERENGGANU ADVANCED JOINT DIGITAL INTELLIGENT DEVELOPMENT
-          </p>
+          <p class="hero-top-subtitle text-left">{{ $t('home.top_subtitle') }}</p>
 
           <!-- Main Title -->
-          <h1 class="hero-main-title text-left">TAJDID CORPORATION<br />SDN BHD</h1>
+          <h1 class="hero-main-title text-left">{{ $t('home.main_title') }}</h1>
 
           <!-- Feature Cards Below Title -->
           <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
@@ -276,16 +274,12 @@ onMounted(() => {
     <!-- Latest News Section -->
     <section class="py-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-green-600 mb-8">Latest News</h2>
-        <h3 class="text-3xl font-bold mb-12">
-          <span class="text-gray-800">Showcasing our latest </span>
-          <span class="text-green-600">milestones </span>
-          <span class="text-gray-800">and impactful activities</span>
-        </h3>
+        <h2 class="text-4xl font-bold text-green-600 mb-8">{{ $t('news.title') }}</h2>
+        <h3 class="text-3xl font-bold mb-12">{{ $t('news.subtitle') }}</h3>
 
         <div v-if="loading" class="text-center py-12">
           <div class="spinner"></div>
-          <p class="mt-4 text-gray-600">Loading news...</p>
+          <p class="mt-4 text-gray-600">{{ $t('home.loading_news') }}</p>
         </div>
 
         <div v-else class="news-grid-new">
@@ -378,7 +372,7 @@ onMounted(() => {
       </div>
       <div class="max-w-2xl mx-auto px-4">
         <button class="more-news-btn-new">
-          <router-link to="/news">More News +</router-link>
+          <router-link to="/news">{{ $t('news.more') }}</router-link>
         </button>
       </div>
     </section>

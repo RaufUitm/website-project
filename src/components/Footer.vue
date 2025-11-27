@@ -40,35 +40,32 @@ const socialLinks = ref([
         <!-- Logo and Social Media -->
         <div class="footer-brand">
           <img src="@/assets/img/logo.png" alt="TAJDID Logo" class="footer-logo" />
-          <p class="company-name">TAJDID CORPORATION SDN BHD</p>
+          <p class="company-name">{{ $t('footer.company_name') }}</p>
         </div>
 
         <!-- Explore Links -->
         <div class="footer-section">
-          <h4 class="footer-heading">Explore</h4>
+          <h4 class="footer-heading">{{ $t('footer.explore') }}</h4>
           <ul class="footer-links">
-            <li><router-link to="/home" class="footer-link">Home</router-link></li>
-            <li><router-link to="/services" class="footer-link">Services</router-link></li>
-            <li><router-link to="/" class="footer-link">News</router-link></li>
-            <li><router-link to="/contact" class="footer-link">Contact Us</router-link></li>
+            <li><router-link to="/" class="footer-link">{{ $t('nav.home') }}</router-link></li>
+            <li><router-link to="/services" class="footer-link">{{ $t('nav.services') }}</router-link></li>
+            <li><router-link to="/news" class="footer-link">{{ $t('nav.news') }}</router-link></li>
+            <li><router-link to="/contact" class="footer-link">{{ $t('nav.contact') }}</router-link></li>
           </ul>
         </div>
 
         <!-- Address -->
         <div class="footer-section">
-          <h4 class="footer-heading">Address</h4>
+          <h4 class="footer-heading">{{ $t('footer.address_title') }}</h4>
           <div class="footer-address">
-            <p>Terengganu Advanced Joint Digital Intelligent Development (TAJDID)</p>
-            <p class="address-details">
-              2nd Floor, TD1303, Jalan Sultan Zainal Abidin 20000 Kuala Terengganu Terengganu Darul
-              Iman
-            </p>
+            <p>{{ $t('footer.organization') }}</p>
+            <p class="address-details">{{ $t('footer.address_line') }}</p>
           </div>
         </div>
 
         <!-- Social Media & Contact -->
         <div class="footer-section">
-          <h4 class="footer-heading">Social Media</h4>
+          <h4 class="footer-heading">{{ $t('footer.social_media') }}</h4>
           <div class="social-media-icons">
             <a
               v-for="social in socialLinks"

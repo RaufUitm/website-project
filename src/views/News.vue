@@ -9,9 +9,10 @@ defineOptions({
 
 const router = useRouter()
 
-// API Base URLs
-const API_BASE_URL = 'http://192.168.0.13/tajdid-api/api/news.php'
-const UPLOAD_API_URL = 'http://192.168.0.13/tajdid-api/api/upload.php'
+// API Base URLs (local Laragon)
+// For Laragon local development
+const API_BASE_URL = 'http://localhost/tajdid-api/api/news.php'
+const UPLOAD_API_URL = 'http://localhost/tajdid-api/api/upload.php'
 
 const news = ref([])
 const loading = ref(true)
@@ -563,8 +564,8 @@ onMounted(() => {
     <!-- Header -->
     <section class="news-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">Latest News & Updates</h1>
-        <p class="page-subtitle">Showcasing our latest milestones and impactful activities</p>
+        <h1 class="page-title">{{ $t('news.title') }}</h1>
+        <p class="page-subtitle">{{ $t('news.subtitle') }}</p>
       </div>
     </section>
 
@@ -573,7 +574,7 @@ onMounted(() => {
       <div class="max-w-7xl mx-auto px-4">
         <div v-if="loading" class="loading-state">
           <div class="spinner"></div>
-          <p>Loading news...</p>
+          <p>{{ $t('news.loading') }}</p>
         </div>
 
         <div v-else-if="news.length === 0" class="empty-state">
@@ -582,13 +583,13 @@ onMounted(() => {
               d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
             />
           </svg>
-          <h3>No News Available</h3>
-          <p>Check back later for updates</p>
+          <h3>{{ $t('news.empty_title') }}</h3>
+          <p>{{ $t('news.empty_text') }}</p>
         </div>
 
         <div v-else>
           <!-- Filters -->
-          <div class="news-filters" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
+            <div class="news-filters" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
             <div style="display:flex;gap:0.5rem;align-items:center;">
               <label style="font-weight:600">Category:</label>
               <select v-model="selectedCategory" class="form-input" style="min-width:140px;padding:0.35rem;border-radius:6px;">
@@ -627,8 +628,8 @@ onMounted(() => {
               </div>
             </div>
 
-            <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center;">
-              <button type="button" @click="clearFilters" class="btn-cancel">Clear</button>
+              <div style="margin-left:auto;display:flex;gap:0.5rem;align-items:center;">
+              <button type="button" @click="clearFilters" class="btn-cancel">{{ $t('news.buttons.clear') }}</button>
               <div style="font-size:0.9rem;color:#374151">Showing {{ filteredNews.length }} of {{ news.length }}</div>
             </div>
           </div>

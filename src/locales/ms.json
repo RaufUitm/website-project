@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Laman Utama",
+    "about": "Tentang Kami",
+    "services": "Perkhidmatan",
+    "news": "Berita",
+    "contact": "Hubungi"
+  },
+  "toggle": {
+    "label_en": "EN",
+    "label_ms": "BM"
+  }
+  ,
+  "home": {
+    "hero": "Bersama Kita Membuat Perubahan",
+    "loading_news": "Memuatkan berita...",
+    "top_subtitle": "TERENGGANU ADVANCED JOINT DIGITAL INTELLIGENT DEVELOPMENT",
+    "main_title": "TAJDID CORPORATION\nSDN BHD"
+  },
+  "about": {
+    "title": "Tentang Kami",
+    "subtitle": "Terokai siapa kami dan apa yang mendorong kami ke hadapan",
+    "hero_quote": "\"Bersama-sama Kita Membuat Perubahan\"",
+    "shared_values": "Nilai Sepunya"
+  },
+  "services": {
+    "title": "Perkhidmatan Kami",
+    "subtitle": "Kami menyediakan penyelesaian digital pintar dan perundingan",
+    "details_label": "Perincian"
+  },
+  "news": {
+    "title": "Berita & Kemaskini Terkini",
+    "subtitle": "Memaparkan pencapaian terbaru dan aktiviti kami",
+    "loading": "Memuatkan berita...",
+    "empty_title": "Tiada Berita",
+    "empty_text": "Sila semak semula kemudian",
+    "loading_details": "Memuatkan butiran berita..."
+    ,"more": "Berita Lanjut +",
+    "buttons": {
+      "clear": "Kosongkan",
+      "back": "Kembali ke Berita"
+    },
+    "no_additional": "Tiada kandungan tambahan untuk berita ini.",
+    "more_photos": "Lebih Banyak Gambar ({count})"
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Kami sedia membantu. Hubungi kami untuk pertanyaan, sokongan, atau kerjasama",
+    "office_information": "Maklumat Pejabat",
+    "form_title": "Hantar Mesej",
+    "placeholder_name": "Nama Anda",
+    "placeholder_email": "ID Emel",
+    "placeholder_message": "Bagaimana kami boleh membantu anda?",
+    "submit": "Hantar",
+    "success_message": "Terima kasih! Kami akan menghubungi anda tidak lama lagi.",
+    "error_send": "Gagal menghantar mesej. Sila cuba lagi."
+  }
+  ,
+  "footer": {
+    "company_name": "TAJDID CORPORATION SDN BHD",
+    "explore": "Terokai",
+    "address_title": "Alamat",
+    "organization": "Terengganu Advanced Joint Digital Intelligent Development (TAJDID)",
+    "address_line": "Tingkat 2, TD1303, Jalan Sultan Zainal Abidin, 20000 Kuala Terengganu, Terengganu Darul Iman",
+    "social_media": "Media Sosial"
+  }
+}

@@ -115,10 +115,8 @@ const services = ref([
     <!-- Header -->
     <section class="services-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">Our Service</h1>
-        <p class="page-subtitle">
-          Empowering digital transformation through innovative solutions and expert guidance
-        </p>
+        <h1 class="page-title">{{ $t('services.title') }}</h1>
+        <p class="page-subtitle">{{ $t('services.subtitle') }}</p>
       </div>
     </section>
 
@@ -147,7 +145,7 @@ const services = ref([
 
 
                   <div class="features-section">
-                    <h3 class="features-title">Details</h3>
+                    <h3 class="features-title">{{ $t('services.details_label') }}</h3>
                     <ul class="features-list">
                       <li v-for="(detail, idx) in service.details" :key="idx" class="feature-item">
                         <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -208,7 +206,7 @@ const services = ref([
 
                 <!-- Key Features -->
                 <div class="features-section">
-                  <h3 class="features-title">Details</h3>
+                  <h3 class="features-title">{{ $t('services.details_label') }}</h3>
                   <ul class="features-list">
                     <li v-for="(detail, idx) in service.details" :key="idx" class="feature-item">
                       <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">

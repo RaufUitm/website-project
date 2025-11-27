@@ -2,6 +2,7 @@
 defineOptions({
   name: 'NavBar',
 })
+import LanguageToggle from './LanguageToggle.vue'
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
@@ -45,8 +46,8 @@ onUnmounted(() => {
 
 const services = [
   { id: 'software-development', name: 'Software Development' },
-  { id: 'interactive-analytics-dashboard', name: 'Interactive Analytics Dashboard' },
   { id: 'AI-surveillance-system', name: 'AI Surveillance System' },
+  { id: 'interactive-analytics-dashboard', name: 'Interactive Analytics Dashboard' },
   { id: 'smart-technology-provider', name: 'Smart Technology Provider' },
   { id: 'Training-Consultancy', name: 'Training & Consultancy' },
   { id: 'nfc-business-card', name: 'NFC Business Card' },
@@ -87,9 +88,9 @@ const scrollToService = (serviceId) => {
         </div>
 
         <!-- Desktop Menu (unchanged) -->
-        <div class="desktop-menu">
-          <router-link to="/home" class="nav-link">Home</router-link>
-          <router-link to="/about" class="nav-link">About Us</router-link>
+            <div class="desktop-menu">
+            <router-link to="/home" class="nav-link">{{ $t('nav.home') }}</router-link>
+            <router-link to="/about" class="nav-link">{{ $t('nav.about') }}</router-link>
 
           <div
             class="dropdown-container"
@@ -129,8 +130,9 @@ const scrollToService = (serviceId) => {
             </div>
           </div>
 
-          <router-link to="/news" class="nav-link">News</router-link>
-          <router-link to="/contact" class="nav-link">Contact</router-link>
+          <router-link to="/news" class="nav-link">{{ $t('nav.news') }}</router-link>
+          <router-link to="/contact" class="nav-link">{{ $t('nav.contact') }}</router-link>
+          <LanguageToggle />
         </div>
 
         <!-- Mobile Hamburger Menu Button -->
@@ -164,23 +166,23 @@ const scrollToService = (serviceId) => {
             <!-- Menu Items -->
             <div class="mobile-menu-content">
               <router-link to="/home" class="mobile-nav-item">
-                <span class="nav-item-text">Home</span>
+                <span class="nav-item-text">{{ $t('nav.home') }}</span>
               </router-link>
 
               <router-link to="/about" class="mobile-nav-item">
-                <span class="nav-item-text">About Us</span>
+                <span class="nav-item-text">{{ $t('nav.about') }}</span>
               </router-link>
 
               <router-link to="/services" class="mobile-nav-item">
-                <span class="nav-item-text">Services</span>
+                <span class="nav-item-text">{{ $t('nav.services') }}</span>
               </router-link>
 
               <router-link to="/news" class="mobile-nav-item">
-                <span class="nav-item-text">News</span>
+                <span class="nav-item-text">{{ $t('nav.news') }}</span>
               </router-link>
 
               <router-link to="/contact" class="mobile-nav-item">
-                <span class="nav-item-text">Contact</span>
+                <span class="nav-item-text">{{ $t('nav.contact') }}</span>
               </router-link>
             </div>
 

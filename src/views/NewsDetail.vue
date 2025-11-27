@@ -6,7 +6,9 @@ import axios from 'axios'
 const route = useRoute()
 const router = useRouter()
 
-const API_BASE_URL = 'http://192.168.0.13/tajdid-api/api/news.php'
+
+const API_BASE_URL = 'http://localhost/tajdid-api/api/news.php'
+
 
 const newsItem = ref(null)
 const loading = ref(true)
@@ -176,7 +178,7 @@ onMounted(() => {
     <!-- Loading State -->
     <div v-if="loading" class="loading-container">
       <div class="spinner"></div>
-      <p>Loading news details...</p>
+      <p>{{ $t('news.loading_details') }}</p>
     </div>
 
     <!-- News Detail Content -->
@@ -207,7 +209,7 @@ onMounted(() => {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            Back to News
+            {{ $t('news.buttons.back') }}
           </button>
         </div>
 
@@ -247,13 +249,13 @@ onMounted(() => {
               </p>
             </div>
             <div v-else class="no-content">
-              <p>No additional content available for this news item.</p>
+              <p>{{ $t('news.no_additional') }}</p>
             </div>
           </div>
 
           <!-- Additional Images Gallery -->
           <div v-if="additionalImages.length > 0" class="gallery-section">
-            <h3 class="gallery-heading">More Photos ({{ additionalImages.length }})</h3>
+            <h3 class="gallery-heading">{{ $t('news.more_photos', {count: additionalImages.length}) }}</h3>
 
             <div class="gallery-grid">
               <figure
@@ -274,7 +276,7 @@ onMounted(() => {
 
           <!-- Footer -->
           <footer class="article-footer">
-            <button @click="goBack" class="footer-button">← Back to All News</button>
+            <button @click="goBack" class="footer-button">← {{ $t('news.buttons.back') }}</button>
           </footer>
         </article>
       </div>

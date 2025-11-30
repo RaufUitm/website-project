@@ -262,8 +262,14 @@ const saveNews = async () => {
     await loadNews()
     openNewNewsForm()
   } catch (error) {
+    // Log full axios error response if available to help debugging
     console.error('Error saving news:', error)
-    alert('Failed to save news. Please try again.')
+    if (error.response) {
+      console.error('Server response:', error.response.status, error.response.data)
+      alert('Failed to save news: ' + (error.response.data?.message || error.response.status))
+    } else {
+      alert('Failed to save news. Please try again.')
+    }
   }
 }
 
@@ -336,7 +342,21 @@ const uploadFiles = async (files) => {
     })
 
     if (response.data.success && response.data.files) {
-      uploadedImages.value = [...uploadedImages.value, ...response.data.files]
+      // Normalize returned files and preserve existing primary selection
+      const existingCount = uploadedImages.value.length
+      const normalized = response.data.files.map((f, i) => ({
+        url: f.url || f.path || '',
+        filename: f.filename || (f.url ? f.url.split('/').pop() : `upload_${Date.now()}_${i}`),
+        original_name: f.original_name || '',
+        is_primary: !!f.is_primary || false,
+      }))
+
+      // If there was no existing image, mark first uploaded as primary
+      if (existingCount === 0 && normalized.length > 0) {
+        normalized[0].is_primary = true
+      }
+
+      uploadedImages.value = [...uploadedImages.value, ...normalized]
 
       if (response.data.errors && response.data.errors.length > 0) {
         alert('Some files had errors:\n' + response.data.errors.join('\n'))
@@ -354,15 +374,39 @@ const uploadFiles = async (files) => {
 // Remove uploaded image
 const removeImage = (index) => {
   if (confirm('Remove this image?')) {
-    uploadedImages.value.splice(index, 1)
+    console.log('Removing image at', index, uploadedImages.value)
+    // Use non-mutating filter to ensure reactivity and stable keys
+    uploadedImages.value = uploadedImages.value.filter((_, i) => i !== index)
+    // Ensure there's always a primary if images remain
+    if (uploadedImages.value.length > 0) {
+      const hasPrimary = uploadedImages.value.some((img) => img.is_primary)
+      if (!hasPrimary) {
+        // set first as primary
+        uploadedImages.value = uploadedImages.value.map((it, i) => ({ ...it, is_primary: i === 0 }))
+      }
+    }
+    console.log('After remove:', uploadedImages.value)
   }
 }
 
 // Set image as primary
 const setPrimaryImage = (index) => {
-  const images = uploadedImages.value
-  const [primaryImage] = images.splice(index, 1)
-  uploadedImages.value = [primaryImage, ...images]
+  console.log('Set primary requested for', index, uploadedImages.value)
+  let images = uploadedImages.value.slice()
+  // set is_primary flags and move selected to front
+  const [selected] = images.splice(index, 1)
+  selected.is_primary = true
+  // unset others
+  images = images.map((it) => ({ ...it, is_primary: false }))
+  uploadedImages.value = [selected, ...images]
+  // ensure reactivity by recreating objects
+  uploadedImages.value = uploadedImages.value.map((it, i) => ({ ...it, is_primary: i === 0 }))
+  console.log('After set primary:', uploadedImages.value)
+}
+
+// Debug helper: log when a thumbnail is clicked
+const debugThumbnailClick = (index) => {
+  console.log('DEBUG: thumbnail clicked', index, uploadedImages.value)
 }
 
 // Admin authentication
@@ -471,6 +515,7 @@ const openNewNewsForm = () => {
       url: url,
       filename: url.split('/').pop(),
       original_name: `Image ${index + 1}`,
+      is_primary: index === 0,
     }))
 
     // Open the admin panel and let the watcher scroll it into view below the header
@@ -785,17 +830,18 @@ onMounted(() => {
           </div>
 
           <div v-if="uploadedImages.length > 0" class="uploaded-images">
-            <div v-for="(image, index) in uploadedImages" :key="index" class="image-preview">
-              <img :src="image.url" :alt="image.original_name" />
+            <div v-for="(image, index) in uploadedImages" :key="image.url || image.filename || index" class="image-preview" @click.stop="debugThumbnailClick(index)">
+              <img :src="image.url" :alt="image.original_name" @click.stop="debugThumbnailClick(index)" style="cursor:pointer" />
               <div class="image-overlay">
                 <button
                   type="button"
-                  @click="setPrimaryImage(index)"
+                  @click.stop="setPrimaryImage(index)"
                   class="image-action-btn"
-                  :class="{ 'primary-badge': index === 0 }"
-                  :title="index === 0 ? 'Primary Image' : 'Set as Primary'"
+                  :class="{ 'primary-badge': image.is_primary }"
+                  :title="image.is_primary ? 'Primary Image' : 'Set as Primary'"
+                  style="pointer-events:auto"
                 >
-                  <svg v-if="index === 0" viewBox="0 0 24 24" fill="currentColor">
+                  <svg v-if="image.is_primary" viewBox="0 0 24 24" fill="currentColor">
                     <path
                       d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
                     />
@@ -814,9 +860,10 @@ onMounted(() => {
                 </button>
                 <button
                   type="button"
-                  @click="removeImage(index)"
+                  @click.stop="removeImage(index)"
                   class="image-remove-btn"
                   title="Remove Image"
+                  style="pointer-events:auto"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M6 18L18 6M6 6l12 12" />

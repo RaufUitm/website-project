@@ -1,10 +1,14 @@
 <?php
-// Simple visitors counter API - stores count in a flat file.
-// Routes:
-// GET  -> returns current count { success: true, count: N }
-// POST -> increments count and returns new count
-
-header('Content-Type: application/json');
+// Minimal CORS headers for visitors endpoint
+if (!headers_sent()) {
+    header_remove('Access-Control-Allow-Origin');
+    header_remove('Access-Control-Allow-Methods');
+    header_remove('Access-Control-Allow-Headers');
+}
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Accept');
+header('Content-Type: application/json; charset=utf-8');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     // CORS preflight

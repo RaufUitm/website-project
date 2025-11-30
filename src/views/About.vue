@@ -64,12 +64,13 @@ const updateMousePosition = (e) => {
 
 // Board of Directors data
 const directors = ref([
+{
+    image: new URL('@/assets/img/8.png', import.meta.url).href,
+  },
   {
     image: new URL('@/assets/img/2.png', import.meta.url).href,
   },
-  {
-    image: new URL('@/assets/img/8.png', import.meta.url).href,
-  },
+
   {
     image: new URL('@/assets/img/1.png', import.meta.url).href,
   },
@@ -78,13 +79,13 @@ const directors = ref([
     image: new URL('@/assets/img/5.png', import.meta.url).href,
   },
   {
-    image: new URL('@/assets/img/4.png', import.meta.url).href,
+    image: new URL('@/assets/img/6.png', import.meta.url).href,
   },
   {
     image: new URL('@/assets/img/3.png', import.meta.url).href,
   },
   {
-    image: new URL('@/assets/img/6.png', import.meta.url).href,
+    image: new URL('@/assets/img/4.png', import.meta.url).href,
   },
   {
     image: new URL('@/assets/img/7.png', import.meta.url).href,
@@ -340,10 +341,6 @@ onUnmounted(() => {
           <div class="director-card">
             <img :src="directors[0].image" alt="Chairman" class="director-image" />
           </div>
-        </div>
-
-        <!-- Row 2: 2 Directors -->
-        <div class="pyramid-row row-2">
           <div class="director-card">
             <img :src="directors[1].image" alt="Director" class="director-image" />
           </div>
@@ -351,6 +348,7 @@ onUnmounted(() => {
             <img :src="directors[2].image" alt="Director" class="director-image" />
           </div>
         </div>
+
 
         <!-- Row 3: 5 Directors -->
         <div class="pyramid-row row-3">

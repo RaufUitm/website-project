@@ -62,35 +62,7 @@ const updateMousePosition = (e) => {
   heroSection.style.setProperty('--mouse-y', `${y}%`)
 }
 
-// Board of Directors data
-const directors = ref([
-{
-    image: new URL('@/assets/img/8.png', import.meta.url).href,
-  },
-  {
-    image: new URL('@/assets/img/2.png', import.meta.url).href,
-  },
-
-  {
-    image: new URL('@/assets/img/1.png', import.meta.url).href,
-  },
-
-  {
-    image: new URL('@/assets/img/5.png', import.meta.url).href,
-  },
-  {
-    image: new URL('@/assets/img/6.png', import.meta.url).href,
-  },
-  {
-    image: new URL('@/assets/img/3.png', import.meta.url).href,
-  },
-  {
-    image: new URL('@/assets/img/4.png', import.meta.url).href,
-  },
-  {
-    image: new URL('@/assets/img/7.png', import.meta.url).href,
-  },
-])
+// Board of Directors data moved to a dedicated view (`Board.vue`)
 
 // Scroll animation observer
 const setupScrollAnimations = () => {
@@ -330,50 +302,6 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Board of Directors Section -->
-    <section class="board-section">
-      <div class="board-header">
-        <h2 class="board-title">BOARD OF <span class="board-highlight">DIRECTORS</span></h2>
-      </div>
-      <div class="board-pyramid-container">
-        <!-- Row 1: Chairman (1 person) -->
-        <div class="pyramid-row row-1">
-          <div class="director-card">
-            <img :src="directors[0].image" alt="Chairman" class="director-image" />
-          </div>
-          <div class="director-card">
-            <img :src="directors[1].image" alt="Director" class="director-image" />
-          </div>
-          <div class="director-card">
-            <img :src="directors[2].image" alt="Director" class="director-image" />
-          </div>
-        </div>
-
-
-        <!-- Row 3: 5 Directors -->
-        <div class="pyramid-row row-3">
-          <div class="director-card">
-            <img :src="directors[3].image" alt="Director" class="director-image" />
-          </div>
-          <div class="director-card">
-            <img :src="directors[4].image" alt="Director" class="director-image" />
-          </div>
-          <div class="director-card">
-            <img :src="directors[5].image" alt="Director" class="director-image" />
-          </div>
-          <div class="director-card">
-            <img :src="directors[6].image" alt="Director" class="director-image" />
-          </div>
-          <div class="director-card">
-            <img :src="directors[7].image" alt="Director" class="director-image" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Teams Section -->
-    <section class="teams-section">
-      <img src="@/assets/img/001.jpg" alt="Our Teams Organization Chart" class="teams-full-image" />
-    </section>
+    <!-- Board and Teams moved to dedicated pages: /about/board and /about/team -->
   </div>
 </template>

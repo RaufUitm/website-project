@@ -2,6 +2,9 @@
   "nav": {
     "home": "Home",
     "about": "About Us",
+    "about_us": "About Us",
+    "board": "Board of Directors",
+    "team": "Our Teams",
     "services": "Services",
     "news": "News",
     "contact": "Contact"

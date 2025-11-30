@@ -8,6 +8,7 @@ import { useRouter, useRoute } from 'vue-router'
 
 const mobileMenuOpen = ref(false)
 const servicesDropdownOpen = ref(false)
+const aboutDropdownOpen = ref(false)
 const isScrolled = ref(false)
 const router = useRouter()
 const route = useRoute()
@@ -22,6 +23,7 @@ watch(
   () => {
     mobileMenuOpen.value = false
     servicesDropdownOpen.value = false
+    aboutDropdownOpen.value = false
   },
 )
 
@@ -90,8 +92,37 @@ const scrollToService = (serviceId) => {
         <!-- Desktop Menu (unchanged) -->
             <div class="desktop-menu">
             <router-link to="/home" class="nav-link">{{ $t('nav.home') }}</router-link>
-            <router-link to="/about" class="nav-link">{{ $t('nav.about') }}</router-link>
+            <div
+              class="dropdown-container"
+              @mouseenter="aboutDropdownOpen = true"
+              @mouseleave="aboutDropdownOpen = false"
+            >
+              <router-link to="/about" class="nav-link">
+                {{ $t('nav.about') }}
+                <svg
+                  class="icon-sm icon-rotate"
+                  :class="{ rotated: aboutDropdownOpen }"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </router-link>
 
+              <div v-show="aboutDropdownOpen" class="dropdown-bridge"></div>
+
+              <div v-show="aboutDropdownOpen" class="dropdown-menu">
+                <router-link to="/about" class="dropdown-item">{{ $t('nav.about_us') || 'About Us' }}</router-link>
+                <router-link to="/about/board" class="dropdown-item">{{ $t('nav.board') || 'Board of Directors' }}</router-link>
+                <router-link to="/about/team" class="dropdown-item">{{ $t('nav.team') || 'Our Teams' }}</router-link>
+              </div>
+            </div>
           <div
             class="dropdown-container"
             @mouseenter="servicesDropdownOpen = true"
@@ -171,6 +202,14 @@ const scrollToService = (serviceId) => {
 
               <router-link to="/about" class="mobile-nav-item">
                 <span class="nav-item-text">{{ $t('nav.about') }}</span>
+              </router-link>
+
+              <router-link to="/about/board" class="mobile-nav-item">
+                <span class="nav-item-text">{{ $t('nav.board') || 'Board of Directors' }}</span>
+              </router-link>
+
+              <router-link to="/about/team" class="mobile-nav-item">
+                <span class="nav-item-text">{{ $t('nav.team') || 'Our Teams' }}</span>
               </router-link>
 
               <router-link to="/services" class="mobile-nav-item">

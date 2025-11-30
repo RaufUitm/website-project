@@ -500,24 +500,17 @@
   overflow: hidden;
   transition:
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   user-select: none;
   -webkit-user-drag: none;
   background: transparent;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.director-card.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .director-card:hover {
   transform: translateY(-10px) scale(1.05);
-
 }
 
 .director-image {

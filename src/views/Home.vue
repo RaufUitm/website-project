@@ -51,6 +51,15 @@ const aboutFeatures = ref([
   },
 ])
 
+// Strategic partners list (logos and optional website URL)
+const partners = ref([
+  { name: 'Kiwitech Sdn Bhd', url: 'https://kiwitech.com.my/', img: new URL('@/assets/img/Kiwitech.png', import.meta.url).href },
+  { name: 'Map2U Sdn Bhd', img: new URL('@/assets/img/map2u.png', import.meta.url).href },
+  { name: 'MSC CYBERPORT SDN. BHD', url: 'https://cyberport.com.my/', img:new URL('@/assets/img/Cyberport.png', import.meta.url).href },
+  { name: 'DIGITAL DAGANG SDN. BHD', url: 'https://digitaldagang.com/v2/', img:new URL('@/assets/img/DD.png', import.meta.url).href },
+  { name: 'Mieruka Sdn Bhd', url: 'https://dors-online.com/#home', img:new URL('@/assets/img/mieruka.png', import.meta.url).href },
+])
+
 const services = ref([
   {
     title: 'Software Development',
@@ -234,8 +243,6 @@ onMounted(() => {
       </div>
     </section>
 
-
-
     <!-- About Section -->
     <section class="pt-12 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
@@ -270,6 +277,34 @@ onMounted(() => {
         </div>
       </div>
     </section>
+        <!-- Strategic Partners Section -->
+    <section class="py-16 partners-section custom-section-bg">
+      <div class="max-w-7xl mx-auto px-4">
+       <h2 class="pt-24 pb-4 text-4xl md:text-5xl font-bold mb-16 text-center">
+          <span class="text-gray-800">Our </span>
+          <span class="text-green-600">Strategic Partners</span>
+        </h2>
+    <div class ="partner-container">
+        <div class="partners-grid">
+          <a
+            v-for="(p, idx) in partners"
+            :key="p.name + idx"
+            :href="p.url || '#'
+            "
+            class="partner-card"
+            :target="p.url ? '_blank' : '_self'"
+            rel="noopener noreferrer"
+          >
+            <div class="partner-logo">
+              <img v-if="p.img" :src="p.img" :alt="p.name" />
+              <div v-else class="partner-placeholder">{{ p.name }}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      </div>
+    </section>
+
     <!-- Latest News Section -->
     <section class="py-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
@@ -404,4 +439,35 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.partners-section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3vw;
+  align-items: center;
+}
+.partner-container {
+  border-top: 2px solid   #000000;
+  border-bottom:2px solid   #000000;
+  margin: 0 auto;
+}
+.partner-card { display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #fff;
+  text-decoration: none; color: inherit; }
+.partner-logo img { max-width: 240px; max-height: 128px; object-fit: contain; }
+.partner-placeholder { font-size: 0.9rem; color: #374151; text-align: center; padding: 0.75rem 1rem; }
+
+@media (max-width: 1240px) {
+  .partners-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 768px) {
+  .partners-grid { grid-template-columns: repeat(1, minmax(0,1fr)); }
+}
+</style>

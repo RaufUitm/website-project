@@ -277,36 +277,9 @@ onMounted(() => {
         </div>
       </div>
     </section>
-        <!-- Strategic Partners Section -->
-    <section class="py-16 partners-section custom-section-bg">
-      <div class="max-w-7xl mx-auto px-4">
-       <h2 class="pt-24 pb-4 text-4xl md:text-5xl font-bold mb-16 text-center">
-          <span class="text-gray-800">Our </span>
-          <span class="text-green-600">Strategic Partners</span>
-        </h2>
-    <div class ="partner-container">
-        <div class="partners-grid">
-          <a
-            v-for="(p, idx) in partners"
-            :key="p.name + idx"
-            :href="p.url || '#'
-            "
-            class="partner-card"
-            :target="p.url ? '_blank' : '_self'"
-            rel="noopener noreferrer"
-          >
-            <div class="partner-logo">
-              <img v-if="p.img" :src="p.img" :alt="p.name" />
-              <div v-else class="partner-placeholder">{{ p.name }}</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      </div>
-    </section>
 
     <!-- Latest News Section -->
-    <section class="py-20 custom-section-bg">
+    <section class="pt-20 custom-section-bg">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-4xl font-bold text-green-600 mb-8">{{ $t('news.title') }}</h2>
         <h3 class="text-3xl font-bold mb-12">{{ $t('news.subtitle') }}</h3>
@@ -408,6 +381,34 @@ onMounted(() => {
         <button class="more-news-btn-new">
           <router-link to="/news">{{ $t('news.more') }}</router-link>
         </button>
+      </div>
+    </section>
+
+          <!-- Strategic Partners Section -->
+    <section class="py-16 partners-section custom-section-bg">
+      <div class="max-w-7xl mx-auto px-4">
+       <h2 class="pt-24 pb-4 text-4xl md:text-5xl font-bold mb-16 text-center">
+          <span class="text-gray-800">Our </span>
+          <span class="text-green-600">Strategic Partners</span>
+        </h2>
+    <div class ="partner-container">
+        <div class="partners-grid">
+          <a
+            v-for="(p, idx) in partners"
+            :key="p.name + idx"
+            :href="p.url || '#'
+            "
+            class="partner-card"
+            :target="p.url ? '_blank' : '_self'"
+            rel="noopener noreferrer"
+          >
+            <div class="partner-logo">
+              <img v-if="p.img" :src="p.img" :alt="p.name" />
+              <div v-else class="partner-placeholder">{{ p.name }}</div>
+            </div>
+          </a>
+        </div>
+      </div>
       </div>
     </section>
 

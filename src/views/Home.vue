@@ -29,24 +29,24 @@ const features = ref([
 const aboutFeatures = ref([
   {
     title: 'Smart Collaboration & Sharing',
-    description: "e-room tools for the management of Terengganu's digital citizen agencies",
+    description: "Responsible for driving and coordinating the implementation of Terengganu’s Digitalization Agenda through strategic partnerships, knowledge sharing and cross-sector collaboration.",
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
   },
   {
     title: 'Big Data Advisory',
     description:
-      'Responsible for coordination and technical advice on the delivery of Big Data initiatives',
+      'Responsible for providing consultation and advisory services on the effective utilization of Big Data Intelligence to support informed decision-making and digital transformation initiatives.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
   },
   {
     title: 'Consulting and Advisory Services',
     description:
-      'Responsible for the development of strategic plan and action plan a digital society',
+      'Responsible for formulating strategic plans and actionable roadmaps anchored in digital technologies and Fourth Industrial Revolution (4IR) principles',
     image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800',
   },
   {
     title: 'Islamic Digital Leadership Development Training',
-    description: 'Responsible for handling economic activity and society',
+    description: 'Responsible for developing the business community and society through structured training programs that integrate Islamic values with digital leadership competencies',
     image: new URL('@/assets/img/train.jpg', import.meta.url).href,
   },
 ])

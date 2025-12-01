@@ -62,7 +62,6 @@ const updateMousePosition = (e) => {
   heroSection.style.setProperty('--mouse-y', `${y}%`)
 }
 
-// Board of Directors data moved to a dedicated view (`Board.vue`)
 
 // Scroll animation observer
 const setupScrollAnimations = () => {
@@ -219,7 +218,27 @@ onUnmounted(() => {
         <p class="page-subtitle">{{ $t('about.subtitle') }}</p>
       </div>
     </section>
+    <section class="background-info-section bg-white">
+      <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="bg-image-wrapper">
+          <img src="@/assets/img/drawbrige.jpg" alt="TAJDID Bridge" class="w-full rounded-xl shadow-lg object-cover" />
+        </div>
 
+        <div class="bg-text">
+          <h2 class="text-lg font-semibold text-green-700 mb-4">Background</h2>
+          <p class="text-gray-700 mb-6">
+            Terengganu Advanced Joint Digital Intelligent Development (TAJDID) or known as TAJDID Corporation is a fully state-owned company under the Terengganu State Government, operating under Mentri Besar, Trengganu (Incorporated). TAJDID functions as the sole entity to drive economic growth and the development of a digital society based on digital technology and the Fourth Industrial Revolution (4IR).
+          </p>
+
+          <h3 class="text-lg font-semibold text-green-700 mb-3">Principal Authority</h3>
+          <ul class="list-disc pl-5 text-gray-700 space-y-2">
+            <li>Approval of the Majlis Mesyuarat Kerajaan Negeri on July 15 2020, under the paper titled "Cadangan Pendigitalan Negeri Terengganu"</li>
+            <li>Granted a mandate through the Persidangan Dewan Undangan Negeri Terengganu on August 2020</li>
+            <li>Registered with the Suruhan Syarikat Malaysia (SSM) in October 2020</li>
+          </ul>
+        </div>
+      </div>
+    </section>
     <!-- Hero heading -->
     <section class="hero-who-section" @mousemove="updateMousePosition">
       <!-- Animated Wireframe Canvas -->
@@ -271,6 +290,7 @@ onUnmounted(() => {
       </div>
     </section>
 
+
     <!-- Vision & Mission Zigzag -->
     <section class="vision-mission-section">
       <!-- Vision -->
@@ -301,7 +321,15 @@ onUnmounted(() => {
         </div>
       </div>
     </section>
-
-    <!-- Board and Teams moved to dedicated pages: /about/board and /about/team -->
   </div>
 </template>
+
+<style scoped>
+.background-info-section { background: white; }
+.background-info-section .bg-image-wrapper img { height: 420px; width: 100%; object-fit: cover; border-radius: 12px; }
+.background-info-section .bg-text h2, .background-info-section .bg-text h3 { color: #0b845a; }
+.background-info-section .bg-text p { line-height: 1.7; }
+@media (min-width: 1024px) {
+  .background-info-section .bg-image-wrapper img { height: 520px; }
+}
+</style>

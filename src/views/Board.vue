@@ -4,8 +4,8 @@ import { ref } from 'vue'
 defineOptions({ name: 'BoardPage' })
 
 const directors = ref([
-  { image: new URL('@/assets/img/8.png', import.meta.url).href },
   { image: new URL('@/assets/img/2.png', import.meta.url).href },
+  { image: new URL('@/assets/img/8.png', import.meta.url).href },
   { image: new URL('@/assets/img/1.png', import.meta.url).href },
   { image: new URL('@/assets/img/5.png', import.meta.url).href },
   { image: new URL('@/assets/img/6.png', import.meta.url).href },
@@ -19,14 +19,12 @@ const directors = ref([
   <div class="about-page">
      <section class="about-header">
       <div class="max-w-7xl mx-auto px-4">
-        <h1 class="page-title">{{ $t('about.title') }}</h1>
+        <h1 class="page-title">Board of Directors</h1>
         <p class="page-subtitle">{{ $t('about.subtitle') }}</p>
       </div>
     </section>
     <section class="board-section">
-      <div class="board-header">
-        <h2 class="board-title">BOARD OF <span class="board-highlight">DIRECTORS</span></h2>
-      </div>
+    >
       <div class="board-pyramid-container">
         <!-- Row 1 -->
         <div class="pyramid-row row-1">

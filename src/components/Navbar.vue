@@ -4,11 +4,12 @@ defineOptions({
 })
 
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, RouterLink } from 'vue-router'
 
 const mobileMenuOpen = ref(false)
 const servicesDropdownOpen = ref(false)
 const aboutDropdownOpen = ref(false)
+// rolesSubOpen removed: submenu simplified
 const isScrolled = ref(false)
 const router = useRouter()
 const route = useRoute()
@@ -75,6 +76,41 @@ const scrollToService = (serviceId) => {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
+
+// Navigate to Roles anchors on the Roles page.
+const goToRole = (hash) => {
+  const target = { path: '/about/roles', hash: hash || '' }
+  // If not on the Roles page, push then scroll after navigation
+  if (router.currentRoute.value.path !== '/about/roles') {
+    router.push(target).then(() => {
+      setTimeout(() => {
+        const id = (hash || '').replace('#', '')
+        if (id) {
+          const el = document.getElementById(id)
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+      }, 120)
+    })
+  } else {
+    // Already on roles page — update hash and scroll
+    router.replace(target).catch(() => {})
+    const id = (hash || '').replace('#', '')
+    setTimeout(() => {
+      if (id) {
+        const el = document.getElementById(id)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    }, 80)
+  }
+
+  // Close menus
+  aboutDropdownOpen.value = false
+  mobileMenuOpen.value = false
+}
 </script>
 
 <template>
@@ -121,6 +157,8 @@ const scrollToService = (serviceId) => {
                 <router-link to="/about" class="dropdown-item">{{ $t('nav.about_us') || 'About Us' }}</router-link>
                 <router-link to="/about/board" class="dropdown-item">{{ $t('nav.board') || 'Board of Directors' }}</router-link>
                 <router-link to="/about/team" class="dropdown-item">{{ $t('nav.team') || 'Our Teams' }}</router-link>
+
+                <router-link to="/about/roles" class="dropdown-item">{{ $t('nav.roles')}}</router-link>
               </div>
             </div>
           <div
@@ -205,12 +243,17 @@ const scrollToService = (serviceId) => {
               </router-link>
 
               <router-link to="/about/board" class="mobile-nav-item">
-                <span class="nav-item-text">{{ $t('nav.board') || 'Board of Directors' }}</span>
+                <span class="nav-item-text">{{ $t('nav.board') }}</span>
               </router-link>
 
               <router-link to="/about/team" class="mobile-nav-item">
-                <span class="nav-item-text">{{ $t('nav.team') || 'Our Teams' }}</span>
+                <span class="nav-item-text">{{ $t('nav.team') }}</span>
               </router-link>
+
+              <router-link to="/about/roles" class="mobile-nav-item">
+                <span class="nav-item-text">{{ $t('nav.roles') }}</span>
+              </router-link>
+
 
               <router-link to="/services" class="mobile-nav-item">
                 <span class="nav-item-text">{{ $t('nav.services') }}</span>
@@ -308,7 +351,4 @@ nav {
   height: 1rem;
 }
 
-.dropdown-menu {
-  top: calc(100% + 0.2rem);
-}
 </style>

@@ -6,6 +6,7 @@ import NewsDetail from '../views/NewsDetail.vue'
 import About from '../views/About.vue'
 import Board from '../views/Board.vue'
 import Team from '../views/Team.vue'
+import Roles from '../views/Roles.vue'
 import Services from '../views/Services.vue'
 import Contact from '../views/Contact.vue'
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/about/team',
     name: 'Team',
     component: Team,
+  },
+  {
+    path: '/about/roles',
+    name: 'Roles',
+    component: Roles,
   },
   {
     path: '/services',

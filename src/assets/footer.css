@@ -79,6 +79,7 @@
   transition: color 0.3s ease;
   display: inline-block;
   text-decoration: none;
+  margin-left: 1rem;
 }
 
 .footer-link:hover {
@@ -171,8 +172,6 @@
   height: 18px;
   flex-shrink: 0;
 }
-ntainer and responsive padding now handled by Tailwind utilities */
-
 .footer-links {
   list-style: none;
   padding: 0;
@@ -181,3 +180,27 @@ ntainer and responsive padding now handled by Tailwind utilities */
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.footer-bottom {
+  margin-top: -3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright-text {
+  color: #8b92a7;
+  font-size: 0.875rem;
+  text-align: center;
+}
+@media (max-width: 768px) {
+ .footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright-text {
+  color: #8b92a7;
+  font-size: 0.875rem;
+  text-align: center;
+}}

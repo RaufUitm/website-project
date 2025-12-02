@@ -99,10 +99,14 @@
   "footer": {
     "company_name": "TAJDID CORPORATION SDN BHD",
     "explore": "Explore",
+   
     "address_title": "Address",
     "organization": "Terengganu Advanced Joint Digital Intelligent Development (TAJDID)",
     "address_line": "2nd Floor, TD1303, Jalan Sultan Zainal Abidin, 20000 Kuala Terengganu, Terengganu Darul Iman",
     "social_media": "Social Media",
-    "visitors_label": "Visitors"
+    "visitors_label": "Visitors",
+    "all_rights_reserved": "All rights reserved",
+    "terms_of_use": "Terms of Use",
+    "privacy_policy": "Privacy Policy"
   }
 }

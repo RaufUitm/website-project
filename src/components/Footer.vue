@@ -182,6 +182,15 @@ onMounted(async () => {
           </div>
         </div>
       </div>
+
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          © {{ new Date().getFullYear() }} {{ $t('footer.company_name') }}. {{ $t('footer.all_rights_reserved') }}
+          <a href="#" class="footer-link" target="_blank">{{ $t('footer.terms_of_use') }}</a>
+          <a href="#" class="footer-link" target="_blank">{{ $t('footer.privacy_policy') }}</a>
+        </p>
+      </div>
     </div>
   </footer>
 </template>

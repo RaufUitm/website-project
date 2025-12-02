@@ -92,7 +92,8 @@
     "placeholder_message": "How can we help you?",
     "submit": "Submit",
     "success_message": "Thank you! We'll get back to you soon.",
-    "error_send": "Failed to send message. Please try again."
+    "error_send": "Failed to send message. Please try again.",
+    "Sending": "Sending..."
   }
   ,
   "footer": {

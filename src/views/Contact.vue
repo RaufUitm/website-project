@@ -16,10 +16,10 @@ const isLoading = ref(false)
 const error = ref('')
 
 // Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = 'service_dcqye0m'
-const EMAILJS_TEMPLATE_ID = 'template_rqogadq'
-const EMAILJS_PUBLIC_KEY = 'J4c7AkUmqNFB39G20'
-const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_w7g2n7p'
+const EMAILJS_SERVICE_ID = 'service_mvw8ipb'
+const EMAILJS_TEMPLATE_ID = 'template_48cjipk'
+const EMAILJS_PUBLIC_KEY = '4NK4-NtdfPE0koaap'
+const EMAILJS_AUTOREPLY_TEMPLATE_ID = 'template_483rzow'
 
 // Initialize EmailJS with your public key (helps with diagnostics)
 try {
